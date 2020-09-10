@@ -4,10 +4,10 @@
   "description": "You Will Change The World",
   "main": "bin/www",
   "scripts": {
-    "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 ./index.js",
-    "dev": "NODE_ENV=development nodemon ./index.js",
-    "build": "./bin/build-js && ./bin/build-css",
-    "watch": "./bin/watch-css",
+    "start": "node --optimize_for_size --max_old_space_size=460 --gc_interval=100 index.js",
+    "dev": "NODE_ENV=development nodemon index.js",
+    "build": "bin/build-js && bin/build-css",
+    "watch": "bin/watch-css",
     "prestart": "npm run build",
     "predev": "npm run build",
     "postinstall": "npm install -g rimraf browserify uglify-js bower postcss-cli autoprefixer && bower install"
