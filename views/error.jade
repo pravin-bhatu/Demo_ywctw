@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  .page: .container
+    h1 Oops!
+    h2 Something went wrong.
+    h3 Here are links to get you back on track.
+    p: a(href="/courses") Courses
+    p: a(href="/instructors") Instructors
+    p: a(href="/events") Events
+
+    h2 More Information:
+    h3= message
+    if error
+      h4= error.status
+      pre #{error.stack}

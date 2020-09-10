@@ -1,0 +1,61 @@
+.course-landing-banner {
+  margin-top: -20px;
+  background-image: url(/images/partials/header/header-background.jpg);
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  overflow: hidden;
+  text-align: center;
+
+  .overlay {
+    height: 100%;
+    padding: 30px 0 60px;
+    background: rgba(0,0,0,0.4);
+    h1 { color: $snow; }
+    ol.breadcrumb {
+      background: transparent;
+      text-transform: capitalize;
+      a {
+        color: $iron;
+        &:hover { color: $smoke; }
+      }
+    }
+  }
+}
+
+.course-landing-header {
+  overflow: hidden;
+  text-align: left;
+  background: #fff;
+  margin-top: 15px;
+  padding: 15px 30px 15px 15px;
+  .flex-video {margin: 0;}
+}
+
+.course-landing-body {
+  padding: 25px 0;
+  border-top: 1px solid $iron;
+  hr { margin: 0.5rem 0; }
+
+  .curriculum {
+    text-transform: capitalize;
+    h3 { margin-left: 20px; }
+    p { margin: 0 0 0 40px; }
+  }
+}
+
+.lesson-item {
+  transition: all 0.25s ease;
+
+  small {
+    font-size: 14px;
+    display: none;
+  }
+
+  &:hover {
+    font-size: 21px;
+    small { display: block; }
+    i { color: $brand-primary; }
+  }
+}
+

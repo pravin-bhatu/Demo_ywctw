@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+  h1 Instructors Affiliate List
+
+  table.table.table-striped
+    thead
+
+      tr
+        th Instructor Name
+        th Affiliate Code
+    tbody
+      each instructor in instructors
+        tr
+          td: a(href='info?id=' + instructor.id, style='color:black;')=instructor.get('name')
+          if (instructor.get('affiliate'))
+            td= instructor.get('affiliate').id
+          else
+            td.text-left: b.i(style='color:red') NOT SET

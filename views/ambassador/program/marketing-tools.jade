@@ -1,0 +1,158 @@
+extends layout
+
+block content
+
+  style.
+    .cent{
+      text-align: center;
+    }
+    *{
+      padding: 0px;
+    }
+    a{
+      color: black;
+    }
+
+    .btn-promo{
+      background:url(https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/welcomeButtons/promotools.png) no-repeat;
+      cursor:pointer;
+      border:none;
+      width:160px;
+      height:53px;
+    }
+    .list-group-item{
+      color: black;
+      background-color: white;
+    }
+    .btn-copylink{
+      background-color: #1BC98E;
+      color: white;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .aff-link{
+        font-size: 12px;
+        word-wrap: break-word;
+      }
+      .btn-promo{
+        font-size: 20px; 
+        padding: 15px; 
+      }
+      .stripe{
+        background-color: darkblue;
+      }
+    }
+    @media only screen and (min-width: 600px) {
+      .aff-link{
+        font-size: 12px;
+        word-wrap: break-word;
+      }
+      .btn-promo{
+        font-size: 20px; 
+        padding: 15px; 
+      }
+    }
+
+  .row
+    .col-xs-12
+      .dashhead
+        .dashhead-titles
+          h3.dashhead-title Affiliate Links & Marketing Tools 
+  .row: .col-xs-12
+    .hr-divider
+      h3.hr-divider-content.hr-divider-heading Quick Stats
+  .row
+    .col-xs-12.col-md-4
+      .statcard.statcard-danger.p-a-md.m-t.m-b.text-center
+        h3.statcard-number= analytics.visits
+        span.statcard-desc Alltime Visits
+    .col-xs-12.col-md-4
+      .statcard.statcard-warning.p-a-md.m-t.m-b.text-center
+        h3.statcard-number= analytics.registrations
+        span.statcard-desc Alltime Sign Ups
+    .col-xs-12.col-md-4
+      .statcard.statcard-success.p-a-md.m-t.m-b.text-center
+        h3.statcard-number= analytics.orders
+        span.statcard-desc Alltime Orders
+  .row: .col-xs-12
+    .hr-divider
+      h3.hr-divider-content.hr-divider-heading Affiliate Links
+  .row 
+    .col-xs-12.cent
+      h1(style="font-size: 38px;") <b><a href="?ref=#{affiliate.id}" style="color: red;">?ref=#{affiliate.id}</a></b>
+      p(style="font-size: 18px;") THIS IS YOUR UNIQUE AFFILIATE CODE WHICH IS AT THE END OF EACH COURSE LINK, SEE BELOW TO COPY THE COURSE AFFILIATE LINK To The course YOU WANT TO PROMOTE
+  .row
+    .col-xs-12
+      ul.list-group.m-t.m-b
+        li.list-group-header(style="background-color:#3598C7") YOU WILL CHANGE THE WORLD HOME PAGE AFFILIATE LINK - This link points directly to the YWCTW Course Registration Page.
+        li.list-group-item
+          .row
+            .col-md-9.col-xs-12          
+              p.aff-link <a id="link1" href="https://www.youwillchangetheworld.com/?ref=#{affiliate.id}">https://www.youwillchangetheworld.com/?ref=#{affiliate.id}</a>
+              button(onclick="copyLink(link1)").btn.btn-copylink Copy To Clipboard
+            .col-md-3.col-xs-12 
+              <a href="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/Promo+Tools/YWCTW+Home+Page+Ambassador+Graphics.zip"><button class="btn-promo"></button></a>
+              
+  .row
+    .col-xs-12
+      ul.list-group.m-t.m-b
+        li.list-group-header(style="background-color:#3598C7") YOU WILL CHANGE THE WORLD AMBASSADOR AFFILIATE LINK - This link points directly to the YWCTW Ambassador Registration Page.
+        li.list-group-item 
+          .row
+            .col-md-9.col-xs-12
+              p.aff-link <a id="link2" href="https://www.youwillchangetheworld.com/affiliates?ref=#{affiliate.id}">https://www.youwillchangetheworld.com/affiliates?ref=#{affiliate.id}</a>
+              button(onclick="copyLink(link2)").btn.btn-copylink Copy To Clipboard
+            .col-md-3.col-xs-12 
+              <a href="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/Promo+Tools/Ambassador+Graphics+-+Ambassador+Program+Promotions.zip"><button class="btn-promo"></button></a>
+          
+    
+  .row
+    .col-xs-12
+      ul.list-group.m-t.m-b
+        li.list-group-header(style="background-color:#3598C7") YWCTW AFFILIATE MARKETING SUMMIT LINK - This link points directly to the YWCTW Affiliate Marketing Summit Registration Page.
+          li.list-group-item 
+            .row
+              .col-md-9.col-xs-12
+                p.aff-link <a id="link3" href="https://www.youwillchangetheworld.com/events/affiliate-marketing-summit?ref=#{affiliate.id}">https://www.youwillchangetheworld.com/events/affiliate-marketing-summit?ref=#{affiliate.id}</a>
+                button(onclick="copyLink(link3)").btn.btn-copylink Copy To Clipboard
+              .col-md-3.col-xs-12
+                <a href="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/Promo+Tools/Ambassador+Graphics+-+Affiliate+Marketing+Summit+.zip"><button class="btn-promo"></button></a>
+            
+  .row(style="padding-bottom: 30px;")
+    .col-xs-12
+      ul.list-group.m-t.m-b
+      li.list-group-header(style="background-color:#3598C7") COURSE REFERRAL LINKS - These Links point directly to your course page. Specifically for social media and to share via email.
+        //Put Riley course at the top
+        for course in courses
+          //- if course.get('stage') == 'prod'
+          //- p #{course.get('name')}
+          //- if course.get('instructor').get('name') == 'Forbes Riley'
+          if course.get('name') == 'Instant Cash Flow the "21 Secrets"'
+            li.list-group-item(style="list-style-position:inside; border: 1px solid black;")
+              p Instructor: <a href="/instructors/#{course.get('instructor').get('username')}?ref=#{affiliate.id}"> #{course.get('instructor').get('name')} </a>
+              p Course Name: #{course.get('name')}
+              p.aff-link <a id="link#{course.id}" href="https://www.youwillchangetheworld.com/courses/#{course.get('slug')}?ref=#{affiliate.id}">https://www.youwillchangetheworld.com/courses/#{course.get('slug')}?ref=#{affiliate.id}</a>
+              button(onclick="copyLink(link#{course.id})").btn.btn-copylink(style='margin-bottom: 5px;') Copy To Clipboard
+        for course in courses
+          if course.get('stage') == 'prod'
+            li.list-group-item(style="list-style-position:inside; border: 1px solid black;")
+              p Instructor: <a href="/instructors/#{course.get('instructor').get('username')}?ref=#{affiliate.id}"> #{course.get('instructor').get('name')} </a>
+              p Course Name: #{course.get('name')}
+              p.aff-link <a id="link#{course.id}" href="https://www.youwillchangetheworld.com/courses/#{course.get('slug')}?ref=#{affiliate.id}">https://www.youwillchangetheworld.com/courses/#{course.get('slug')}?ref=#{affiliate.id}</a>
+              button(onclick="copyLink(link#{course.id})").btn.btn-copylink(style='margin-bottom: 5px;') Copy To Clipboard
+       
+  
+  block scripts
+    script.
+      function copyLink(copylink) {
+        //alert('hi' + copylink);
+        var textField = document.createElement('textarea');
+        textField.innerText = copylink;
+        document.body.appendChild(textField);
+        textField.select();
+        document.execCommand('copy');
+        textField.remove();
+        //alert("Copied the text: " + copyText.value);
+      }
+
+

@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+
+  .container-fluid
+    h1 Event Information
+    hr
+
+    .row: .col-xs-12
+      a(href='https://youwillchangetheworld.com/events/' + event.get('slug'), target='_blank').btn.btn-link View Event Page
+     //  a(href='http://localhost:3000/events/' + event.get('slug'), target='_blank').btn.btn-link View Event Page
+
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Event Details

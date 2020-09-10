@@ -1,0 +1,62 @@
+extends ../layout
+
+block content
+  h1 Add Transaction
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Transaction
+
+  form(id="addTransaction",method="post",action="addTransaction")
+
+    .row
+      .col-xs-3.col-sm-3
+        .form-group
+          label Transaction ID
+          input(type="text", id="transactionId", name="transactionId", required).form-control
+
+    .row.m-t.m-b.text-left
+      .col-xs-12
+        input(id="formSubmit", type="submit", value="Get Transaction").btn.btn-primary.btn-lg
+
+
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Transaction Result
+
+    .row: .col-xs-12.text-left
+      h4= "Transaction Result: " + transactionResults
+
+
+    if(transaction)
+      .row: .col-xs-12.text-left
+        h3= "ID: " + transaction.id
+
+      .row: .col-xs-12.text-left
+        h3= "Amount: " + transaction.amount
+        
+      .row: .col-xs-12.text-left
+        h3= "Product Type: " + transaction.customFields.productType
+
+      .row: .col-xs-12.text-left
+        h3= "Product ID: " + transaction.customFields.productId
+
+      .row: .col-xs-12.text-left
+        h3= "Reffered By: " + transaction.customFields.userReferredBy
+
+      .row: .col-xs-12.text-left
+        h3= "User ID: " + transaction.customFields.userId
+
+      .row: .col-xs-12.text-left
+        h3= "Partner Code: " + transaction.customFields.partnerCode
+
+      .row: .col-xs-12.text-left
+        h3= "Service Fee: " + transaction.serviceFeeAmount
+
+      .row: .col-xs-12.text-left
+        h3= "Created At: " + transaction.createdAt
+
+      .row: .col-xs-12.text-left
+        h3= "Transaction: " + JSON.stringify(transaction)
+

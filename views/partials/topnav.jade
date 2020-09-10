@@ -1,0 +1,110 @@
+body#page-top 
+  nav#mainNav.navbar.navbar-b.navbar-trans.navbar-expand-lg.fixed-top
+    .container-fluid
+
+      |       
+      button.navbar-toggler.collapsed(type='button' data-toggle='collapse' data-target='#navbarDefault' aria-controls='navbarDefault' aria-expanded='false' aria-label='Toggle navigation')
+        span
+        |         
+        span
+        |         
+        span
+      |       
+      #navbarDefault.navbar-collapse.collapse.justify-content-end
+        ul.navbar-nav.mr-auto
+          li.nav-item
+            a.nav-link.js-scroll.active(class={active: currentUrl === '/'} href='/') Home
+          li.nav-item
+            a.nav-link.js-scroll(class={active: currentUrl === '/about'} href='/about') Our Story
+          |           
+          li.nav-item
+            a.nav-link.js-scroll(class={active: currentUrl === '/instructors'} href='/instructors') Instructors
+          |           
+          li.nav-item
+            a.nav-link.js-scroll(class={active: currentUrl === '/courses'} href='/courses') Courses
+          |           
+          li.nav-item
+            a(href='/'): img.img-fluid(src='/img/logo_golden.png' alt='share you genius you will change the world')
+          |           
+          li.nav-item
+            a.nav-link.js-scroll(class={active: currentUrl === '/books'} href='/books') Books
+          |           
+          li.nav-item
+            a.nav-link.js-scroll(class={active: currentUrl === '/events'} href="/events") Events
+          |           
+          li.nav-item
+            a.nav-link(class={active: currentUrl === '/articles'} href="/articles")
+              | Articles
+              span.red &amp;
+              | Blogs
+        |   
+        ul.nav.navbar-nav.navbar-right.custom_navbar
+          if currentUser
+            if currentUser.get('vip')
+              li: img(src='/img/vip/tiny.png' alt='vip icon' style='margin-top:5px;')
+          if user
+            li.dropdown
+              a(href='#' data-toggle='dropdown' role='button').dropdown-toggle My Account & Courses
+              ul.dropdown-menu
+                if currentUser.get('affiliate')
+                  li: a(href='/affiliates/program') Ambassador Program
+                if currentUser.get('instructor')
+                  li: a(href='/dashboard') Dashboard
+                li: a(href='/account/courses') My Courses
+                if currentUser
+                  if currentUser.get('admin')
+                    li.divider
+                    li: a(href='/admin') Admin
+                  if !currentUser.get('admin') && !currentUser.get('instructor')
+                    li: a(href='/student') Dashboard
+                li.divider
+                li: a(href='/auth/logout').sign-out Sign Out
+          else
+            //- li.nav-login: a(href='#' class='sign-up').loginBtn.button.text-uppercase Log In
+            //- li.active: a(href='#' class='sign-up').signUpBtn.button.text-uppercase Sign Up 
+            button.loginBtn.button.text-uppercase.sign-up LogIn
+            |         
+            button.signUpBtn.button.text-uppercase.sign-up Sign Up
+
+
+
+
+//- nav.navbar.navbar-default.navbar-fixed-top: .container-fluid(style='padding-right:0;')
+//-   .navbar-header
+//-     button(type='button' data-toggle='collapse' data-target='#navbar-collapse').navbar-toggle.collapsed
+//-       span.icon-bar
+//-       span.icon-bar
+//-       span.icon-bar
+//-     a(href='/').navbar-brand: img(src='/img/logo.png' alt='share you genius you will change the world' style='height:24px;')
+//-   #navbar-collapse.collapse.navbar-collapse
+//-     ul.nav.navbar-nav
+//-       li: a(href='/courses') Courses
+//-       li: a(href='/instructors') Instructors
+//-       li: a(href="/events") Events
+//-       li: a(href="/articles") Articles
+//-       li: a(href="/affiliates") Ambassadors
+
+//-     ul.nav.navbar-nav.navbar-right(style='background-color:green')
+//-       if currentUser
+//-         if currentUser.get('vip')
+//-           li: img(src='/img/vip/tiny.png' alt='vip icon' style='margin-top:5px;')
+//-       if user
+//-         li.dropdown
+//-           a(href='#' data-toggle='dropdown' role='button').dropdown-toggle My Account & Courses <span class="caret"></span>
+//-           ul.dropdown-menu
+//-             if currentUser.get('affiliate')
+//-               li: a(href='/affiliates/program') Ambassador Program
+//-             if currentUser.get('instructor')
+//-               li: a(href='/dashboard') Dashboard
+//-             li: a(href='/account/courses') My Courses
+//-             if currentUser
+//-               if currentUser.get('admin')
+//-                 li.divider
+//-                 li: a(href='/admin') Admin
+//-               if !currentUser.get('admin') && !currentUser.get('instructor')
+//-                 li: a(href='/student') Dashboard
+//-             li.divider
+//-             li: a(href='/auth/logout').sign-out Sign Out
+//-       else
+//-         li.nav-login: a(href='#' class='sign-up').sign-in Log In
+//-         li.active: a(href='#' class='sign-up').sign-up Create Account

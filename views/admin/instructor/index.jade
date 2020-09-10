@@ -1,0 +1,116 @@
+extends ../layout
+
+block content
+  h1 Instructors
+
+
+  table.table.table-striped
+    thead
+      tr
+        th
+        th
+        th(colspan='2').text-center Bio
+        th
+        th(colspan='6').text-center Social Media
+        th(colspan='1').text-center Vanity
+        th
+        th(colspan='1').text-center Speaker
+        th(colspan='1').text-center Merchant
+        th
+      tr
+        th
+        th Instructor Name
+        th.text-center Long
+        th.text-center Short
+        th(width='60px').text-center: i.fa.fa-google-plus.fa-lg
+        th(width='60px').text-center: i.fa.fa-facebook.fa-lg
+        th(width='60px').text-center: i.fa.fa-twitter.fa-lg
+        th(width='60px').text-center: i.fa.fa-linkedin.fa-lg
+        th(width='60px').text-center: i.fa.fa-instagram.fa-lg
+        th(width='60px').text-center: i.fa.fa-pinterest.fa-lg
+        th(width='60px').text-center: i.fa.fa-youtube.fa-lg
+        th.text-center URL
+        th.text-center Auth ID
+        th.text-center Sheet
+        th.text-center Status
+        th.text-center Visible
+    tbody
+      each instructor in instructors
+        tr
+          td.text-center: a(href='instructors/edit?id=' + instructor.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+          td: a(href='instructors/info?id=' + instructor.id, style='color:black;')=instructor.get('name')
+
+          if (instructor.get('longBio'))
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: i(style='color:red').fa.fa-remove
+
+          if (instructor.get('shortBio'))
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: i(style='color:red').fa.fa-remove
+
+          if (instructor.get('socialGoogle'))
+            td.text-center: a(href=instructor.get('socialGoogle'), target="_blank", style='color:#dd4b39'): i.fa.fa-google-plus.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialGoogle'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-google-plus.fa-lg
+
+          if (instructor.get('socialFacebook'))
+            td.text-center: a(href=instructor.get('socialFacebook'), target="_blank", style='color:#3b5998'): i.fa.fa-facebook.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialFacebook'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-facebook.fa-lg
+
+          if (instructor.get('socialTwitter'))
+            td.text-center: a(href=instructor.get('socialTwitter'), target="_blank", style='color:#55acee'): i.fa.fa-twitter.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialTwitter'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-twitter.fa-lg
+
+          if (instructor.get('socialLinkedIn'))
+            td.text-center: a(href=instructor.get('socialLinkedIn'), target="_blank", style='color:#0077b5'): i.fa.fa-linkedin.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialLinkedIn'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-linkedin.fa-lg
+
+          if (instructor.get('socialInstagram'))
+            td.text-center: a(href=instructor.get('socialInstagram'), target="_blank", style='color:#8a3ab9'): i.fa.fa-instagram.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialInstagram'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-instagram.fa-lg
+
+          if (instructor.get('socialPinterest'))
+            td.text-center: a(href=instructor.get('socialPinterest'), target="_blank", style='color:#bd081c'): i.fa.fa-pinterest.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialPinterest'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-pinterest.fa-lg
+
+          if (instructor.get('socialYouTube'))
+            td.text-center: a(href=instructor.get('socialYouTube'), target="_blank", style='color:#e52d27'): i.fa.fa-youtube.fa-lg
+          else
+            td.text-center: a(href=instructor.get('socialYouTube'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-youtube.fa-lg
+
+          if instructor.get('vanity')
+            td.text-center= instructor.get('vanity')
+
+          if (instructor.get('authId'))
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: b -
+
+          if instructor.get('speakerSheet')
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: b -
+
+          if (instructor.get('merchantStatus') == 'active')
+            td.text-center: i(style='color:green').fa.fa-usd
+          else if (instructor.get('merchantStatus') == 'suspended')
+            td.text-center: i(style='color:#ffc400').fa.fa-life-ring
+          else if (instructor.get('merchantStatus') == 'failed')
+            td.text-center: i(style='color:red').fa.fa-remove
+          else
+            td.text-center: b -
+
+          if (instructor.get('published') == true)
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: i(style='color:red').fa.fa-remove
+
+
+

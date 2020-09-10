@@ -1,0 +1,37 @@
+@import "settings/variables";
+
+//==================== Vendor ====================
+//----- Bootstrap -----
+@import "settings/bootstrap";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//----- Font Awesome -----
+@import "../../bower_components/font-awesome/scss/font-awesome";
+
+//==================== App ====================
+@import "global";
+
+//----- Partials -----
+@import "partials/header";
+@import "partials/footer";
+
+//----- Terms -----
+@import "terms/terms-menu";
+
+//----- Pages -----
+@import "page/event";
+@import "page/home";
+
+//----- Course -----
+@import "course/card";
+@import "course/product";
+
+//------ Articles -----
+@import "articles/articles";
+
+//------ Sales Page ------
+// @import "page/salespage"
+
+// TODO: Font Colors
+//   white : #f3f3f3
+//   black : #323232

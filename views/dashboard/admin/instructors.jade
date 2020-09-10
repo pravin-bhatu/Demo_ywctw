@@ -1,0 +1,22 @@
+extends ../layout
+
+block innerContent
+  .row
+    .col-xs-12.col-md-3
+      include sidebar
+    .col-xs-12.col-md-9
+      h2 Admin - Instructors
+      .list-group
+        for instructor in instructors
+          a(
+            href='/dashboard/admin/instructors/' + instructor.id,
+            class='list-group-item' +
+            ((instructor.get('stage') === 'new') ? ' list-group-item-info' : '') +
+            ((instructor.get('stage') === 'dev') ? ' list-group-item-danger' : '') + 
+            ((instructor.get('stage') === 'stage') ? ' list-group-item-warning' : '') + 
+            ((instructor.get('stage') === 'prod') ? ' list-group-item-success' : '')
+          )
+            != instructor.id
+            span  - 
+            != instructor.get('slug')
+            span.pull-right= instructor.get('stage')

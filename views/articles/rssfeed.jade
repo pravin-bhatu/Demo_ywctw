@@ -1,0 +1,11 @@
+doctype xml
+rss(version='2.0', xmlns:atom='http://www.w3.org/2005/Atom')
+  channel
+    title You Will Change The World Articles
+    link http://www.youwillchangetheworld.com/articles
+    description Latest Articles from Mentors Around The World
+    each article in articles
+      item
+        title= article.get('title')
+        link http://www.youwillchangetheworld.com/#{article.get('slug')}
+        description= article.get('content').substring(0, 220)

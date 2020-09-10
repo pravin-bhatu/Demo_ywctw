@@ -1,0 +1,17 @@
+<component name="libraryTable">
+  <library name="Parse" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="node_modules" />
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/node_modules/parse" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/node_modules/parse" />
+    </CLASSES>
+    <DOCUMENTATION>
+      <root url="https://parse.com/docs/js/guide" />
+    </DOCUMENTATION>
+    <SOURCES />
+  </library>
+</component>

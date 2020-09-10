@@ -1,0 +1,29 @@
+nav.navbar.navbar-default.navbar-fixed-top: .container-fluid(style='padding-right:0;')
+  .navbar-header
+    button(type='button', data-toggle='collapse', data-target='#navbar-collapse').navbar-toggle.collapsed
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a(href='/').navbar-brand: img(src='/img/logo.png', alt='share you genius you will change the world', style='height:24px;')
+  #navbar-collapse.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right(style='background-color:green')
+      if currentUser
+        if currentUser.get('vip')
+          li: img(src='/img/vip/tiny.png', alt='vip icon', style='margin-top:5px;')
+      if user
+        li.dropdown
+          a(href='#', data-toggle='dropdown', role='button').dropdown-toggle My Account & Courses <span class="caret"></span>
+          ul.dropdown-menu
+            if user.role === 'instructor'
+              li: a(href='/dashboard') Dashboard
+            li: a(href='/account/courses') My Courses
+            if currentUser
+              if currentUser.get('admin')
+                li.divider
+                li: a(href='/admin') Admin
+            li.divider
+            li: a(href='/auth/logout').sign-out Sign Out
+      else
+        //li: a(href='/for/instructors') Teach
+        li.nav-login: a(href='#' class='sign-up').sign-in Log In
+        li.active: a(href='#' class='sign-up').sign-up Create Account

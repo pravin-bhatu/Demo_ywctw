@@ -1,0 +1,57 @@
+style.
+  @media only screen and (min-width: 600px) {
+    .iconav-brand{
+      margin-top: 50px !important;
+    }
+    .iconav-slider{
+      overflow: hidden;
+    }
+    .iconav-nav>li+li>a{
+      border: none !important;
+    }
+  }
+
+nav.iconav
+  //- li.dropdown
+  //-   a.iconav-brand(href='/' data-toggle='dropdown' role='button').dropdown-toggle
+  //-     img(src="/img/logo-icon-dashboard.png", height="36")
+  //-   ul.dropdown-menu
+  //-     li: a(href='/') Home
+  //-     li: a(href='/about') Our Story
+  //-     li: a(href='/instructors') Instructors
+  //-     li: a(href='/courses') Courses
+  //-     li: a(href='/books') Books
+  //-     li: a(href='/events') Events
+  //-     li: a(href='/articles') Articles/Blogs
+  a.iconav-brand(href='/', title='YWCTW', data-toggle='tooltip', data-placement='right', data-container='body')
+    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/program/ambo-logo.png", height="42")
+  .iconav-slider
+    ul.nav.nav-pills.iconav-nav
+      li
+        a(href='/affiliates/program', title='Welcome', data-toggle='tooltip', data-placement='right', data-container='body')
+          span.icon.icon-home
+          small.iconav-nav-label Welcome
+      li
+        a(href='/affiliates/program/training', title='Training', data-toggle='tooltip', data-placement='right', data-container='body')
+          span.icon.icon-book
+          small.iconav-nav-label Training
+      li
+        a(href='/affiliates/program/marketing-tools', title='Affiliate Links & Marketing Tools', data-toggle='tooltip', data-placement='right', data-container='body')
+          span.icon.icon-folder
+          small.iconav-nav-label Affiliate Links
+      //- li
+      //-   a(href='/events', title='Events', data-toggle='tooltip', data-placement='right', data-container='body')
+      //-     span.icon.icon-clapperboard
+      //-     small.iconav-nav-label Events
+      li
+        a(href='/affiliates/program/profile', title='Profile', data-toggle='tooltip', data-placement='right', data-container='body')
+          span.icon.icon-users
+          small.iconav-nav-label Profile
+      li
+        a(style="margin-left: -10px;" href='/affiliates/program/resources', title='Resources', data-toggle='tooltip', data-placement='right', data-container='body')
+          span.icon.icon-network
+          small.iconav-nav-label Resources
+      li
+        a(href='/affiliates/program/faq', title='FAQ', data-toggle='tooltip', data-placement='right', data-container='body')
+          span.icon.icon-pencil
+          small.iconav-nav-label FAQ

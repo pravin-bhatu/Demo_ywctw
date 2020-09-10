@@ -1,0 +1,16 @@
+rimraf public/js
+mkdir public/js
+mkdir public/js/countdown
+browserify client/scripts/main.js -o public/js/main.js
+uglifyjs public/js/main.js -o public/js/main.js --compress warnings=false
+cp client/scripts/event/countdown.min.js public/js/countdown/countdown.min.js
+
+rimraf public/dashboard/js
+mkdir public/dashboard/js
+browserify client/scripts/dashboard/main.js -o public/dashboard/js/main.js
+uglifyjs public/dashboard/js/main.js -o public/dashboard/js/main.js --compress warnings=false
+
+rimraf public/admin/js
+mkdir public/admin/js
+browserify client/scripts/admin/main.js -o public/admin/js/main.js
+uglifyjs public/admin/js/main.js -o public/admin/js/main.js --compress warnings=false

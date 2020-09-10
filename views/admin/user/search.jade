@@ -1,0 +1,63 @@
+extends ../layout
+
+block content
+  h1.page-header User Search
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  form(id="search",method="post",action='search')
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Search
+          input(type="text", id="searchText", name="searchText", required).form-control
+
+      .col-xs-12.col-sm-2
+        .form-group
+          label(for="searchType") Search Type
+            select.form-control(name="searchType", id="searchType")
+              option(value='email') Email
+              option(value='firstName') First Name
+              option(value='lastName') Last Name
+              option(value='username') AuthID
+
+      .col-xs-12.col-sm-4.text-left
+        input(id="formSubmit", type="submit", value="Search").btn.btn-primary.btn-lg
+
+
+    if(users)
+
+      .row: .col-xs-12
+        .hr-divider.m-b
+          h3.hr-divider-content.hr-divider-heading Results
+
+
+      .row
+        .col-xs-12
+          .table-responsive
+            table.table.table-striped
+              tr
+                th Email
+                th Username
+                th First Name
+                th Last Name
+                th Date Joined
+                th.text-center Referred By
+              tbody
+                for user in users
+                  tr
+                    td: a(href='/admin/users/info?type=email&id=' + user.get('email'), style='color:black;')= user.get('email')
+                    td: a(href='/admin/users/info?type=username&id=' + user.get('username'), style='color:black;')= user.get('username')
+                    td= user.get('firstName')
+                    td= user.get('lastName')
+                    td= libs.moment(user.get('createdAt')).format("MMMM Do YYYY")
+                    if (user.get('referredBy'))
+                      if user.get('referredBy').get('instructor')
+                        td.text-center= user.get('referredBy').get('instructor').get('name')
+                      if user.get('referredBy').get('ambassador')
+                        td.text-center= user.get('referredBy').get('ambassador').get('user').get('username')
+                    else
+                      td.text-center: b -

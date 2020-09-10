@@ -1,0 +1,96 @@
+extends ../layout
+
+block content
+  #vip-landing.page: .container
+    .row: .col-xs-12.col-sm-10.col-sm-offset-1.col-lg-8.col-lg-offset-2
+      h1.text-center VIP Membership
+      .embed-responsive.embed-responsive-16by9
+        iframe(src=('https://player.vimeo.com/video/149533409?autoplay=true'), width='500', height='281', frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+      div(style="margin-top:5px;font-size:16px;")
+        if user
+          .row: .col-xs-12
+            div(style="margin:25px;padding:10px;border:1px solid #000;border-radius:6px;"): a(href="#checkout", style="text-transform:uppercase;font-weight:bold;").btn.btn-primary.btn-lg.expand Buy It Now!
+        else
+          .row: .col-xs-12
+            div(style="margin:25px;padding:10px;border:1px solid #000;border-radius:6px;"): button(style="text-transform:uppercase;font-weight:bold;").btn.btn-lg.btn-primary.expand.sign-in Sign In to Become a VIP!
+        p
+          | You Will Change The World is a revolution. It is causing a great 
+          | upheaval in our society right now. In fact, we're already seeing this
+          | today as traditional ways of teaching and sharing are challenged and 
+          | interrupted. If you accidently manage to survive, then yes, you can
+          | prosper <strong><em>eventually</em></strong>.
+        img(src="/img/vip/flourish.png").img-responsive
+        p
+          | Would it make sense to take control now of your destiny? You see the 
+          | greatest treasures will be shared with those who make their decisions 
+          | to excel and succeed by taking action NOW. Do not let those who 
+          | control the information, the secrets and the strategies take away 
+          | your right to enjoy and share the abundance that your hard work and 
+          | passion deserve.
+        img(src="/img/vip/vip.png").img-responsive
+        p
+          | You want to FINALLY experience the COMPLETE Manifestation of All the
+          | Miracles, Success, Wealth, Health, Love and Happiness that you have 
+          | always dreamed of... You have been looking to create & expand the 
+          | power of your MASTERMIND GROUP in a simple and accessible way.
+        if user
+          .row: .col-xs-12
+            div(style="margin:25px;padding:10px;border:1px solid #000;border-radius:6px;"): a(href="#checkout", style="text-transform:uppercase;font-weight:bold;").btn.btn-primary.btn-lg.expand Buy It Now!
+        else
+          .row: .col-xs-12
+            div(style="margin:25px;padding:10px;border:1px solid #000;border-radius:6px;"): button(style="text-transform:uppercase;font-weight:bold;").btn.btn-lg.btn-primary.expand.sign-in Sign In to Become a VIP!
+        
+        img(src="/img/vip/pay-attention.png").img-responsive
+        p
+          | Instructions to become a VIP Member of The #1 Website in The World 
+          | can be found as you read all the way to the bottom... <strong>Sign Up 
+          | for the Free membership and receive unlimited access to our free 
+          | courses and access to the site <em style="color:red;">OR THE 
+          | ENTREPRENUERS WILL BECOME VIPs!</em></strong>
+        p
+          | 100,000s of people received the same message you did - <strong>but 
+          | you're different.</strong> You acted, others did NOT. You're about to 
+          | access insider information right now and experience an offer that will 
+          | only last a short time.
+        p
+          | By signing up below, you're agreeing to <strong>get more information, 
+          | up to 75% discount on courses, <span style="font-size:large;">A 
+          | VIP Membership</span> (yes a year membership for only $19 with access to amazing information and
+          | instructors.)</strong>
+        p
+          | Consider yourself a "PIONEER". Just enter your name, email address and 
+          | payment information below and you will become one of the few smartest 
+          | people on the planet. You'll be shocked when you learn just how simple 
+          | personal transformation is with access to so many free courses and 
+          | savings of up to 50% ongoing.
+        img(src="/img/vip/vip-package-final.png", style="margin-top:25px;").img-responsive
+    .row: .col-xs-12.col-sm-10.col-sm-offset-1.col-lg-8.col-lg-offset-2
+      if user
+        h2 Order Now
+        form#checkout(action="/memberships/vip-pioneer", method="post")
+          .row
+            .col-xs-12.col-sm-8
+              h3(style="margin-bottom:25px;") Billing Information
+              | <div class="payment_instrument_logos" style="margin-bottom:25px;">
+              |   <img alt="American Express" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/american_express.png" width="48">
+              |   <img alt="Discover" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/discover.png" width="48">
+              |   <img alt="JCB" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/jcb.png" width="48">
+              |   <img alt="MasterCard" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/mastercard.png" width="48">
+              |   <img alt="Visa" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/visa.png" width="48">
+              | </div>
+              #payment-form
+              a(href="https://www.braintreegateway.com/merchants/kbfchfxycf42dsws/verified", target="_blank")
+                img(src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-light.png", width="280px", height="44px", border="0")
+            .col-xs-12.col-sm-4
+              .panel.panel-default.panel-profile
+                .panel-body.text-center
+                  h3.panel-title VIP Pioneer
+                  h2 $19
+          .row(style="margin-top:25px;")
+            .col-xs-10.col-xs-offset-1
+              input(type="submit", value="Submit Payment").btn.btn-lg.btn-primary.expand
+      else
+        div(style="margin:25px;padding:10px;border:1px solid #000;border-radius:6px;"): button(style="text-transform:uppercase;font-weight:bold;").btn.btn-lg.btn-primary.expand.sign-in Sign In to Become a VIP!
+      
+  script.
+    window.clientToken = '#{token}';

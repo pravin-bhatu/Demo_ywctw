@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+	h1.page-header File & Video
+	form(id="addResource" method="post" action="files" enctype="multipart/form-data" onSubmit="document.getElementById('formSubmit').disabled=true;")
+		.row
+			.col-xs-4.text-center
+				a(target="_blank" href="../files/action-guide.pdf")
+					img(src="../img/dashboard/action-guide-thumbnail.png" height="300px")
+				h4 Action Guide
+			.col-xs-4.text-center
+				a(target="_blank" href="../files/ywctw-contract.pdf")
+					img(src="../img/dashboard/contract-thumbnail.png" height="300px")
+				h4 Contract
+
+		.row: .col-xs-12
+			.dashhead(style="padding-bottom: 9px;margin: 40px 0 20px;border-bottom: 1px solid #eeeeee ")
+				.dashhead-titles(style="width: 100%;")
+					h3(style="float: left;margin: 10px;") Video
+					label.btn.btn-primary(for='fusk' style="float: right;") Upgrade Video
+						|   
+						input#fusk(type='file' name='introVideo' style='display: none;' accept="video/mp4,video/x-m4v,video/.wmv, video" onchange="form.submit()")
+		.row: .col-xs-12 
+			.embed-responsive.embed-responsive-16by9
+				iframe(src=file, width='500' height='281' frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+				input(type="hidden" id="TxtFileId" name="TxtFileId", value=fileId)
+
+

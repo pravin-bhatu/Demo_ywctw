@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  #course-enrolled.page
+    .course-landing-banner(style= (course.get('bannerImage')) ? 'background:url(' + course.get('bannerImage').url() + ');' : '')
+      .overlay: .container: .row: .col-xs-12
+        h1(style='text-transform:capitalize;')= course.get('name')
+        h4: ol.breadcrumb
+          li.active Course Exam
+    .container
+      .row: .col-xs-12
+        a(href=("/courses/" + course.get('slug') + "/enrolled")).btn.btn-primary(style="margin-top:25px") Back to Course
+        h2= 'Course Exam - ( ' + exam.length + ' questions )'
+        .alert.alert-danger#questionsError(hidden) Please Answer all the questions.
+        .alert.alert-info#questionsProcessing(hidden) Exam is being processed, please wait for your results
+        .alert.alert-success#questionsPassed(hidden=(hidePassedQuestions)) 100% Congratulations! You have passed the Exam.
+        .alert.alert-warning#questionsFailed(hidden=(hideWarningQuestions))= warningQuestionsData
+        - var index = 0
+        each question in exam
+          p= ++index + ': ' + question.get('text')
+          each value, key in question.get('answers').options
+            .radio
+              label
+                input(type='radio' name=question.id value=key)
+                |  #{value}
+
+        input(type='hidden' name='courseId' value=course.id)
+        input(type='hidden' name='questionType' value='exam')
+
+        button.btn.btn-primary#questionsSubmit Submit

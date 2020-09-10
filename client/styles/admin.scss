@@ -1,0 +1,12 @@
+@import "settings/variables";
+
+//==================== Vendor ====================
+//----- Bootstrap -----
+@import "settings/bootstrap";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+
+//----- Font Awesome -----
+@import "../../bower_components/font-awesome/scss/font-awesome";
+
+//==================== App ====================
+@import "admin/admin";

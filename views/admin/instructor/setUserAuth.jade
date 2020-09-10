@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+
+  .container-fluid
+    h1 Set User Auth
+    hr
+
+    .row: .col-xs-6
+      h3 Set User Auth for !{instructor.get('name')}
+      br
+      br
+      form(id="setUserAuth",method="post",action=action)
+        label Auth0 ID
+        input(type="text", id="authId", name="authId" required).form-control
+        input(type="hidden", id="instructorId", name="instructorId", value=instructor.id)
+        input(type="hidden", id="affiliateId", name="affiliateId", value=instructor.get('affiliate').id)
+        br
+        br
+        input(id="formSubmit", type="submit", value="Set User Auth").btn.btn-success
+
+
+

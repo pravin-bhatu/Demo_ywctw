@@ -1,0 +1,6 @@
+if sections
+  .panel.panel-default(style='text-transform:capitalize;')
+    for section in sections
+      .panel-heading: h3= section.name
+      .list-group
+        include lessons-enrolled

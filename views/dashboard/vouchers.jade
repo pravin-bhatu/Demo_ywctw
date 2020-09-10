@@ -1,0 +1,59 @@
+extends layout
+
+block content
+  .row: .col-xs-12
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Dashboards
+        h3.dashhead-title Create Voucher Codes
+          .row: .col-xs-12   
+          .pc-tab
+          section
+          .row: .col-xs-12.title-heading
+    h1.text-center 
+    form(id="formVoucherCode" method="post" action="/dashboard/vouchers/getpromocode")
+      .tab2
+        #second-tab.row      
+          .col-lg-4.pad-none
+            .form-group
+              label( for="courseName") Select a Course to link
+              select.form-control(name="courseName" id="coursename" width="513")
+                each course in prodCourses
+                  option(value="#{course.id}")=course.get('name')
+          .col-lg-3
+            .form-group
+              label No of Coupons to generate 
+              input(type="number"  name="noofpromocode" id="name" min='1' max='5000' value=1 || '', required).form-control 
+          .col-lg-2
+            .form-group
+              label(for='CouponValidity') Coupon Validity
+              select.form-control(name='validity',id="validity")
+                option(value='3') 3 Months
+                option(value='6') 6 Months
+                option(value='12') 12 Months                      
+          .col-lg-2
+            button.btn.btn-default.custom-coupan-btn(id="formSubmit" type="submit" value="Generate Promo Code") Generate Codes
+        #table-custom.row
+          table.table.custom-table-striped
+            thead
+              tr
+                th Course Name 
+                th Instructor Name               
+                th Total Voucher Codes
+                th Created Date
+                th Expiry Date                
+                th Created By
+                th
+                th
+
+            tbody
+            for code in courseInfo   
+              tr
+                td= CourseTask[code.get('courseId')]
+                td= CourseInstructor[code.get('courseId')]
+                td= code.get('VoucherCodeCount')
+                td= libs.moment(code.get('CreateDate')).format('DD-MM-YYYY')
+                td= libs.moment(code.get('ExpiryDate')).format('DD-MM-YYYY')
+                td= code.get('CreatedBy')
+                td._text-color: a(href='vouchersdetails/'+code.get('courseId')) View
+                td._text-color: a(href='vouchersdetails/'+code.get('courseId')+'/downloadcsv') Download CSV

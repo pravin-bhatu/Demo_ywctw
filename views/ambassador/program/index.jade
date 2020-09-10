@@ -1,0 +1,119 @@
+extends layout
+
+block content
+
+  style.
+    .cent{
+      text-align: center;
+    }
+    .ps{
+      font-size:16px
+    }
+    .btn-gos{
+      white-space: normal;
+      height: 70px;
+      width: 180px;
+      font-size: 16px;
+    }
+    .row-go{
+      padding: 15px;
+    }
+    .btn-aff-train{
+        background:url(https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/welcomeButtons/getstarted.png) no-repeat;
+        cursor:pointer;
+        border:none;
+        width:220px;
+        height:78px;
+    }
+    .btn-mark-tools{
+        background:url(https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/welcomeButtons/affiliatelink.png) no-repeat;
+        cursor:pointer;
+        border:none;
+        width:220px;
+        height:78px;
+    }
+    .btn-aff-summit{
+        background:url(https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/welcomeButtons/registeraffiliatesummit.png) no-repeat;
+        cursor:pointer;
+        border:none;
+        width:220px;
+        height:78px;
+    }
+    .btn-fb{
+        background:url(https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/welcomeButtons/joinfb.png) no-repeat;
+        cursor:pointer;
+        border:none;
+        width:220px;
+        height:78px;
+    }
+    @media only screen and (max-width: 600px) {
+      .aff-link{
+        font-size: 14px;
+      }
+    }
+    @media only screen and (min-width: 600px) {
+      .aff-link{
+        font-size: 24px;
+      }
+      .p-go{
+        margin-top: 5px;
+        padding-right: 50px;
+      }
+      .btn-r{
+        float: right;
+      }
+    }
+
+  .row
+    .col-xs-12
+      .dashhead
+        .dashhead-titles
+          h3.dashhead-title Welcome To The You Will Change The World Ambassador Program
+  .row: .col-xs-12
+    .hr-divider
+      h3.hr-divider-content.hr-divider-heading Welcome
+  .row 
+    .col-md-6.col-xs-12
+      .embed-responsive.embed-responsive-16by9
+        iframe(src=('https://player.vimeo.com/video/285558545?title=0&byline=0&portrait=0'), width='500', height='281', frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+    .col-md-6.col-xs-12(style="margin-top:50px;")
+      p.ps In this program you will access all the tools you need to help Change The World! The courses featured in the YWCTW platform are empowering and impactful and we are excited that you have decided to share this knowledge with your friends and network. 
+      p.ps Our instructors have created hundreds of courses through infinite perspectives that inspire compassion, invention, universal truth, purpose and prosperity... There is something for everyone!	
+  .row.cent: .col-xs-12(style="margin-top:50px;")
+    .col-xs-12
+      h3 <b>YOUR AFFILIATE LINK TO PROMOTE YWCTW COURSES:</b>
+      p.ps Copy this link and paste in social media, Ads and email marketing to promote all YWCTW courses.
+      h4.aff-link <a href="https://www.youwillchangetheworld.com/?ref=#{affiliate.id}">https://www.youwillchangetheworld.com/?ref=#{affiliate.id}</a>
+    .col-xs-12
+      h3 <b>YOUR UNIQUE AFFILIATE CODE: </b>
+      p.ps This is the affiliate code at the end of each course or landing page URL you will promote in this system. This affiliate code is unique to you and tracks your customers to you. Note: Do not post this code by itself!
+      h4.aff-link(style="padding: 20px;") <a href="?ref=#{affiliate.id}">?ref=#{affiliate.id}</a>
+      p.ps Inside this Ambassador Program we have provided you with the Affiliate Links, which you can promote with, the Promotional Tools (like graphics and pre made sales copy) and the training to help you maximize your efforts.
+  .row(style="padding: 50px;") 
+    .row.row-go  
+      .col-md-3.col-xs-12
+        <a href="/affiliates/program/training"><button class="btn-aff-train"></button></a>
+        //- <a href="/affiliates/program/training"><button class="btn btn-primary btn-gos btn-r">Get Started With Training</button></a>
+      .col-md-9.col-xs-12
+        p.ps.p-go <b>Step 1:</b> Watch the Video training for how to use the Ambassador platform. Learn where every-thing is and how be the most effective.
+    .row.row-go
+      .col-md-3.col-xs-12
+        <a href="/affiliates/program/marketing-tools"><button class="btn-mark-tools"></button></a>
+        //- <a href="/affiliates/program/marketing-tools"><button class="btn btn-primary btn-gos btn-r">Affiliate Links & Promo Tools</button></a> 
+      .col-md-9.col-xs-12
+        p.ps.p-go <b>Step 2:</b> Start promoting and get your affiliate links and promotional tools from here.
+    .row.row-go 
+      .col-md-3.col-xs-12
+        <a target="_blank" href="https://www.facebook.com/groups/231001431084578"><button class="btn-fb"></button></a>
+        //- <a href="https://www.facebook.com/groups/231001431084578"><button class="btn btn-primary btn-gos btn-r">Join Our Private Facebook Group</button></a> 
+      .col-md-9.col-xs-12
+        p.ps.p-go <b>Step 3:</b> Join our Private Ambassador Facebook group and get regular Launch updates and support.
+    .row.row-go 
+      .col-md-3.col-xs-12
+        <a href="/events/affiliate-marketing-summit"><button class="btn-aff-summit"></button></a>
+        //- <a href="/events/2018-08-affiliate-marketing-summit-las-vegas"><button class="btn btn-primary btn-gos btn-r">Register For Affiliate Marketing Summit</button></a> 
+      .col-md-9.col-xs-12
+        p.ps.p-go <b>Step 4:</b> Register for the Affiliate Marketing Summit where we train you live to be an Ambassador.
+  .row.cent  
+    .col-xs-12(style="padding: 30px;")  
+      p.ps All you have to do is Copy And Paste and you can make lifetime commissions. Happy promoting! <br>-Peter Anthony Wynn

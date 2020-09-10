@@ -1,0 +1,46 @@
+extends ../layout
+
+block content
+  h1.text-center= article.title
+  hr.articles
+
+  h2 Lessons
+    if(articles)
+      ul
+        each article in articles
+          li
+            p= lesson.section + ": " + lesson.name
+
+  img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×200&w=500&h=200').img-responsive
+
+  p= article.content
+//#article.page
+  .container
+    .col-xs-12.col-sm-8.col-md-9
+      h1.text-center= article.title
+      hr.articles
+
+      img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×200&w=500&h=200').img-responsive
+
+      p= article.content
+
+    .col-xs-12.col-sm-4.col-md-3
+      .text-center
+        a(href="/articles")
+          p.btn.btn-primary.expand.articles-back-btn Back to Articles
+
+          a(href=('/instructors/' + instructor.get('username')), style='color:#333;'): .panel.panel-default.panel-profile
+            .panel-heading(style='background-image:url(' + (article.get('instructor').get('profileHeader') ? article.get('instructor').get('profileHeader').url() : (article.get('course').get('cardImage') ? article.get('course').get('cardImage').url() : '/img/demo/background.png')) + ');')
+            .panel-body.text-center
+              img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×500&w=500&h=500').img-responsive.panel-profile-img
+              h5.panel-title= article.get('instructor').get('name')
+              p= article.get('instructor').get('shortBio')
+
+        hr.articles
+        .row
+          img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=200×500&w=200&h=500').img-responsive
+
+        hr.articles
+        .row
+          .col-xs-12.col-xs-offset-0
+          img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=200×500&w=200&h=500').img-responsive

@@ -1,0 +1,67 @@
+extends ../layout
+
+block content
+
+  style.
+    h3 {
+      margin-top: 10px;
+    }
+
+    .row {
+      margin-top: -10px;
+    }
+
+    .fa-lg {
+      font-size: 2em;
+      padding: 8px;
+    }
+
+  .container-fluid(style="margin-top: 20px")
+    .row
+      .col-xs-10.col-xs-offset-1
+        .col-xs-12.col-sm-4
+          .row
+            img(src="http://placehold.it/250x250", style="padding-top: 25px; margin-left: auto; margin-right: auto;").img-responsive
+        .col-xs-12.col-sm-8(style="padding-left: 40px; padding-right: 40px;")
+          .row
+            h1: b Name
+            h4: b Position
+            hr
+          .row
+            h3: b About Name
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              | incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              | exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              | dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              | mollit anim id est laborum.
+            hr
+          .row
+            h3: b Why Position?
+            p
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+              | incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+              | exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+              | dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+              | Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+              | mollit anim id est laborum.
+            hr
+          .row
+            h3: b Favorite Quote
+            p "Nearly all men can stand adversity, but if you want to test a man's character, give him power."
+            p -- Abraham Lincoln
+            hr
+          br
+          .row
+            a(href='#', target='_blank', style='margin: 5px 15px 5px 0; color:#333'): i.fa.fa-instagram.fa-lg
+            a(href='#', target='_blank', style='margin: 5px 15px 5px 0; color:#3b5998'): i.fa.fa-facebook.fa-lg
+            a(href='#', target='_blank', style='margin: 5px 15px 5px 0; color:#0077b5'): i.fa.fa-linkedin.fa-lg
+            a(href='#', target='_blank', style='margin: 5px 15px 5px 0; color:#55acee'): i.fa.fa-twitter.fa-lg
+            a(href='#', target='_blank', style='margin: 5px 15px 5px 0; color:#e52d27'): i.fa.fa-youtube.fa-lg
+            a(href='#', target='_blank', style='margin: 5px 15px 5px 0; color:#dd4b39'): i.fa.fa-google-plus.fa-lg
+          br
+          br
+          .row
+            a(href="/team")
+              p Back to previous page

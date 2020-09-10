@@ -1,0 +1,67 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ selector: "textArea", plugins: "lists", browser_spellcheck: true });</script>
+
+block content
+  h1.page-header Admin - Article - !{formType}
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Article Information
+
+
+  - var action = "";
+  if(formType == 'Add')
+    - action = "add";
+  else
+    - action = "edit";
+  form(id="addCourse",method="post",action=action)
+
+    .row: .col-xs-12
+      .form-group
+        label( for="articleInstructor") Instructor
+          select.form-control(name="articleInstructor", id="articleInstructor", required)
+            option(value="") Select Instructor
+            each instructor in instructors
+              option(value=instructor.id, selected=((values.instructorId === instructor.id) ? true : false))= instructor.get('name')
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Article Title
+          input(type="text", id="articleTitle", name="articleTitle" || '', value=values.title, required).form-control
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Article Content
+          textArea(name="articleContent", id="articleContent", rows="10").form-control
+            if(values.content)
+              !{libs.markdown.render(values.content) || ''}
+
+    // .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Header Image
+          label.btn.btn-primary.btn-file Browse
+            input(type="file", name="articleHeaderImage", id="articleHeaderImage", style="display:none")
+
+    // .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Thumbnail Image
+          label.btn.btn-default.btn-file Browse
+            input(type="file", name="articleThumbImage", id="articleThumbImage", style="display:none")
+
+    .row.m-t.m-b.text-center
+      .col-xs-12
+        if (formType === "Edit")
+          input(type="hidden", id="articleId", name="articleId", value=articleId)
+        input(type="hidden", id="formType", name="formType", value=formType)
+        input(id="formSubmit", type="submit", value= formType + " Article").btn.btn-primary.btn-lg

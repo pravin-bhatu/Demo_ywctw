@@ -1,0 +1,34 @@
+extends ../../layout
+
+block content
+  .page: .container
+    .row: .col-xs-12
+      h1 Welcome,
+      .col-xs-12
+        p(style="font-size: 16px;") You Will Change the World is an empowering and impactful platform and we are excited that you have decided to take some of our incredible courses! Our instructors view the world through infinite perspectives that inspire compassion, invention, universal truth, purpose and prosperity. We know this will move you and excite you as your courses unfold and the lessons become clear. Our unique and innovative tools will help lead, educate and network you with others that can make a difference in your life. This support system encourages confidence, freedom and happiness in every moment. Within the process of mentorship and access to world-class resources, YWCTW weaves opportunities into the fabric of the lives of individuals, families and communities. YWCTW Ultimately produces a profound difference in societies.
+        p(style="font-size: 16px;") Please like us on <a target="_blank" href="https://www.facebook.com/ywchangetheworld/">Facebook</a> & share us with your Social Media Community. If you really love some of the courses consider becoming an <a href="/affiliates">Affiliate</a> today and start building your community by sharing what you love and being financially rewarded for making a real difference in other people’s lives. 
+        p(style="font-size: 16px;") Namaste, <br> Peter Anthony Wynn <br> Founder & CEO
+    .row: .col-xs-12
+      h1 My Courses
+      h3 You will find all the courses you enrolled in on this page.
+    .row
+      if enrollments.length
+        each enrollment in enrollments
+          .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-0.col-md-4
+            .course-card: a(href='/courses/' + enrollment.get('course').get('slug') + '/enrolled')
+              figure.effect-julia
+                if enrollment.get('course').get('cardImage')
+                  img(src=enrollment.get('course').get('cardImage').url()).img-responsive
+                else
+                  img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×200&w=500&h=200').img-responsive
+                figcaption
+                  h2(style='text-transform:capitalize;').fittext= enrollment.get('course').get('name')
+                  if enrollment.get('course').get('instructor')
+                    p= enrollment.get('course').get('instructor').get('name')
+                  button.btn.btn-success
+                    span Go To Course
+      else
+        h3
+          | It looks like you haven't enrolled in any courses. 
+          a(href='/courses') Click Here 
+          | to view our catalog.

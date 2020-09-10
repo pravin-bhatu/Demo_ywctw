@@ -1,0 +1,24 @@
+footer {
+  padding: 10px 0;
+  background: #333;
+
+  .primary {
+    padding: 5px 0;
+    a, span {
+      color: #fff;
+      padding-right: 30px;
+    }
+  }
+
+  .secondary {
+    padding: 5px 0;
+    a, span {
+      color: #999;
+      padding-right: 30px;
+    }
+  }
+}
+
+.footer-partners {
+  background-color: #333;
+}

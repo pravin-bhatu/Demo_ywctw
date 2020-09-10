@@ -1,0 +1,149 @@
+extends ../layout
+
+block content
+
+  #profile.page
+    .row: .container
+
+      .col-xs-12
+
+        if (showThankYou)
+          p.btn.btn-lg.btn-success.expand Thank You For Registering For This Event
+          .row(style="margin-bottom:10px")
+
+        .row(style="height:5px")
+
+          .text-center
+            include ../partials/social
+
+        .row(style="height:10px")
+
+        .row: .col-xs-12
+          .col-xs-12.text-center
+            h1(style="font-size:68px;font-weight:100") Go Beyond The Game
+            h4 Why You Need To Get The Most Out Of Academics And Athletics
+
+        .row(style="height:20px")
+
+        .row: .col-xs-12
+          .col-xs-12
+            img(src="/img/event/HHH8BSLNfV/go-beyond-card.png").img-responsive
+
+        .row(style="height:20px")
+
+    a(href="https://nd306.infusionsoft.com/app/storeFront/showCategoryPage?categoryId=4" target="_blank")
+      .row(style="background-color:#f04124;color:#FFF"): .container
+        .col-xs-12
+          .row: .col-xs-12.text-center
+            h2 Las Vegas, NV - Nov. 27th, 2016 &nbsp;&nbsp;&nbsp;
+
+          .row(style="height:10px")
+
+    .row(style="background-color:#EEE"): .container
+
+      .row(style="height:10px")
+
+      .row: .col-xs-12.text-center
+        h1(style="font-size:58px;font-weight:100") You Have A Chance To Meet
+      .row
+        .col-xs-10.col-sm-4.col-xs-offset-1.col-sm-offset-0
+          img(src="/img/event/HHH8BSLNfV/bernard-robinson.jpg").img-responsive(style="margin-right:auto;margin-left:auto;margin-top:25px")
+        .col-xs-10.col-sm-8.col-xs-offset-1.col-sm-offset-0
+          h2 <b>BERNARD ROBINSON JR.</b>
+          h3 Bernard Robinson Jr, former Michigan star and NBA small forward will be stopping at two locations
+            | on November 27, 2016 to film his upcoming course on youwillchangetheworld.com This is your chance
+            | to meet him and ask him questions on how to improve your athletic career! You don't want to miss
+            | this opportunity!
+
+      .row(style="height:50px")
+
+    .row(style="margin-bottom:-31px;padding-bottom:31px"): .container
+      h1(style="font-size:58px;font-weight:100").text-center Sponsors
+      .row
+          .col-xs-6.col-sm-4.col-xs-offset-3.col-sm-offset-0.vcenter
+            a(href="https://www.raisingcanes.com/" target="_blank")
+              img(src="/img/event/HHH8BSLNfV/canes-logo.png").img-responsive(style="margin-right:auto;margin-left:auto;margin-top:30px;width:50%")
+          .col-xs-6.col-sm-4.col-xs-offset-3.col-sm-offset-0.vcenter
+            a(href="http://www.unlvrebels.com/sports/m-baskbl/unlv-m-baskbl-body.html" target="_blank")
+              img(src="/img/event/HHH8BSLNfV/unlv-logo.png").img-responsive(style="margin-right:auto;margin-left:auto;margin-top:30px;width:50%")
+          .col-xs-6.col-sm-4.col-xs-offset-3.col-sm-offset-0.vcenter
+            a(href="http://njbl.org/" target="_blank")
+              img(src="/img/event/HHH8BSLNfV/njb-logo.png").img-responsive(style="margin-right:auto;margin-left:auto;margin-top:30px;width:50%")
+
+      .row(style="height:50px")
+
+    #lvevents
+    .row(style="background-color:#EEE;margin-bottom:-31px;"): .container
+
+      .row(style="height:20px")
+
+      .row
+        .col-xs-12
+          img(src="/img/event/HHH8BSLNfV/vegas-nv.png")(style="margin-right:auto;margin-left:auto;").img-responsive
+
+      .row(style="height:10px")
+
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          h3 <b>Location 1: 2:30pm - 3:30pm</b>
+          h4 IN DA CUT BARBER SHOP
+          p 6415 S Fort Apache Rd
+          p Las Vegas, NV 89148
+          .row: .col-xs-12.text-center(style="margin: 0 auto")
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.8981074353965!2d-115.30063518436309!3d36.07158928010511!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8b863a856414f%3A0x1f341c1088c01de!2s6415+S+Fort+Apache+Rd%2C+Las+Vegas%2C+NV+89148!5e0!3m2!1sen!2sus!4v1478891864648" width="95%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+        .col-xs-12.col-sm-6
+          h3 <b>Location 2: 5:00pm - 6:00pm</b>
+          h4 UNLV STUDENT RECREATION & WELLNESS CENTER
+          p 4505 S Maryland Pkwy
+          p Las Vegas, NV 89119
+          .row: .col-xs-12.text-center(style="margin: 0 auto")
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3223.514767643041!2d-115.14106258436217!3d36.10531478009768!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c455d53c52a1%3A0x382bc141abe10fe1!2s4505+S+Maryland+Pkwy%2C+Las+Vegas%2C+NV+89154!5e0!3m2!1sen!2sus!4v1478891955074" width="95%" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+      if (showThankYou)
+        .row(style="height:30px")
+        p.btn.btn-lg.btn-success.expand Thank You For Registering For This Event
+        .row(style="margin-bottom:10px")
+
+      .row(style="height:30px")
+
+    if (showForm)
+      .row(style="margin-bottom:-31px;padding-bottom:31px;padding-top:31px;"): .container
+
+        .row: .col-xs-12.text-center
+          h1(style="font-size:58px;font-weight:100") Register Here
+        form(id="beyond",method="post",action="register")
+
+          .row
+            .col-xs-10.col-xs-offset-1
+              p * (required fields)
+
+          .row
+            .col-xs-10.col-xs-offset-1
+              .form-group
+                label First Name *
+                input(type="text", id="firstName", name="firstName" || '', required).form-control
+
+          .row
+            .col-xs-10.col-xs-offset-1
+              .form-group
+                label Last Name *
+                input(type="text", id="lastName", name="lastName" || '', required).form-control
+
+          .row
+            .col-xs-10.col-xs-offset-1
+              .form-group
+                label Email *
+                input(type="text", id="email", name="email" || '', required).form-control
+
+          .row
+            .col-xs-10.col-xs-offset-1
+              .form-group
+                label Are you bringing guests? If so, how many?
+                  select.form-control(name='guests', id='guests')
+                    option 0
+                    each val in ['1', '2', '3', '4', '5']
+                      option= val
+
+          .row.m-t.m-b
+            .col-xs-10.col-xs-offset-1
+              input(id="eventFormSubmit", type="submit", value="Register").btn.btn-primary.btn-lg

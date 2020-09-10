@@ -1,0 +1,32 @@
+extends layout
+
+block content
+	#articles.page
+		.container
+		h1.text-center Message
+			h4.text-right Message From Student : 
+				form(id="msgAccepted", method="post", action="message/msgAccepted",)
+					input(type='checkbox'  onchange="document.getElementById('msgAccepted').submit()" checked=currentUser.get('instructor').get('messageAccept') name="chkmessgesAccepted"  id="chkmessgesAccepted" data-toggle='toggle' data-on='Accept' data-off='Not Accept' data-onstyle='success' data-offstyle='danger')		
+		each msg in allmessage		
+			.row
+				hr.articles			
+				.articles-row-top
+					.col-xs-12.col-sm-12.col-md-12
+						.h3-article-title-container
+							h3.each-article-title
+								a(href="#").h3-article-title-text From : -  #{msg.get('user').get('firstName') + ' ' + msg.get('user').get('lastName')}
+						p #{msg.get('message')} 
+						if(msg.get('reply'))
+							.h3-article-title-container 
+								h3.each-article-title
+									.h3-article-title-text Your Reply
+							p #{msg.get('reply')}	
+						else
+							form.form-horizontal(id="addreply" method="post" actions="message")
+								textarea#message.form-control(name='message' rows='3' placeholder='Click here to reply')
+								br
+								button.btn.btn-success(type='submit') Reply
+								input(type="hidden" id="TxtMsgId" name="TxtMsgId", value=msg.id)
+								br		
+
+

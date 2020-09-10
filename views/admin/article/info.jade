@@ -1,0 +1,78 @@
+extends ../layout
+
+block content
+
+  h1.page-header Article Information
+
+  .row: .col-xs-12
+    a(href='https://youwillchangetheworld.com/' + article.get('slug'), target='_blank').btn.btn-link View Article
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Edit Status
+
+    form(id="articlePublished",method="post",action="setPublished")
+      input(type="hidden", id="articleId", name="articleId", value=article.id)
+      if (article.get('published'))
+        input(type="hidden", id="published", name="published", value="false")
+        input(id="formSubmit", type="submit", value="Un-Publish").btn.btn-primary
+      else
+        input(type="hidden", id="published", name="published", value="true")
+        input(id="formSubmit", type="submit", value="Publish").btn.btn-success
+
+  .row(style="margin-bottom: 20px;")
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Article Information
+
+  .row: .col-xs-12
+    h4= article.get('instructor').get('name')
+
+
+  .row(style="margin-bottom: 10px;")
+
+  .row
+    .col-xs-1
+      a(href='/admin/article/edit?id=' + article.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+    .col-xs-11(style='margin-top:-25px;margin-left:-50px;')
+      h3= article.get('title')
+
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Images
+
+  .row
+    .col-xs-6
+      h3= "Header Image "
+        span(style='font-size: 16px') 960 x 540 px
+      if(article.get('headerImage'))
+        img(src=article.get('headerImage').url()).img-responsive
+      else
+        img(src="http://placehold.it/960x540").img-responsive
+      br
+      form(id="uploadHeaderImage",method="post",action="uploadHeaderImage", enctype="multipart/form-data")
+        input(type="hidden", name="articleId", value=article.id)
+        input(type="file", name="articleHeaderImage", id="articleHeaderImage", required)
+        br
+        input(id="uploadHeader", type="submit", value="Upload Header").btn.btn-success
+
+
+    .col-xs-6
+      h3= "Thumbnail Image "
+        span(style='font-size: 16px') 384 x 216 px
+      if(article.get('thumbImage'))
+        img(src=article.get('thumbImage').url()).img-responsive
+      else
+        img(src="http://placehold.it/384x216").img-responsive
+      br
+      form(id="uploadThumbImage",method="post",action="uploadThumbImage", enctype="multipart/form-data")
+        input(type="hidden", name="articleId", value=article.id)
+        input(type="file", name="articleThumbImage", id="articleThumbImage", required)
+        br
+        input(id="uploadThumb", type="submit", value="Upload Thumb").btn.btn-success
+
+
+  .row(style="height:50px")

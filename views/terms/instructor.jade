@@ -1,0 +1,82 @@
+extends ../layout
+
+block content
+  .container: .row(style="margin-bottom:50px")
+    .col-xs-12.col-md-3
+      .terms-menu: .panel.panel-default
+        ul.nav.nav-pills.nav-stacked
+          li: a(href='/terms') Terms of Use
+          li: a(href='/terms/privacy') Privacy Policy
+          li: a(href='/terms/copyright') Copyright Policy
+          li.active: a(href='/terms/instructor') Instructor Agreement
+          li: a(href='/terms/affiliate') Affiliate Operating Agreement
+    .col-xs-12.col-md-9
+      h1 Instructor Terms & Conditions
+      
+      h2 Key Definitions
+      p
+        strong "Base Price" 
+        | means the course price set by the Instructor.
+        br
+        strong "Base Currency" 
+        | means the currency of the Base Price.
+        br
+        strong "Base Exchange Rate" 
+        | means a system-wide rate used by the Company for foreign currency conversion and does not include any fee or mark-up by the Company. The rate is established using one or more third parties such as Open Exchange Rates and is fixed periodically (e.g. monthly) to prevent daily price fluctuations. Accordingly, the Base Exchange Rate may not be identical to the applicable market rate in effect at the specific time a foreign currency conversion is processed.
+        br
+        strong "Sale Price" 
+        | means the actual sale price for the Course. When the Sale Currency is different from the Base Currency, the Company will determine the Sale Price based on the applicable Base Exchange Rate and Cost Adjustment Factor.
+        br
+        strong "Sale Currency" 
+        | means the currency of the sale. This is determined by the country of origin of the User purchasing the Course.
+        br
+        strong "Cost Adjustment Factor" 
+        | means applicable local taxes and other fees associated with currency conversions. In regions that use a common currency, e.g., the EU, the Cost Adjustment Factor uses a weighted average of country specific tax rates to ensure the same prices to end customers across the region.
+        br
+        strong "Net Amount" 
+        | means the amount actually received from Students for Your Course, less any refunds paid, applicable sales or other taxes (VAT in EU), and any amounts paid in connection with Marketing Programs that You participate in.
+      
+      h2 Pricing
+      p As an Instructor, You will be solely responsible for determining the Base Price You charge Students for Your Courses. You agree to charge only for Your own Submitted Content. The Company will handle billing and other fee interaction with Users. When the Sale Currency is different than the Base Currency, You Will Change The World will determine the Sale Price according to the most recent Base Exchange Rate and applicable Cost Adjustment Factor.
+      p If You choose to participate in any of the Company's Marketing Programs, the fee You receive from the Company will be in accordance with the terms of the particular Marketing Program that applies to the sale of Your Course. Otherwise You will receive the following:
+      ul
+        li Generally, the Company will pay You fifty percent (50%) of the Net Amount received for Your Course. The Net Amount equals the amount actually received from Students for Your Course, less any refunds paid, applicable sales or other taxes (if any), applicable fees for mobile application sales from either the Apple App Store or Google Play, and any amounts paid in connection with Marketing Programs that You participate in. The Net Amount will typically be based on the Base Price, but Company reserves the right to increase or decrease the Base Price in connection with the Company's marketing and promotional efforts (including through Marketing Programs).
+        li You will be able to increase Your portion of the fee by promoting Your Courses by using a coupon code that You have created on You Will Change The World. For those Users that input Your coupon code at the time they enroll in Your Course, You will receive one-hundred percent (90%) of the Net Amount, less a three percent (3%) administrative and handling fee.
+      p You authorize the Company to perform the appropriate calculations, deduct and retain the transaction fee, and pay You the Net Amount as indicated above.
+      p Marketing Programs include, but are not limited to, Company's Deals Program and Marketing Program. You acknowledge that the amounts paid for Marketing Programs are not fixed, and the Company has the sole discretion to determine those amounts and which Courses to offer as part of Marketing Programs. Further, the Company does not guarantee any minimum level of success in connection with any Marketing Programs, and its selection of Courses to include is not an endorsement of those Courses, or of You. As part of Your participation in Marketing Programs, You give Us permission to share Your Course, and information about You and the Course with You Will Change The World employees and selected partners, for which you will not receive compensation. If You do not wish to participate in Marketing Programs, log into Your account and opt out of them.
+      p Users are entitled to refunds pursuant to Our general Terms of Service and You agree that Company may deduct such refunds from subsequent amounts owed to You. Company will issue remit to You any amounts remaining after the foregoing deductions and adjustments, in US dollars, via Stripe or check. Payment will be made within forty-five (45) days of the end of the month in which the fee for a Course was received. You are responsible for providing Company with all identifying and tax information necessary for the payment of amounts due.
+      
+      h2 Taxes
+      h3 European Union
+      p In the event that the sale or delivery of a Course or any Submitted Content to any Student in the European Union is subject to any value added tax ("VAT"), under applicable law, You Will Change The World will collect and remit the VAT to the competent tax authorities for sales of such Courses or Submitted Content to Students in the European Union. <strong>You Will Change The World may at its own discretion increase the Sale Price where You Will Change The World is of the view that VAT may be due and You Will Change The World will have a liability to account for such.</strong> You will indemnify and hold You Will Change The World harmless against any and all claims by any tax authority for any underpayment of VAT, and any penalties and/or interest thereon.
+      h3 All other countries
+      p For sales of any of Courses or Submitted Content in countries other than the European Union, You are responsible for remitting the taxes to the appropriate taxing authority (which may be different to the tax authority in your own location). You Will Change The World is unable to provide you with tax advice and You should consult your own tax advisor.
+      
+      h2 You Will Change The World Optional Marketing Program(s) for Paid Courses
+      h3 1. You Will Change The World Deals Program: Targeted Price Testing to Drive Sales of Your Course(s)
+      p The "You Will Change The World Deals Program" is the You Will Change The World Marketing Program that utilizes highly segmented discounting via email and other channels designed to price test and find the optimal price for Your Course(s). Typical deals offered under the You Will Change The World Deals Program include both Percentage Promotions (e.g., 50% off) as well as Fixed-Price Promotions (e.g., $10, $19 or $29 deals).
+      p
+        strong You Will Change The World Deals Programs Terms & Conditions:
+        br
+        | You Will Change The World Deals Program offers may be promoted Products the Site, or third party websites. You Will Change The World Deals Program offers are typically available for less than a month, but You acknowledge that the actual duration and amount discounted may vary.
+
+      p You Will Change The World Deals Programs come in two primary formats:
+      ul
+        li
+          strong Percentage Promotions: 
+          | By participating in Percentage Promotions, You agree that We may offer Your Course(s) in limited time deals and price tests for a discount of up to and including 75% off the Base Price.
+        li
+          strong Fixed-Price Promotions: 
+          | By participating in Fixed-Price Promotions, You agree that We may offer Your Course(s) in limited time deals and price tests for a Sale Price that will be less than the Base Price, but will not fall below $10. Unlike Percentage Promotions, the Sale Price may represent a discount exceeding 75% depending on the applicable Base Price.
+      p By participating in the You Will Change The World Deals Program, You acknowledge that Your revenue share may vary, but will be 50% of Net Amount in most cases.
+      h3 2. You Will Change The World Marketing Program: A Multi-Channel Marketing Program to Drive Sales of Your Course
+      p You Will Change The World has a network of partner sites ("Affiliates") and established relationships with third-party deal sites ("Deal Partners," and with Affiliates, "External Partners"). We also have a team dedicated to using advanced digital marketing tactics (such as paid advertising) that markets instructor courses each month! The "You Will Change The World Marketing Program" is the You Will Change The World Marketing Program that promotes Courses through Affiliates and Deal Partners.
+      p There is no upfront cost to put this full-scale marketing attack to work selling Your Course(s), and it's a terrific way to increase exposure and sales.
+      p
+        strong You Will Change The World Marketing Program Terms & Conditions:
+        br
+        | When an External Partner promotes Your Course, a portion of the fee for each Student that the External Partner refers to Your Course will be paid to the External Partner.
+      p When You Will Change The World, at its option, purchases and places advertisements for Your Course on third party websites, and tracks the resulting sales through appropriate means (including, but not limited to, tracking pixels, cookies and the like) ("Paid Advertising"), there will be fees associated with such activities.
+      p By participating in the You Will Change The World Marketing Program, You agree that You Will Change The World: (i) may employ External Partners and Paid Advertising to promote Your Courses; and (ii) may deduct External Partner fees or Paid Advertising fees before calculating the amount remitted to you. You acknowledge that Your revenue share may vary, but will be 25% of Net Amount in most cases.
+      
+      

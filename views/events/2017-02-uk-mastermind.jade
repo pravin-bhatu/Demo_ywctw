@@ -1,0 +1,295 @@
+extends ../layout-nonav
+
+block scripts
+  script(src=asset('/js/countdown/countdown.min.js'))
+  script.
+    $('#countdown').countdown({
+      date: "February 18, 2017",
+      render: function(data) {
+        $(this.el).html("<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div><div class='counter-spacer'>:</div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div class='counter-spacer'>:</div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div class='counter-spacer'>:</div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+      }
+    });
+
+
+
+block content
+  #eventInfo.event-info
+    .event-menu
+      .container
+        .row(style="background-color:#000")
+          .col-xs-12
+            ul.nav.nav-tabs.navbar-right
+              li: a(href='#about') About
+              li: a(href='#schedule') Schedule
+              li: a(href="#location") Location
+              li: a(href="#testimonials") Testimonials
+              li: a(href="#bio") Bio
+              li: a(href="/events") More Events
+              li: a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=111" target="_blank" style="color:white").btn.btn-sm.btn-primary <b>Buy Your Tickets Now!</b>
+
+
+  .event-header-home.gradient-overlay
+    .video-background
+      video(muted, loop, autoplay)
+        source(src='../public/videos/event.mp4', type='video/mp4')
+    .container-fluid
+      .text-center
+        .row
+          .col-xs-12
+            h1 Online Course Creation Mastermind
+            //h4 The #1 place to learn "The Secrets" of Online Course Creation, How to Launch, and Market Successfully
+            .location-date
+              h3 London, UK | February 18-19, 2017
+            #countdown
+            a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=111" target="_blank").btn.btn-lg.btn-primary <b>Buy Your Tickets Now!</b>
+
+  .event-details
+    .container-fluid: .row(style="background-color:#FFF"): .container
+      a#about(style="top:-50px;display:block;position:relative;visibility: hidden;")
+      .row(style="height:10px")
+
+      .row: .col-xs-12.text-center
+        h2 <b>Calling all… Authors • Speakers • Entrepreneurs • Leaders</b>
+
+      .row: .col-xs-12.text-center
+        h3 <b>YOU ARE AN EXPERT… and you absolutely Love what you do</b>
+
+      .row: .col.xs-12.text-center
+        h3 You want to make a difference - You want to Share your Wisdom &amp; your specialized knowledge with the World. You want to share your Passion &amp; Expertise.
+          | <br><br> <b>You want to Reach a Global Audience.</b>
+        br
+        h3 …So why not get Financially rewarded &amp; also leave a lasting Legacy?
+        br
+        h3(style="color:red") <b>Find your Path to Online Course Success this weekend. <br> One weekend can change everything…</b>
+
+      .row(style="height:30px")
+
+    .container-fluid: .row(style="background-color:#EEE"): .container
+
+      .row(style="height:30px")
+
+      .row: .col-xs-12
+        .col-xs-12.col-sm-8
+          .row
+            .embed-responsive.embed-responsive-16by9
+              <iframe width="854" height="480" src="https://www.youtube.com/embed/EOiqRi-mm90" frameborder="0" allowfullscreen></iframe>
+          .row(style="height:10px")
+          .row
+            a(href="http://www.youwillchangetheworld.com/courses/paw-what-to-expect-at-our-mastermind").btn.btn-lg.btn-success.expand <b>Would you like to see more?</b>
+
+        .col-xs-12.col-sm-4
+          img(src="/img/event/HHH8BSLNfV/youwantmore.png").img-responsive
+
+      .row(style="height:20px")
+
+    .container-fluid: .row(style="background-color:#337AB7"): .container
+
+      .row(style="height:30px")
+
+      .row: .col-xs-12.text-center
+        h2(style="color:#FFF") <b>The #1 place to learn "The Secrets" of Online Course Creation <br> How to Launch, and Market a Course Successfully in 2017</b>
+
+      .row(style="height:30px")
+
+    .container-fluid: .row(style="background-color:#FFF"): .container
+
+      .row(style="height:30px")
+
+      .row: .col-xs-12.text-center
+        h1 <b>COURSE DESCRIPTION</b>
+
+      .row(style="height:20px")
+
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          img(src="/img/instructors/become/identify-design.png")(style="max-height:40px;margin-right:auto;margin-left:auto;").img-responsive
+          h3.text-center <b>Design your Own Online Course</b>
+          h4 Our Experts and Speakers will help you Identify Your Avatar &amp; Design an Incredible Course to fully serve and engage them.
+          h4 Share your Unique Wisdom and Experience and reach a Global Audience.
+        .col-xs-12.col-sm-6
+          img(src="/img/instructors/become/build.png")(style="max-height:40px;margin-right:auto;margin-left:auto;").img-responsive
+          h3.text-center <b>Market Your New Course</b>
+          h4 Launching &amp; Marketing are two completely different things.
+          h4 We help you Identify the difference &amp; create strategies and plans that help you keep these elements completely GOAL oriented.
+        // .col-xs-12.col-sm-4
+          img(src="/img/instructors/become/launch.png")(style="max-height:50px;margin-right:auto;margin-left:auto;").img-responsive
+          h3.text-center <b>3. Launch</b>
+          h4 Experts will walk you through the elements of a Book, Course, and Event Launch, you will completely understand how to Use Social Media tools
+            | like Twitter and LinkedIn to build your brand WITHOUT becoming overwhelmed. Your Book and Your Expertise should excite you NOT create work
+            | and stress. We are not saying it will be easy but it should be simple.
+
+      .row(style="height:20px")
+
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          img(src="/img/instructors/become/launch.png")(style="max-height:40px;margin-right:auto;margin-left:auto;").img-responsive
+          h3.text-center <b>Launch Your Course</b>
+          h4 Our experts will walk you through all the elements of a Book, Course, and Event Launch, you will completely understand
+            | how to Use Social Media tools like Twitter and LinkedIn in order to build your brand Globally
+        .col-xs-12.col-sm-6
+          img(src="/img/instructors/become/grow.png")(style="max-height:40px;margin-right:auto;margin-left:auto;").img-responsive
+          h3.text-center <b>Grow &amp; Stay on Path</b>
+          h4 Growth is a system, it is based on a CLEAR vision of our outcome, and Goals are reached when they are completely
+            | congruent with “WHY” you have chosen the path and what the “VALUE” of your gifts are.
+          h4 We will share exactly what you need to do to stay “Creative, Inspired, &amp; Productive"
+
+
+      .row(style="height:40px")
+
+      .row: .col-xs-12.text-center
+        a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=111" target="_blank").btn.btn-lg.btn-primary.expand <b>2 Day Admission Ticket $97</b>
+
+      .row(style="height:40px")
+
+
+  .event-details
+    .container-fluid: .row(style="background-color:#EEE"): .container
+      a#schedule(style="top:-50px;display:block;position:relative;visibility: hidden;")
+
+      .row: .col-xs-12.text-center
+        h1 <b>A Fast Track “Zero to Hero” <br> Online Course Creation Experience</b>
+
+      .row(style="height:30px")
+
+      .row
+        .col-xs-12.col-sm-6
+          .row: .col-xs-12
+            img(src="/img/event/HHH8BSLNfV/day-1.png")(style="margin: 0 auto;margin-right:auto;margin-left:auto").img-responsive
+            h4.text-center <i>9am - 6pm</i>
+          .row: .col-xs-12
+
+          .row: .col-xs-12
+            h3.text-center <b>UNCOVER THE COURSE IN YOU</b>
+            br
+            h4 Discover how to get your idea “out of your head” and into a Course people will buy.
+            br
+            h4 <b>Speakers, Celebrities, Authors, Experts, and Business Owners….</b> discover why an Online Course is your Perfect Profit creation Vehicle
+            br
+            h4 Uncover EXACTLY how each person can create a <b>niche subject</b> field &amp; how to instantly marry that directly to their Passion… and Profit from your Passion
+            br
+            h4 Discover the “7 <b>paths to Making Money</b> with an Online Course”  &amp; Learn how “Positioning yourself in the right way” can change
+              | your business &amp; professional life forever.
+            br
+            h4 Having shared with you the WHY the WHAT and the HOW let’s share what getting started would look like…
+            br
+            h4 You will have at least TWO Online Course Subjects to chose from on Day 2.
+
+        .col-xs-12.col-sm-6
+          .row: .col-xs-12
+            img(src="/img/event/HHH8BSLNfV/day-2.png")(style="margin: 0 auto;margin-right:auto;margin-left:auto").img-responsive
+            h4.text-center <i>9am - 6pm</i>
+          .row: .col-xs-12
+            h3.text-center <b>DEFINE &amp; FIND YOUR AUDIENCE</b>
+            br
+            h4 <b>Define your Audience</b> – your “perfect client’ or AVATAR
+            br
+            h4 <b>Your Hero Story</b> will be the foundation of your course. This is the magic that will be weaved
+              | through so people can easily relate to you because they relate to themselves.
+            br
+            h4 Isolate the <b>20 things that you will share with others</b>. We’ll completely dive into how to get these 20 confidence boosters out of your head and onto a page.
+            br
+            h4 Let's Ask <b>Google &amp; LinkedIn.</b> How to set yourself apart from the rest of the crowd. Peter Anthony and the Team will help you put
+              | together the outline of your idea and make sure that people are searching for those specific solutions.
+            br
+            h4 <b>Launch:</b> We created the outline for your script now we create the outline for the launch. Discover the 5 simple steps to the launch.
+            br
+            h4 <b>Market &amp; Grow:</b> You have created the Course, You have Launched the Course… now we place together the Market and growth of the Product.
+              | This is the Crucial planning stage and you will also be able to work through several Digital Courses on this specific topic.
+
+
+      .row(style="height:40px")
+
+      .row: .col-xs-12.text-center
+        a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=111" target="_blank").btn.btn-lg.btn-primary.expand <b>2 Day Admission Ticket $97</b>
+
+      .row(style="height:40px")
+
+
+
+
+  .event-details
+    .container: .row
+      a#location(style="top:-50px;display:block;position:relative;visibility: hidden;")
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          h3 <b>Location</b>
+            h4
+              p citizenM Tower
+              p 40 Trinity Square,
+              p London EC3N 4DJ, UK
+
+
+        .col-xs-12.col-sm-6
+          h3 <b>Dates</b>
+            p February 18th – 19th, 2017
+            p <i>9am - 6pm</i>
+
+      .row: .col-xs-12(style="margin-left:10px")
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.163317649571!2d-0.07859468399301008!3d51.51021967963562!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876034c197dc1f9%3A0xc8d59b6dcc301d83!2scitizenM+Tower+of+London+hotel!5e0!3m2!1sen!2sus!4v1484288259695" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+      .row(style="height:20px")
+
+  .event-details
+    .container-fluid: .row(style="background-color:#337AB7"): .container
+      a#testimonials(style="top:-50px;display:block;position:relative;visibility: hidden;")
+
+      .row(style="height:20px")
+
+      .row: .col-xs-12.text-center
+        h1(style="color:#FFF") <b>Testimonials</b>
+
+      .row(style="height:20px")
+
+      // testimonials
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          .embed-responsive.embed-responsive-16by9
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/daUmuhc3DDo" frameborder="0" allowfullscreen></iframe>
+        .col-xs-12.col-sm-6
+          .embed-responsive.embed-responsive-16by9
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/e9BgorFYZDA" frameborder="0" allowfullscreen></iframe>
+
+      .row(style="height:20px")
+
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          .embed-responsive.embed-responsive-16by9
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/JqlAlY39Ujo" frameborder="0" allowfullscreen></iframe>
+        .col-xs-12.col-sm-6
+          .embed-responsive.embed-responsive-16by9
+            <iframe width="854" height="480" src="https://www.youtube.com/embed/UIkBR1NTyp0" frameborder="0" allowfullscreen></iframe>
+
+      .row(style="height:40px")
+
+  .event-details
+    .container: .row(style="background-color:#FFF; margin-bottom: 40px;"): .container
+      a#bio(style="top:-50px;display:block;position:relative;visibility: hidden;")
+      .row(style="height:20px")
+
+      .row: .col-xs-12.text-center
+        h1 <b>About Peter Anthony Wynn</b>
+
+      .row(style="height:20px")
+
+      .row
+        .col-xs-12.col-sm-6
+          .row: .col-xs-12
+            img(src="/img/event/HHH8BSLNfV/pa-pic1.jpg")(style="margin: 0 auto;margin-right:auto;margin-left:auto").img-responsive
+        .col-xs-12.col-sm-6
+          .row: .col-xs-12
+            h4 Called by many the <b>“Online Course Guru”</b> Peter Anthony has helped 100’s of Celebrities, Authors, NY Times Best Sellers, Thought Leaders and Experts
+              | create the ultimate experience for their students.
+            br
+            h4 If you are looking to unlock the Secrets of create successful &amp; impactful ‘Online Course Videos” Peter Anthony is the perfect mentor.
+            br
+            h4 Much of what Peter Anthony teaches and shares would be considered industry secrets. Completely outside of the normal areas of simple “point and shoot” fundamentals.
+            br
+            h4 You will Learn the WHY, the WHAT and the HOW to make your genius shine for your students and become the envy of other online instructors.
+
+      .row(style="height:30px")
+
+      .row: .col-xs-12.text-center
+        a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=111" target="_blank").btn.btn-lg.btn-primary.expand <b>2 Day Admission Ticket $97</b>
+
+      .row(style="height:30px")

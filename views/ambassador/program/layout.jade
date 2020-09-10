@@ -1,0 +1,74 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    // include partials/opengraph
+    //- title= meta.title + ' - ' + meta.siteName
+    link(href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic", rel="stylesheet")
+    link(href="/dashboard/main.min.css", rel="stylesheet")
+    //- link(href="/css/dashboard.css", rel="stylesheet")
+    link(rel='icon', type='image/png', href='/img/favicon.png')
+    link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Lato:400,300,100,400italic,300italic,100italic')
+    link(rel='stylesheet', href='/css/toolkit.min.css')
+    link(rel='stylesheet', href=asset('/css/main.css'))
+    script.
+      !function(){var analytics=window.analytics=window.analytics||[];if(!analytics.initialize)if(analytics.invoked)window.console&&console.error&&console.error("Segment snippet included twice.");else{analytics.invoked=!0;analytics.methods=["trackSubmit","trackClick","trackLink","trackForm","pageview","identify","reset","group","track","ready","alias","page","once","off","on"];analytics.factory=function(t){return function(){var e=Array.prototype.slice.call(arguments);e.unshift(t);analytics.push(e);return analytics}};for(var t=0;t<analytics.methods.length;t++){var e=analytics.methods[t];analytics[e]=analytics.factory(e)}analytics.load=function(t){var e=document.createElement("script");e.type="text/javascript";e.async=!0;e.src=("https:"===document.location.protocol?"https://":"http://")+"cdn.segment.com/analytics.js/v1/"+t+"/analytics.min.js";var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(e,n)};analytics.SNIPPET_VERSION="3.1.0";}}();
+    
+  
+  body.site
+    //- header
+    //-   include ../../partials/topnav
+    style.
+      body{
+        color: white;
+        background-color: #03263f;
+        font-family: "Helvetica Neue Light", Helvetica, Arial, sans-serif;
+      }
+      .container{
+        margin-left: 0px !important;
+        margin-right: 0px !important;
+      }
+      .container
+      @media only screen and (max-width: 600px) {
+        #main{
+          margin-left: 0px !important;
+          margin-top: 0px !important;
+          padding-left: 0px !important;
+          padding-top: 0px !important;
+        }
+      }
+      @media only screen and (min-width: 600px) {
+        #main{
+          margin-left:85px;
+          margin-top:50px;
+        }    
+      }
+    .container
+      header
+        include ../../partials/topnav
+      include partials/navigation
+      #main
+        include partials/alert
+        block content
+          
+            
+    script.
+      window.meta = {
+        currentUserId: '#{(currentUser ? currentUser.id : '')}',
+        currentUserAuthId: '#{user ? user.user_id || '' : ''}',
+        currentUserEmail: '#{user ? user.email || '' : ''}',
+        currentUserName: '#{user ? user.name || '' : ''}',
+      };
+
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js')
+    script(src=asset('/dashboard/main.min.js'))
+    script(src=asset('/dashboard/js/main.js'))
+
+    block script
+    script.
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });

@@ -1,0 +1,20 @@
+.header {
+  padding: 25px 0;
+  margin-top: -20px;
+  margin-bottom: 25px;
+
+  background: url(/img/partial/header/header-background.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+
+  text-align: center;
+
+  .header-overlay {
+    h1 {
+      color: #ddd;
+    }
+  }
+}

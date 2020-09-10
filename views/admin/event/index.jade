@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+  h1 Events
+
+  table.table.table-striped
+    thead
+      tr
+        th
+        th Event Name
+        th Start Date
+        th.text-center Published
+    tbodys
+      each event in events
+        tr
+          td.text-center: a(href='event/edit?id=' + event.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+          td: a(href='event/info?id=' + event.id, style='color:black;')=event.get('title')
+          td
+          if (event.get('published') == true)
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: i(style='color:red').fa.fa-remove
+

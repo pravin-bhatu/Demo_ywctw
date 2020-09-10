@@ -1,0 +1,58 @@
+extends ../layout
+
+block content
+  h1.page-header Instructor - Add Book
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Book Details
+
+  form(id="addBook",method="post",action="addBook")
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Book Title
+          input(type="text", id="bookTitle", name="bookTitle", required).form-control
+
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Book Amazon Link
+          input(type="text", id="bookLink", name="bookLink", required).form-control
+          h4 (example: https://www.amazon.com/Rituals-Self-Made-Millionaires-Aleksander-Sinigoj/dp/1490531653)
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Book Cover Link
+          input(type="text", id="bookCover", name="bookCover", required).form-control
+          h4 (example: https://images-na.ssl-images-amazon.com/images/I/41CD2rvJU6L._SX331_BO1,204,203,200_.jpg)
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label GENRE
+          select.form-control.select2-offscreen(name='genre', id='genre')
+            option(value="") -- Select GENRE --
+            option(value="Business")  Business
+            option(value="Personal Development")  Personal Development
+            option(value="Health")  Health
+            option(value="Fitness")  Fitness
+            option(value="Relationship")  Relationship
+            option(value="Energy Healing")  Energy Healing
+            option(value="Education")  Education
+            option(value="Foundations")  Foundations
+            option(value="Fiction")  Fiction
+            option(value="Biography")  Biography
+            option(value="Social media")  Social media
+            option(value="Copy Writing")  Copy Writing
+            option(value="Writing")  Writing
+            option(value="Advertising")  Advertising
+  
+    .row.m-t.m-b.text-center
+      .col-xs-12
+        input(type="hidden", id="instructorId", name="instructorId", value=instructorId)
+        input(id="formSubmit", type="submit", value="Add Book").btn.btn-primary.btn-lg

@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  #course-enrolled.page
+    .course-landing-banner(style= ((course.get('bannerImage')) ? 'background:url(' + course.get('bannerImage').url() + ');' : '') + 'height:180px;')
+      .overlay: .container: .row: .col-xs-12
+        // h4: ol.breadcrumb
+          li.active Course Home
+    .container
+      .row: .col-xs-12
+        h1(style='text-transform:capitalize;')= course.get('name')
+
+        div(style='margin-top:25px;').panel.panel-default
+          .panel-body
+            h2 About This Course
+            p !{libs.markdown.render(course.get('description'))}
+            h2 Your Completion
+            p
+              span(style='margin-left:25px;').pull-right= enrollment.get('completed').length + ' / ' + (lessons.length || 1) + ' complete'
+              .progress: .progress-bar.progress-bar-success(style='width: ' + enrollment.get('completed').length / (lessons.length || 1) * 100 + '%')
+      .row
+        .col-xs-12.col-sm-8.col-md-9
+          include partials/sections-enrolled
+          include partials/exam-enrolled
+
+        .col-xs-12.col-sm-4.col-md-3
+          include partials/profile
+          h2 Resources
+          if course.get('workbook')
+            include partials/enrolled/workbook
+          else
+            p There are no resources for this course.
+          if course.get('bookLink')
+            h2 Extras
+          include partials/book

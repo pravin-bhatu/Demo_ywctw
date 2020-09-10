@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  .row: .col-xs-12
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Dashboards
+        h3.dashhead-title Marketplace
+  .row: .col-xs-12
+    .hr-divider.m-t
+      h3.hr-divider-content.hr-divider-heading Quick Stats
+  .row
+    .col-xs-12.col-md-4
+      .statcard.statcard-danger.p-a-md.m-t.m-b.text-center
+        h3.statcard-number= analytics.visits
+        span.statcard-desc Alltime Visits
+    .col-xs-12.col-md-4
+      .statcard.statcard-warning.p-a-md.m-t.m-b.text-center
+        h3.statcard-number= analytics.registrations
+        span.statcard-desc Alltime Sign Ups
+    .col-xs-12.col-md-4
+      .statcard.statcard-success.p-a-md.m-t.m-b.text-center
+        h3.statcard-number= analytics.orders
+        span.statcard-desc Alltime Orders
+  .row: .col-xs-12
+    .hr-divider.m-t
+      h3.hr-divider-content.hr-divider-heading Links
+  .row: .col-xs-12
+    .statcard.m-t.m-b.text-center
+      h3.statcard-number= affiliate.id
+      span.statcard-desc Affiliate Code
+  .row: .col-xs-12
+    ul.list-group.m-t.m-b
+      li.list-group-header Referral Links
+      if instructor
+        li.list-group-item= 'https://www.youwillchangetheworld.com/instructors/' + instructor.get('username') + '?ref=' + affiliate.id
+      each course in courses
+        li.list-group-item= 'https://www.youwillchangetheworld.com/courses/' + course.get('slug') + '?ref=' + affiliate.id

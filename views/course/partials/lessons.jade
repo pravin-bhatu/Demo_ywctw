@@ -1,0 +1,17 @@
+for lesson in section.lessons
+  if lesson.get('order') == 0
+    p.lesson-item
+      i.fa.fa-play-circle
+      | &nbsp;&nbsp;
+      | Introduction
+      | &nbsp;&nbsp;
+      | #{lesson.get('name')}
+    hr
+  else
+    p.lesson-item
+      i.fa.fa-play-circle
+      | &nbsp;&nbsp;
+      | Lesson #{lesson.get('order')}:
+      | &nbsp;&nbsp;
+      | #{lesson.get('name')}
+    hr

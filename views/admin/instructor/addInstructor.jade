@@ -1,0 +1,166 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ mode: 'exact', elements:'longBio', plugins: "lists", browser_spellcheck: true });</script>
+
+block content
+  h1.page-header !{formType} Instructor
+
+  .container-fluid
+    .row
+      div#errorBox(role="alert", hidden).alert.alert-danger
+        span#errorText
+
+    if (formType == 'Edit')
+      .row: .col-xs-12
+        .hr-divider.m-b
+          h3.hr-divider-content.hr-divider-heading Set Active Status
+
+      .row
+        .col-xs-12.col-sm-12
+          if(values.published)
+            p.h4 Current Status: Showing on Instructors page
+            a(href='deactivate?id=' + instructorId).btn.btn-primary#articlePublished Deactivate
+          else
+            p.h4 Current Status: NOT Showing on Instructors page
+            a(href='activate?id=' + instructorId).btn.btn-success#articlePublished Activate
+
+    - var action = "";
+    if(formType == 'Add')
+      - action = "add";
+    else
+      - action = "edit";
+    form(id="addInstructor",method="post",action=action)
+
+      .row: .col-xs-12
+        .hr-divider.m-b
+          h3.hr-divider-content.hr-divider-heading !{formType} Instructor Information
+
+      // if (formType == "Edit")
+        .row: .col-xs-12.text-right
+          if (values.published == true)
+            a(href='deactivate?id=' + instructorId).btn.btn-lg.btn-danger Deactivate
+          else
+            a(href='activate?id=' + instructorId').btn.btn-lg.btn-success Activate
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Instructor Name
+            input(type="text", id="name", name="name" || '', value=values.name || '', required).form-control
+
+      .row
+        .col-xs-12.col-sm-6
+          .form-group
+            label Vanity URL * no spaces, all lowercase
+            .form-inline
+              label= "https://youwillchangetheworld.com/ "
+                input(type="text", id="vanity", name="vanity" || '', value=values.vanity || '', required).form-control
+
+
+        .col-xs-12.col-sm-6
+          .form-group
+            label(for="status") Status
+              select.form-control(name="status", id="status")
+                option(value="instructor" selected=values.statusInstructor) Instructor
+                option(value="expert" selected=values.statusExpert) Expert
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Short Bio
+            textArea(name="shortBio", id="shortBio", rows="3", required, maxlength='200', minlength='50').form-control
+              !{values.shortBio || ''}
+            p.text-right 200 characters max
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Long Bio
+            textArea(name="longBio", id="longBio", rows="6").form-control
+              if(values.longBio)
+                !{libs.markdown.render(values.longBio) || ''}
+
+      .row
+        .col-xs-12.col-sm-6
+          .row(style='margin-top:15px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#dd4b39;margin-top:10px').fa.fa-google.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialGoogle", id="socialGoogle", value=values.socialGoogle || '',).form-control
+          .row(style='margin-top:10px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#55acee;margin-top:10px').fa.fa-twitter.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialTwitter", id="socialTwitter", value=values.socialTwitter || '',).form-control
+          .row(style='margin-top:10px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#3b5998;margin-top:10px').fa.fa-facebook.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialFacebook", id="socialFacebook", value=values.socialFacebook || '',).form-control
+          .row(style='margin-top:10px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#0077b5;margin-top:10px').fa.fa-linkedin.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialLinkedIn", id="socialLinkedIn", value=values.socialLinkedIn || '',).form-control
+          .row(style='margin-top:10px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#8a3ab9;margin-top:10px').fa.fa-instagram.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialInstagram", id="socialInstagram", value=values.socialInstagram || '',).form-control
+          .row(style='margin-top:10px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#bd081c;margin-top:10px').fa.fa-pinterest.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialPinterest", id="socialPinterest", value=values.socialPinterest || '',).form-control
+          .row(style='margin-top:10px')
+            .col-xs-12
+              .form-group
+                .col-xs-1.text-center
+                  i(style='color:#e52d27;margin-top:10px').fa.fa-youtube.fa-lg
+                .col-xs-8
+                  input(type='text', name="socialYouTube", id="socialYouTube", value=values.socialYouTube || '',).form-control
+
+
+        .col-xs-12.col-sm-6
+          if (formType === "Edit")
+            a(href='/admin/instructors/addBook?id=' + instructorId).btn.btn-success Add Book
+
+
+
+        // .col-xs-12.col-sm-6
+          .row
+            .col-xs-12.col-sm-12
+              .form-group
+                label Header Image
+                  input(type="file", name="instructorHeaderImage", id="instructorHeaderImage")
+
+
+
+          .row
+            .col-xs-12.col-sm-12
+              .form-group
+                label Headshot Image
+                  input(type="file", name="instructorAvatarImage", id="instructorAvatarImage")
+
+
+      .row.m-t.m-b
+        .col-xs-12
+          if (formType === "Edit")
+            input(type="hidden", id="instructorId", name="instructorId", value=instructorId)
+          input(type="hidden", id="formType", name="formType", value=formType)
+          input(type="hidden", id="published", name="published", value=values.published.toString())
+          input(id="formSubmit", type="submit", value= formType + " Instructor").btn.btn-primary.btn-lg

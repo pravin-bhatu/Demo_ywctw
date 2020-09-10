@@ -1,0 +1,74 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ mode: 'exact', elements: 'articleContent', plugins: "lists", browser_spellcheck: true, skin_url: '/public/css/tinymce/custom' });</script>
+
+block content
+  .row: .col-xs-12
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Dashboards
+        h3.dashhead-title My Articles
+
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Add Article
+
+  form(id="addArticle",method="post",action="article/add")
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Article Title
+          input(type="text", id="articleTitle", name="articleTitle" || '', required).form-control
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Article Content
+          p * Please double check formatting if you are copying and pasting from Microsoft Word. Eample are quotes (") may not format correctly.
+          textArea(name="articleContent", id="articleContent", rows="15").form-control
+
+    .row
+      .col-sx-12.col-sm-12
+        p * Please submit your article image to #[a(href="mailto:support@youwillchangetheworld.com") support@youwillchangetheworld.com] with your article title. Make sure article image is at least
+          |  960 x 540 pixels and that you hold the copyright license to use the image or that it is a royalty free image.
+
+    .row(style="height:10px")
+
+    .row
+      .col-xs-12.col-sm-12
+        input(type="hidden", id="instructorId", name="instructorId", value=instructorId)
+        input(id="formSubmit", type="submit", value="Add Article").btn.btn-primary.btn-lg
+
+  .row(style="height:10px")
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Articles List
+
+
+  table.table.table-striped
+    thead
+      tr
+        th Article Title
+        th.text-center Date Created
+        th.text-center Published
+    tbody
+      each article in articles
+        if (instructor.get('name') == article.get('instructor').get('name'))
+          tr
+            td= article.get('title')
+            td.text-center= libs.moment(article.get('createdAt')).format("MMMM Do YYYY")
+            if (article.get('published') == true)
+              td.text-center: i(style='color:green').fa.fa-check
+            else
+              td.text-center: i(style='color:red').fa.fa-remove
+
+  .row(style="height:30px")

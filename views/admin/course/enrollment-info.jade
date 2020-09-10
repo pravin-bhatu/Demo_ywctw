@@ -1,0 +1,52 @@
+extends ../layout
+
+block content
+  .row
+    .col-sm-12.col-md-12
+      h1 Course Enrollment Information
+      h2= course.get('name')
+      h4= course.get('instructorName')
+
+  .row(style="height:20px")
+
+  .row
+    .col-sm-12.col-md-12
+      form(id="courseEnrollmentList", method="post", action="courseEnrollmentList")
+        input(type="hidden", name="courseId", value=course.id)
+        input(type="hidden", name="courseSlug", value=course.get('slug'))
+        input(id="downloadList", type="submit", value="Course Enrollment List").btn.btn-info
+
+  .row(style="height:20px")
+
+  .row
+    .col-sm-3.col-md-3
+
+    .col-sm-3.col-md-3
+      .statcard.statcard-success.p-a-md.text-center
+        h2.statcard-number
+          | #{enrollments.length}
+        span.statcard-desc Enrollments
+    .col-sm-3.col-md-3
+      .statcard.statcard-info.p-a-md.text-center
+        h2.statcard-number
+          | 0
+        span.statcard-desc Completed
+
+    .col-sm-3.col-md-3
+
+
+
+  table.table.table-striped
+    thead
+      tr
+        th User
+        th Email
+        th Created At
+        // th.text-center Completed
+    tbody
+      each enrollment in enrollments
+        tr
+          td= enrollment.get('userId')
+          td= enrollment.email
+          td= libs.moment(enrollment.get('createdAt')).format("MMMM Do YYYY")
+          // td.text-center: b= '-'

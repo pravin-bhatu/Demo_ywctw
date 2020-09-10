@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  #articles.page
+    .container
+      h1.text-center Articles
+
+      .row
+        .col-xs-12.col-sm-12.text-right
+          a(href="articles/rssfeed", target="_blank")
+            img(style="width:25px;height:25px;", src="/img/article/rss-feeds.png")
+
+      each article in articles
+        include partials/articles-row
+

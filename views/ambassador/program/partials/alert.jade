@@ -1,0 +1,19 @@
+if instructor
+  if !instructor.get('merchantId')
+    .alert.alert-danger
+      span
+        h4
+          | In order for all your courses to go live, please configure your merchant account by filling out
+          a(href="/dashboard/marketplace/onboard")  this form
+
+  if instructor.get('merchantId') && instructor.get('merchantStatus') === 'pending'
+    .alert.alert-warning
+      span
+        | Your merchant account is pending.
+
+  if instructor.get('merchantId') && instructor.get('merchantStatus') === 'declined'
+    .alert.alert-danger
+      span
+        | There was an issue approving your merchant account. Please contact
+        a(href="mailto:dev.admin@youwillchangetheworld.com", target="_blank")  dev.admin@youwillchangetheworld.com
+        | as soon as possible so we can work with you to get this corrected.

@@ -1,0 +1,22 @@
+extends ../layout
+
+block content
+  h1 Orders
+
+  .row
+    table.table.table-striped
+      thead
+        tr
+          th ID
+          th Product Type
+          th Course
+          th.text-center Service Fee
+          th.text-center Total
+      tbody
+        each order in orders
+          tr
+            td: a(href='order/order-info?orderId=' + order.id, style='color:black;')= order.id
+            td= order.get('type')
+            td= order.get('course').get('name')
+            td= order.get('serviceFee')
+            td= order.get('total')

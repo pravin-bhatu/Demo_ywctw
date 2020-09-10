@@ -1,0 +1,132 @@
+extends ../layout
+
+block content
+  #course-enrolled.page
+    .container
+      .row: .col-xs-12
+        h1.text-center= lesson.get('name')
+        h4.text-center #{course.get('name')} by #{instructor.get('name')}
+      .row
+        .col-xs-12: .panel.panel-default(style='margin-top:25px;'): .panel-body
+          if lesson.get('videoProvider') === 'youtube'
+            .embed-responsive.embed-responsive-16by9
+              iframe(src=('https://www.youtube.com/embed/' + (lesson.get('videoId') || 'NpEaa2P7qZI') + '?autoplay=true'), width='500', height='281', frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+          else
+            .embed-responsive.embed-responsive-16by9
+              iframe(src=('https://player.vimeo.com/video/' + (lesson.get('videoId') || '100902001') + '?autoplay=true&quality=720p'), width='500', height='281', frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+          .btn-group(style="width:100%;")
+            if previous
+              a(href="/courses/" + course.get('slug') + "/" + previous.get('slug'), style="width:30%;border-top-left-radius:0;margin-left:0;").btn.btn-lg.btn-default
+                span.icon.icon-chevron-with-circle-left
+                | &nbsp;&nbsp;&nbsp;Previous Lesson
+            else
+              button(style="width:30%;border-top-left-radius:0;margin-left:0;", disabled).btn.btn-lg.btn-default
+                span.icon.icon-chevron-with-circle-left
+                | &nbsp;&nbsp;&nbsp;Previous Lesson
+            if lesson.complete
+              button(style="width:40%;margin-left:0;", disabled).btn.btn-lg.btn-success
+                span.icon.icon-check
+                | &nbsp;&nbsp;&nbsp;Lesson Complete
+            else
+              button(style="width:40%;margin-left:0;", disabled=(lesson.disableMarkCompleteButton)).btn.btn-lg.btn-success#lessonMarkComplete Mark Complete
+              // a(href=('/courses/complete/' + course.id + '/' + lesson.id),
+            if next
+              a(href="/courses/" + course.get('slug') + "/" + next.get('slug'), style="width:30%;border-top-right-radius:0;margin-left:0;").btn.btn-lg.btn-default
+                | Next Lesson&nbsp;&nbsp;&nbsp;
+                span.icon.icon-chevron-with-circle-right
+            else
+              button(style="width:30%;border-top-right-radius:0;margin-left:0;", disabled).btn.btn-lg.btn-default
+                | Next Lesson&nbsp;&nbsp;&nbsp;
+                span.icon.icon-chevron-with-circle-right
+
+            if lesson.get('quiz')
+              .text-center
+                p: em * you must complete the quiz before completing the lesson
+
+
+      hr
+      .row(style="margin-bottom:60px;")
+        .col-xs-12.col-sm-8.col-md-9
+          h2 Lesson #{lesson.get('order')} Description
+          if lesson.get('description')
+            p !{libs.markdown.render(lesson.get('description'))}
+          else
+            p There is no description for this lesson.
+          h2 Challenges
+          if lesson.get('challenge')
+            p !{libs.markdown.render(lesson.get('challenge'))}
+          else
+            p There are no challenges for this lesson.
+          h2 Quiz
+          if lesson.get('quiz')
+            include partials/quiz
+          else
+            p There are no quiz questions for this lesson.
+        .col-xs-12.col-sm-4.col-md-3
+          a(href=("/courses/" + course.get('slug') + "/enrolled")).btn.btn-primary.expand Back to Course
+          hr
+          h2 Lesson Resources
+          if media && media.length
+            each single in media
+              if single.get('file')
+                a(href=single.get('file').url(), target='_blank').btn.btn-lg.btn-default.expand
+                  i.fa.fa-book &nbsp;&nbsp;
+                  | #{single.get('name')}
+              if single.get('resource')
+                a(href=single.get('resource'), target='_blank').btn.btn-lg.btn-default.expand
+                  i.fa.fa-book &nbsp;&nbsp;
+                  | #{single.get('name')}
+            h6 * If PDF fails to load in Chrome, right click on the file and 'Save Link as...' to download PDF, or try opening the pdf in FireFox, IE, or Safari
+          else
+            p There are no resources for this lesson.
+      hr
+      .row: .col-xs-12
+        ul.media-list
+          li.media
+            a(href="/instructors/" + instructor.get('username')).media-left
+              img(src=instructor.get('avatar') ? instructor.get('avatar').url() : '').media-object.img-circle
+            .media-body
+              .media-heading: h4= instructor.get('name')
+              p= instructor.get('shortBio')
+              p
+                if instructor.get('socialFacebook')
+                  a(href=instructor.get('socialFacebook'), style='margin:0 5px;'): i.fa.fa-facebook.fa-lg
+                if instructor.get('socialTwitter')
+                  a(href=instructor.get('socialTwitter'), style='margin:0 5px;'): i.fa.fa-twitter.fa-lg
+                if instructor.get('socialGoogle')
+                  a(href=instructor.get('socialGoogle'), style='margin:0 5px;'): i.fa.fa-google-plus.fa-lg
+                if instructor.get('socialLinkedIn')
+                  a(href=instructor.get('socialLinkedIn'), style='margin:0 5px;'): i.fa.fa-linkedin.fa-lg
+      .row: .col-xs-12
+        h4 Other Courses by #{instructor.get('name')}
+      .row
+        each otherCourse in courses
+          if otherCourse.get('stage') === 'prod' || otherCourse.get('stage') === 'stage'
+            .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-0.col-md-4
+              .course-card: a(href='/courses/' + otherCourse.get('slug'))
+                figure.effect-julia
+                  if otherCourse.get('cardImage')
+                    img(src=otherCourse.get('cardImage').url()).img-responsive
+                  else
+                    img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×200&w=500&h=200').img-responsive
+                  figcaption
+                    h2(style='text-transform:capitalize;').fittext= otherCourse.get('name')
+                    p= instructor.get('name')
+                    button.btn.btn-primary
+                      if otherCourse.get('stage') === 'prod'
+                        if otherCourse.get('price') === 0
+                          span Free Enrollment
+                        else
+                          span Enroll for
+                            if enrollment
+                              != 'Enrolled'
+                            else if otherCourse.get('price') === 0
+                              != 'Free'
+                            else
+                              != '$' + (course.get('price'))
+                      else
+                        span Coming Soon
+
+      input(type='hidden' name='lessonId' value=lesson.id)
+      input(type='hidden' name='courseId' value=course.id)
+

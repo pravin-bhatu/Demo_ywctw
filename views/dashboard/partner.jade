@@ -1,0 +1,126 @@
+extends layout
+
+block content
+  .row: .col-xs-12
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Dashboards
+        h3.dashhead-title Partner Codes
+
+  .row: .col-xs-12
+    h1.text-center Add Partner Code
+
+  .row
+    // TODO: put in error text
+
+  form(id="formParnerCode",method="post",action="")
+
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Create Partner Code
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Enter Code
+          input(type="text", name="code", id="code", value=values.code || '', required).form-control
+      .col-xs-12.col-sm-6
+        .form-group
+          label Name
+          input(type="text", name="name", id="name", value=values.name || '', required).form-control
+    .row
+      .col-xs-12.col-sm-6
+        &nbsp;
+      .col-xs-12.col-sm-3
+        .form-group
+          label AmountType
+          br
+          label.radio-inline
+            input(type='radio', name='amountType', value='true', id='amountPrice', required)
+            |  Amount
+          label.radio-inline
+            input(type='radio', name='amountType', value='false', id='amountPercent', required)
+            |  Percent
+      .col-xs-12.col-sm-3
+        .form-group
+          label Amount
+          input(type="number", name="amount", id="amount", value=values.amount || '', required).form-control
+
+      // .col-xs-12.col-sm-3
+        .form-group
+          label Expires
+          br
+          label.radio-inline
+            input(type='radio', name='expires', value='true', id='expiresYes', required)
+            |  Yes
+          label.radio-inline
+            input(type='radio', name='expires', value='false', id='expiresNo', required)
+            |  No
+      // .col-xs-12.col-sm-3
+        .form-group
+          label Expires Date
+
+    .row.m-t.m-b.text-right
+      .col-xs-12
+        input(id="formSubmit", type="submit", value="Add Partner Code").btn.btn-primary.btn-lg
+
+
+  .row: .col-xs-12
+    h1.text-center Partner Code List
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Active Partner Codes
+
+  .row: .col-xs-12
+    .table-responsive
+      table.table.table-striped
+        tr
+          th Code
+          th Name
+          th.text-right Amount
+          th Created Date
+          th.text-center Active
+        tbody
+          for code in partnerCodes
+            if(code.get('active'))
+              tr
+                // TODO: make code link to new page
+                td= code.get('code')
+                td= code.get('name')
+                td.text-right
+                  if code.get('static')
+                    != '$' + code.get('amount')
+                  else
+                    != Math.round((1 - code.get('amount')) * 100) + '%'
+                td= libs.moment(code.get('createdAt')).format("MMMM Do YYYY")
+                td.text-center: a(href= "partner/" + code.id + '/deactivate').btn.btn-danger Stop
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Deactivated Partner Codes
+
+  .row: .col-xs-12
+    .table-responsive
+      table.table.table-striped
+        tr
+          th Code
+          th Name
+          th.text-right Amount
+          th Created Date
+          th.text-center Active
+        tbody
+          for code in partnerCodes
+            if(!code.get('active'))
+              tr
+                // TODO: make code link to new page
+                td= code.get('code')
+                td= code.get('name')
+                td.text-right
+                  if code.get('static')
+                    != '$' + code.get('amount')
+                  else
+                    != Math.round((1 - code.get('amount')) * 100) + '%'
+                td= libs.moment(code.get('createdAt')).format("MMMM Do YYYY")
+                td.text-center: a(href= "partner/" + code.id + '/activate').btn.btn-success Start

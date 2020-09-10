@@ -1,0 +1,36 @@
+extends ../layout
+
+block content
+  .row: .col-xs-12
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Dashboards
+        h3.dashhead-title Add Article
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Article Information
+
+  form(id="addArticle", method="post", action="article/add")
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Article Title
+          input(type="text", id="articleTitle", name="articleTitle" || '', required).form-control
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Article Content
+          textArea(name="articleContent", id="articleContent", rows="10", required).form-control
+
+    .row.m-t.m-b
+      .col-xs-6
+        input(name="formSubmit", type="submit", value="Add").btn.btn-primary.btn-lg
+      .col-xs-6.text-right
+        input(name="formSubmit", type="submit", value="Preview").btn.btn-primary.btn-lg

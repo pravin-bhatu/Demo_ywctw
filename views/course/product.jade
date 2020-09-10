@@ -1,0 +1,80 @@
+extends ../layout-course
+
+block content
+  #courses-landing.page
+    .course-landing-banner(style='background:url(' + (course.get('bannerImage') ? course.get('bannerImage').url() : '/img/course/course-default-background.jpg') + ');')
+      .overlay: .container: .row: .col-xs-12
+        h1(style='text-transform:capitalize;').course-landing-banner
+          if (course.get('headline'))
+            | #{course.get('headline')}
+          else
+            | #{course.get('name')}
+          br
+          a(href="/instructors/" + instructor.get('username'))
+            small by: #{instructor.get('name')}
+        .course-landing-header: .course-landing-overlay: .row
+          .col-xs-10.col-xs-offset-1.col-md-8.col-md-offset-0.col-lg-9
+            include partials/video
+          .col-xs-10.col-xs-offset-1.col-md-4.col-md-offset-0.col-lg-3
+            h3.text-center(style="font-weight:500")= course.get('name')
+            if course.get('stage') === 'prod'
+              h2.text-center: include partials/price
+              include partials/enroll
+            else
+              h2.text-center Coming Soon
+
+
+
+            // include partials/product-details
+    .course-landing-body: .container: .row
+      .col-xs-12.col-sm-8.col-md-8.col-lg-9
+        .text-right
+          include ../partials/social
+        //- style.
+        //-   .social-link-img {
+        //-       width: 25px;
+        //-       height: 25px;                    
+        //-   }
+        //-   .social-link-img:hover {
+        //-       padding:5px;               
+        //-   }               
+        //- include ../ambassador/registration/sociallinks 
+
+        h2(style="font-weight:500;text:center")= course.get('name')
+
+        if course.get('description')
+          h2 Course Description
+          p !{libs.markdown.render(course.get('description'))}
+
+        h3 Who is this course perfect for?
+        if course.get('coursePerfectFor')
+          p !{libs.markdown.render(course.get('coursePerfectFor'))}
+        else
+          ul
+            li Anyone who wants to learn!
+            li People who want to better themselves through learning.
+            li Individuals who have a strong desire to invest in themselves and their future.
+
+        h3 What's the requirement to take this course?
+        if course.get('courseRequirements')
+          p !{libs.markdown.render(course.get('courseRequirements'))}
+        else
+          ul
+            li You need a computer, the Internet, and speakers so you can hear the lessons. If you're a super student, then grab a pen and paper to take notes.
+
+        h3 What you'll get from this course?
+        if course.get('courseOutcomes')
+          p !{libs.markdown.render(course.get('courseOutcomes'))}
+        else
+          ul
+            li You will learn #{course.get('name')} and become a rockstar! You'll have access to hours of quality content, online resources, and much more.
+
+        include partials/sections-product
+          
+      .col-xs-12.col-sm-4.col-md-4.col-lg-3
+        include partials/profile
+        include partials/book
+        include partials/media
+
+        if course.get('facebookPixel')
+          include partials/facebook-pixel

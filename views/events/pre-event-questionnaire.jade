@@ -1,0 +1,426 @@
+extends ../layout
+
+block content
+  div(style="background-color:#000;margin-top:-21px;").hidden-xs: .container(style='height: 25pc;background:url(/img/event/HHH8BSLNfV/sept-header.png);background-size:cover;background-repeat:no-repeat;background-position:center;')
+
+  div(style="background-color:#000;margin-top:-21px;").hidden-sm.hidden-md.hidden-lg
+    img(style="width:100%;", src="/img/event/HHH8BSLNfV/sept-header.png")
+
+  #profile.page(style="background-color:#EEE;margin-bottom:0px"): .container: .row
+    .col-xs-10
+      form(action="/events/pre-event-questionnaire" method="post")
+        input(type="hidden", name="questionnaireId", value="sept_pbm_2016")
+        input(type="hidden", name="questionnaireName", value="Personal Branding Mastermind - Sept 2016")
+        .row
+          .col-xs-12.col-sm-8
+            h2 Personal Branding Mastermind Pre Event Questionnaire
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 1. On a Scale of 1-10 (with 10 being the highest), how would you rate your Personal Brand in terms of clarity and consistency?
+            input(type="hidden", name="q1" value="On a Scale of 1-10 (with 10 being the highest), how would you rate your Personal Brand in terms of clarity and consistency?")
+            .radio-inline
+              input(type="radio", value="1", name="question1", required)
+              | 1
+            .radio-inline
+              input(type="radio", value="2", name="question1", required)
+              | 2
+            .radio-inline
+              input(type="radio", value="3", name="question1", required)
+              | 3
+            .radio-inline
+              input(type="radio", value="4", name="question1", required)
+              | 4
+            .radio-inline
+              input(type="radio", value="5", name="question1", required)
+              | 5
+            .radio-inline
+              input(type="radio", value="6", name="question1", required)
+              | 6
+            .radio-inline
+              input(type="radio", value="7", name="question1", required)
+              | 7
+            .radio-inline
+              input(type="radio", value="8", name="question1", required)
+              | 8
+            .radio-inline
+              input(type="radio", value="9", name="question1", required)
+              | 9
+            .radio-inline
+              input(type="radio", value="10", name="question1", required)
+              | 10
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 2. On a Scale of 1-10, how would you rate your Personal Brand in terms of engagement?
+            input(type="hidden", name="q2" value="On a Scale of 1-10, how would you rate your Personal Brand in terms of engagement?")
+            .radio-inline
+              input(type="radio", value="1", name="question2", required)
+              | 1
+            .radio-inline
+              input(type="radio", value="2", name="question2", required)
+              | 2
+            .radio-inline
+              input(type="radio", value="3", name="question2", required)
+              | 3
+            .radio-inline
+              input(type="radio", value="4", name="question2", required)
+              | 4
+            .radio-inline
+              input(type="radio", value="5", name="question2", required)
+              | 5
+            .radio-inline
+              input(type="radio", value="6", name="question2", required)
+              | 6
+            .radio-inline
+              input(type="radio", value="7", name="question2", required)
+              | 7
+            .radio-inline
+              input(type="radio", value="8", name="question2", required)
+              | 8
+            .radio-inline
+              input(type="radio", value="9", name="question2", required)
+              | 9
+            .radio-inline
+              input(type="radio", value="10", name="question2", required)
+              | 10
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 3. What are the top 3 things others say about your Personal Brand?
+            input(type="hidden", name="q3" value="On a Scale of 1-10, how would you rate your Personal Brand in terms of engagement?")
+            .form-group
+              textArea(name="question3", id="question3", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 4. How did you go about developing your Personal Brand? (Developed it on your own, hired web designer, hired consultant, asked friends, etc)
+            input(type="hidden", name="q4" value="How did you go about developing your Personal Brand?")
+            .form-group
+              textArea(name="question4", id="question4", rows="5").form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 5. What platforms are you currently using to share your brand and engage with your audience? (Check all that apply)
+            input(type="hidden", name="q5" value="What platforms are you currently using to share your brand and engage with your audience?")
+            .checkbox
+              label(for='q5_companyWebsite')
+                input(type='checkbox', id='q5_companyWebsite', name='question5', value='Company Website')
+                | Company Website
+            .checkbox
+              label(for='q5_personalWebsite')
+                input(type='checkbox', id='q5_personalWebsite', name='question5', value='Personal Website')
+                | Personal Website
+            .checkbox
+              label(for='q5_blog')
+                input(type='checkbox', id='q5_blog', name='question5', value='Blog')
+                | Blog
+            .checkbox
+              label(for='q5_linkedIn')
+                input(type='checkbox', id='q5_linkedIn', name='question5', value='LinkedIn')
+                | LinkedIn
+            .checkbox
+              label(for='q5_facebook')
+                input(type='checkbox', id='q5_facebook', name='question5', value='Facebook')
+                | Facebook
+            .checkbox
+              label(for='q5_twitter')
+                input(type='checkbox', id='q5_twitter', name='question5', value='Twitter')
+                | Twitter
+            .checkbox
+              label(for='q5_youTube')
+                input(type='checkbox', id='q5_youTube', name='question5', value='YouTube')
+                | YouTube
+            .checkbox
+              label(for='q5_instagram')
+                input(type='checkbox', id='q5_instagram', name='question5', value='Instagram')
+                | Instagram
+            .checkbox
+              label(for='q5_podcasts')
+                input(type='checkbox', id='q5_podcasts', name='question5', value='Podcasts')
+                | Podcasts
+            .checkbox
+              label(for='q5_onlineCourses')
+                input(type='checkbox', id='q5_onlineCourses', name='question5', value='Online Courses')
+                | Online Courses
+            .checkbox
+              label(for='q5_webinars')
+                input(type='checkbox', id='q5_webinars', name='question5', value='Webinars')
+                | Webinars
+            .checkbox
+              label(for='q5_liveEvents')
+                input(type='checkbox', id='q5_liveEvents', name='question5', value='Live Events')
+                | Live events (workshops, meetups, public speaking, book tour, etc)
+            .checkbox
+              label(for='q5_affiliates')
+                input(type='checkbox', id='q5_affiliates', name='question5', value='Affiliates')
+                | Affiliates
+            .checkbox
+              label(for='q5_other')
+                input(type='checkbox', id='q5_other', name='question5', value='Other')
+                | Other
+              .col-xs-12.col-sm-12
+                .form-group
+                  input(type='text', name='question5_other').form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 5a. How many followers do you have on your company/ personal brand’s:
+            input(type="hidden", name="q5a" value="How many followers do you have on your company/ personal brand’s")
+            .row
+              .form-inline(style="margin-left:25px")
+                label(style="width:80px") Facebook
+                input(type='text', name='facebookCount').form-control
+            .row
+              .form-inline(style="margin-left:25px")
+                label(style="width:80px") Twitter
+                input(type='text', name='twitterCount').form-control
+            .row
+              .form-inline(style="margin-left:25px")
+                label(style="width:80px") Youtube
+                input(type='text', name='youTubeCount').form-control
+            .row
+              .form-inline(style="margin-left:25px")
+                label(style="width:80px") Instagram
+                input(type='text', name='instagramCount').form-control
+            .row
+              .form-inline(style="margin-left:25px")
+                label(style="width:80px") Blog
+                input(type='text', name='blogCount').form-control
+            .row
+              .form-inline(style="margin-left:25px")
+                label(style="width:80px") LinkedIn
+                input(type='text', name='linkedInCount').form-control
+
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 6. How many hours a day do you spend posting and engaging with your audience online?
+            input(type="hidden", name="q6" value="How many hours/ week do you spend posting and engaging with your audience online?")
+            .radio-inline
+              input(type="radio", value="0-2 hours", name="question6", required)
+              | 0 - 2 hours
+            .radio-inline
+              input(type="radio", value="2-4 hours", name="question6", required)
+              | 2 - 4 hours
+            .radio-inline
+              input(type="radio", value="4-6 hours", name="question6", required)
+              | 4 - 6 hours
+            .radio-inline
+              input(type="radio", value="6+", name="question6", required)
+              | 6+
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 7. Which platform is giving you the most success in terms of sales and customer engagement?
+            input(type="hidden", name="q7" value="Which platform is giving you the most success in terms of sales and customer engagement?")
+            .checkbox
+              label(for='q7_companyWebsite')
+                input(type='checkbox', id='q7_companyWebsite', name='question7', value='Company Website')
+                | Company Website
+            .checkbox
+              label(for='q7_personalWebsite')
+                input(type='checkbox', id='q7_personalWebsite', name='question7', value='Personal Website')
+                | Personal Website
+            .checkbox
+              label(for='q7_blog')
+                input(type='checkbox', id='q7_blog', name='question7', value='Blog')
+                | Blog
+            .checkbox
+              label(for='q7_linkedIn')
+                input(type='checkbox', id='q7_linkedIn', name='question7', value='LinkedIn')
+                | LinkedIn
+            .checkbox
+              label(for='q7_facebook')
+                input(type='checkbox', id='q7_facebook', name='question7', value='Facebook')
+                | Facebook
+            .checkbox
+              label(for='q7_twitter')
+                input(type='checkbox', id='q7_twitter', name='question7', value='Twitter')
+                | Twitter
+            .checkbox
+              label(for='q7_youTube')
+                input(type='checkbox', id='q7_youTube', name='question7', value='YouTube')
+                | YouTube
+            .checkbox
+              label(for='q7_instagram')
+                input(type='checkbox', id='q7_instagram', name='question7', value='Instagram')
+                | Instagram
+            .checkbox
+              label(for='q7_podcasts')
+                input(type='checkbox', id='q7_podcasts', name='question7', value='Podcasts')
+                | Podcasts
+            .checkbox
+              label(for='q7_onlineCourses')
+                input(type='checkbox', id='q7_onlineCourses', name='question7', value='Online Courses')
+                | Online Courses
+            .checkbox
+              label(for='q7_webinars')
+                input(type='checkbox', id='q7_webinars', name='question7', value='Webinars')
+                | Webinars
+            .checkbox
+              label(for='q7_liveEvents')
+                input(type='checkbox', id='q7_liveEvents', name='question7', value='Live Events')
+                | Live Events (workshops, meetups, public speaking, book tour, etc)
+            .checkbox
+              label(for='q7_affiliates')
+                input(type='checkbox', id='q7_affiliates', name='question7', value='Affiliates')
+                | Affiliates
+            .checkbox
+              label(for='q7_other')
+                input(type='checkbox', id='q7_other', name='question7', value='Other')
+                | Other
+              .col-xs-12.col-sm-12
+                .form-group
+                  input(type='text', name='question7_other').form-control
+
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 8. Which platform would you like to focus on developing more right now?
+            input(type="hidden", name="q8" value="Which platform would you like to focus on developing more right now?")
+            .checkbox
+              label(for='q8_companyWebsite')
+                input(type='checkbox', id='q8_companyWebsite', name='question8', value='Company Website')
+                | Company Website
+            .checkbox
+              label(for='q8_personalWebsite')
+                input(type='checkbox', id='q8_personalWebsite', name='question8', value='Personal Website')
+                | Personal Website
+            .checkbox
+              label(for='q8_blog')
+                input(type='checkbox', id='q8_blog', name='question8', value='Blog')
+                | Blog
+            .checkbox
+              label(for='q8_linkedIn')
+                input(type='checkbox', id='q8_linkedIn', name='question8', value='LinkedIn')
+                | LinkedIn
+            .checkbox
+              label(for='q8_facebook')
+                input(type='checkbox', id='q8_facebook', name='question8', value='Facebook')
+                | Facebook
+            .checkbox
+              label(for='q8_twitter')
+                input(type='checkbox', id='q8_twitter', name='question8', value='Twitter')
+                | Twitter
+            .checkbox
+              label(for='q8_youTube')
+                input(type='checkbox', id='q8_youTube', name='question8', value='YouTube')
+                | YouTube
+            .checkbox
+              label(for='q8_instagram')
+                input(type='checkbox', id='q8_instagram', name='question8', value='Instagram')
+                | Instagram
+            .checkbox
+              label(for='q8_podcasts')
+                input(type='checkbox', id='q8_podcasts', name='question8', value='Podcasts')
+                | Podcasts
+            .checkbox
+              label(for='q8_onlineCourses')
+                input(type='checkbox', id='q8_onlineCourses', name='question8', value='Online Courses')
+                | Online Courses
+            .checkbox
+              label(for='q8_webinars')
+                input(type='checkbox', id='q8_webinars', name='question8', value='Webinars')
+                | Webinars
+            .checkbox
+              label(for='q8_liveEvents')
+                input(type='checkbox', id='q8_liveEvents', name='question8', value='Live Events')
+                | Live Events (workshops, meetups, public speaking, book tour, etc)
+            .checkbox
+              label(for='q8_affiliates')
+                input(type='checkbox', id='q8_affiliates', name='question8', value='Affiliates')
+                | Affiliates
+            .checkbox
+              label(for='q8_other')
+                input(type='checkbox', id='q8_other', name='question8', value='Other')
+                | Other
+              .col-xs-12.col-sm-12
+                .form-group
+                  input(type='text', name="question8_other").form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 9. What are you passionate about? What lights you up?
+            input(type="hidden", name="q9" value="What are you passionate about? What lights you up?")
+            .form-group
+              textArea(name="question9", id="question9", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 10. Where are you now in your career?
+            input(type="hidden", name="q10" value="Where are you now in your career?")
+            .form-group
+              textArea(name="question10", id="question10", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 11. Tell me your 3 top goals for the next 3 years
+            input(type="hidden", name="q11" value="Tell me your 3 top goals for the next 3 years")
+            .form-group
+              textArea(name="question11", id="question11", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 12. Tell me your top 3 goals in the next 10 years
+            input(type="hidden", name="q12" value="Tell me your top 3 goals in the next 10 years")
+            .form-group
+              textArea(name="question12", id="question12", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 13. What needs to happen in order for you to get there? What knowledge, expertise and support will you need? What are the tools and resources will you need?
+            input(type="hidden", name="q13" value="What needs to happen in order for you to get there? What knowledge, expertise and support will you need? What are the tools and resources will you need?")
+            .form-group
+              textArea(name="question13", id="question13", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            h3 14. How can we support you in this process?
+            input(type="hidden", name="q14" value="How can we support you in this process?")
+            .form-group
+              textArea(name="question14", id="question14", rows="5", required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-12
+            .row
+              .col-xs-12.col-sm-6
+                .form-group
+                  label First Name
+                  input(type='text', name='firstName', required).form-control
+              .col-xs-12.col-sm-6
+                .form-group
+                  label Last Name
+                  input(type='text', name='lastName', required).form-control
+
+            .row
+              .col-xs-12.col-sm-6
+                .form-group
+                  label Email
+                  input(type='email', name='email', required).form-control
+              .col-xs-12.col-sm-6
+                .form-group
+                  label Phone Number
+                  input(type='text', name='phone', required).form-control
+
+        .row(style="height:20px")
+        .row
+          .col-xs-12.col-sm-9
+            input(id='questionnaireSubmit', type='submit', value='Submit').btn.btn-primary.btn-lg
+
+        .row(style="height:50px")

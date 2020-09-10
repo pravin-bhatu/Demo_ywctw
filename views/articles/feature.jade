@@ -1,0 +1,105 @@
+extends ../layout
+
+block content
+  #article.page
+    .container
+      .col-xs-12.col-sm-8.col-md-9
+        h1.text-center= article.get('title')
+        h4.text-center= 'By ' + instructor.get('name')
+
+        .text-right
+          include ../partials/social
+        //- style.
+        //-   .social-link-img {
+        //-       width: 25px;
+        //-       height: 25px;                    
+        //-   }
+        //-   .social-link-img:hover {
+        //-       padding:5px;               
+        //-   }               
+        //- include ../ambassador/registration/sociallinks           
+
+        hr.articles
+
+        if article.get('headerImage')
+          img(src=article.get('headerImage').url()).img-responsive
+        else
+          img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×200&w=500&h=200').img-responsive
+
+        p !{libs.markdown.render(article.get('content'))}
+
+      .col-xs-12.col-sm-4.col-md-3
+        .text-center
+          
+          a(href="/articles")
+            p.btn.btn-primary.expand.articles-back-btn Back to Articles
+
+            a(href=('/instructors/' + instructor.get('username')), style='color:#333;'): .panel.panel-default.panel-profile
+              .panel-heading(style='background-image:url(' + (article.get('instructor').get('profileHeader') ? article.get('instructor').get('profileHeader').url() : '/img/instructors/default-instructor-header.png')) + ');')
+              .panel-body.text-center
+                img(src=(article.get('instructor').get('avatar') ? article.get('instructor').get('avatar').url() : '/img/instructors/default-instructor-icon.png')).panel-profile-img
+                h5.panel-title= article.get('instructor').get('name')
+                p= article.get('instructor').get('shortBio')
+
+          if (courses.length != 0)
+            hr.articles
+            .row
+              .col-xs-12.col-xs-offset-0
+                h3.h3-feature-sidebar= 'Courses by ' + article.get('instructor').get('name')
+                if course.get('stage') === 'prod' || course.get('stage') === 'stage'
+                  .course-card: a(href='/courses/' + course.get('slug'))
+                    figure.effect-julia
+                      if course.get('cardImage')
+                        img(src=course.get('cardImage').url()).img-responsive
+                      else
+                        img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×200&w=500&h=200').img-responsive
+                      figcaption
+                        h2(style='text-transform:capitalize;').fittext= course.get('name')
+                        p= course.get('instructor') ? course.get('instructor').get('name') : ''
+                        button.btn.btn-primary
+                          if course.get('stage') === 'prod'
+                            if course.get('price') === 0
+                              span Free Enrollment
+                            else
+                              span Enroll for
+                                include ../course/partials/price
+                          else
+                            span Coming Soon
+
+                if(courses.length > 1)
+                  a(href=('/instructors/' + instructor.get('username')) + '#courses')
+                    p.btn.btn-primary.expand.articles-back-btn.long-name-btn= 'More Courses by ' + article.get('instructor').get('name')
+
+          if(books.length != 0)
+            hr.articles
+            .row
+              .col-xs-12.col-xs-offset-0
+                h3.h3-feature-sidebar= 'Books by ' + article.get('instructor').get('name')
+                .course-book: a(href=book.get('link'), target='_blank'): .thumbnail
+                  img(src=book.get('cover')).img-responsive
+
+                if(books.length > 1)
+                  a(href=('/instructors/' + instructor.get('username')) + '#books')
+                    p.btn.btn-primary.expand.articles-back-btn.long-name-btn= 'More Books by ' + article.get('instructor').get('name')
+
+      if(articles.length > 1)
+        .col-xs-12.col-sm-12.col-md-12
+          hr.articles.margin-btm-hr
+          h2= 'More Articles by ' + article.get('instructor').get('name')
+          each additional in articles
+            if (additional.id !== article.id)
+              .row
+                .col-xs-12.col-sm-4.col-md-3
+                  if article.get('thumbImage')
+                    img(style="margin-top:20px;" src=additional.get('thumbImage').url()).img-responsive.thumbImg-article
+
+                .col-xs-12.col-sm-8.col-md-9
+                  .h3-article-title-container
+                    h3.each-article-title
+                      a(href="/" + additional.get('slug')).h3-article-title-text= additional.get('title')
+                  p !{libs.markdown.render(additional.get('content').substring(0, 220) + ' . . .')}
+
+                  .row
+                    .col-xs-3.col-sm-4.col-md-6
+                      a(href="/" + additional.get('slug')).btn.btn-sm.btn-primary-outline Read More
+

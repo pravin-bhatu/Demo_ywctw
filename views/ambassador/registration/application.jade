@@ -1,0 +1,422 @@
+extends ../../layout
+
+
+block content
+
+    style.
+        #main-ambo{
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+        p{
+            font-size: 16px;
+        }
+        table, th, td {
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .cent-img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .cent{
+            text-align: center;
+        }
+        .step-pics{
+            height: 250px;
+        }
+        .step-text{
+            margin-top: -5px;
+        }
+        .register{
+            padding: 40px;
+            background: #080808;
+            //- opacity: .4; 
+            color: white;
+            text-align: center;
+            height: 100%;
+        }
+        .ambo-signup-button{
+            color: white;
+            background: orange;
+            font-weight: bold;
+            width: 85%;
+
+        }
+        .rocket-computer{
+            color: white;
+            background-color: #eb8e1f;
+            text-align: center;
+            padding: 20px;
+        }
+        .checkmark-row{
+            background-color: #252525;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .insider-secrets-row{
+            background-color: white;
+            color: black;
+            padding: 20px;
+            text-align: center;
+        }
+        #ambassadorcontainer {
+            position: relative;
+        }
+        #navi,
+        #permdenied {
+            position: absolute;
+        }
+        #permdenied {
+            z-index: 10;
+            //- outline: 2px solid white;
+        }
+        .op{
+            opacity: .3;
+        }
+        .pad{
+            padding: 30px;
+        }
+        .pad-sm{
+            padding: 15px;
+        }
+        .jey-pic{
+            max-height: 380px;
+        }
+        .greg-pic{
+            max-height: 650px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .orange-check-pic{
+            margin-top: -5px;
+            position: absolute;
+            right: 0px;
+        }
+        .testimony-pic-pad{
+            padding-bottom: 80px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .img-banner{
+                width: 100%;
+                height: auto;
+                max-height: 420px;
+                width: auto\9;
+            }
+            .rocket-computer-pic{
+                height: 275px;
+            }
+            .rocket-computer{
+                padding-top: 0px;
+            }
+            .check-mark-pic{
+                height: 50px;
+            }
+            .table-percents{
+                color: #e81111;
+            }
+            .ywctw-long-logo{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 300px;
+                width: 80%;
+            }
+            .paw-flyer-pic{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 325px;
+            }
+        }
+        @media only screen and (min-width: 600px) {
+            .img-banner{
+                width: 100%;
+                height: auto;
+                max-height: 600px;
+                width: auto\9;
+            }
+            //- .pwa-vid{
+            //-     margin-top: 30px;
+            //- }
+            .register-area{
+                margin-top: 30px;
+                position:relative;
+            }
+            .table-percents{
+                font-size: 32px;
+                color: #e81111;
+            }
+            .table-big-text{
+                font-size: 22px;
+            }
+            .ambo-signup-button{
+                font-size: 30px; 
+            }
+            .ywctw-long-logo{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                max-width: 750px;
+                width: 80%;
+            }
+            .paw-flyer-pic{
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .testimony-pics{
+                position: absolute;
+                right: 30px;
+            }
+            .pad-lr{
+                padding-left: 95px;
+                padding-right: 95px;
+            }
+        }
+
+    .div(id="main-ambo" style="margin-top:-19px;")
+        .container-fluid
+            .row
+                .col-xs-12(style="margin-bottom:-5px;padding:0;")
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/pawbanner.png" alt="Peter Anthony Wynn" class="img-banner").img-responsive
+            .row.register.pad-lr   
+                .col-sm-6.col-xs-12
+                    div.embed-responsive.embed-responsive-16by9.pwa-vid
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/284428285?title=0&byline=0&portrait=0"  align="middle" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                .col-sm-6.col-xs-12.register-area
+                    if !user
+                        h3(style="font-size: 30px;") log in or create an account to become an ambassador so<b> YOU CAN PROMOTE AND PROFIT FROM THE NEXT BIG LAUNCH </b>
+                        button.btn.sign-up(style="font-size: 24px; background-color: #3097d1; margin: 5px;") <b>Log In </b>
+                        button.btn.sign-up.btn-primary(style="font-size: 24px; margin: 5px;") <b>Create An Account</b>
+                        p By registering as an Ambassador you agree to the <a target="_blank" href="https://www.youwillchangetheworld.com/terms/affiliate">Affiliate Operating Agreement</a>, <a target="_blank" href="https://www.youwillchangetheworld.com/terms">Terms of Use</a>, and <a target="_blank" href="https://www.youwillchangetheworld.com/terms/privacy">Privacy Policy</a>.  
+                    if ambassadorExists
+                        h3 You are already an Ambassador. Access the Ambassador Program <a href="/affiliates/program">HERE</a>
+                    if user && !ambassadorExists
+                        form(method="POST", action="/affiliates/application").form-horizontal 
+                            .form-horizontal
+                                .form-group
+                                    .col-xs-12
+                                        h3 <b> become an ambassador so YOU CAN PROMOTE AND PROFIT FROM THE NEXT BIG LAUNCH </b>
+                                        input(type="submit", value="Get Instant Access" ).btn.ambo-signup-button
+                        p By registering as an Ambassador you agree to the <a target="_blank" href="https://www.youwillchangetheworld.com/terms/affiliate">Affiliate Operating Agreement</a>, <a target="_blank" href="https://www.youwillchangetheworld.com/terms">Terms of Use</a>, and <a target="_blank" href="https://www.youwillchangetheworld.com/terms/privacy">Privacy Policy</a>.                 
+                        //- div(class=user ? "": "op")
+                            div(class=ambassadorExists ? "op":"")
+                                h3 <b> Enter your details below so you can PROMOTE AND PROFIT FROM THE NEXT BIG LAUNCH </b>
+                                form(method="POST", action="/affiliates/application").form-horizontal 
+                                    .form-horizontal
+                                        .form-group
+                                            .col-xs-3
+                                                label(for="Phone").control-label Mobile Phone#
+                                            .col-xs-9
+                                                input(type="text", name="Phone", required).form-control
+                                    .form-horizontal
+                                        .form-group
+                                            .col-xs-3
+                                                label(for="Street").control-label Street Addess
+                                            .col-xs-9
+                                                input(type="text", name="Street", required).form-control
+                                    .form-horizontal
+                                        .form-group
+                                            .col-xs-3
+                                                label(for="City").control-label City
+                                            .col-xs-9
+                                                input(type="text", name="City", required).form-control
+                                    .form-horizontal
+                                        .form-group
+                                            .col-xs-3
+                                                label(for="State").control-label State
+                                            .col-xs-9
+                                                input(type="text", name="State", required).form-control
+                                    .form-horizontal
+                                        .form-group
+                                            .col-xs-3
+                                                label(for="Zip").control-label Zip Code
+                                            .col-xs-9
+                                                input(type="text", name="Zip", required).form-control
+                                    .form-horizontal
+                                        .form-group
+                                            .col-xs-12
+                                                if user || ambassadorExists
+                                                    input(type="submit", value="Get Instant Access" ).btn.ambo-signup-button
+                                                if !user 
+                                                    input(disabled="disabled" type="submit", value="Get Instant Access" ).btn.ambo-signup-button
+                                p We do not share your details. By registering you agree to our Ambassador Agreement, Terms and Conditions, and Privacy Policy.
+            .row.cent.pad-lr
+                .col-xs-12
+                    h1 <b>Making Money Has Never Been Easier!</b>
+                .col-xs-12.pad-lr
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/register.png" alt="1.Register").step-pics
+                        h3.step-text Step 1: Register
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/promote.png" alt="2.Promote").step-pics
+                        h3.step-text Step 2: Promote
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/getpaid.png" alt="3.Get Paid").step-pics
+                        h3.step-text Step 3: Get Paid         
+            .row.rocket-computer.pad-lr
+                .col-md-6.col-xs-12(style="margin-top: 80px;")
+                    p(style="font-size: 20px;") We are in the business of helping you connect with the Biggest and Best product launches in the WORLD!!! You will know about them before EVERYONE ELSE and be able to maximize your profits with first access to promote.</b>
+                    h1 Normally $497, but today it's <label style="color: red;">Free</label>
+                .col-md-6.col-xs-12
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/rocketcomputer.png" alt="rocket").rocket-computer-pic
+            .row.checkmark-row.pad-lr
+                .col-xs-12
+                    h1 In the <b>YOU WILL CHANGE THE WORLD AMBASSADOR PROGRAM</b>, You will <b>ACCESS:</b>
+                .row
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/check.png" alt="check mark").check-mark-pic
+                        p All the hard work is done for you! Use the premade graphics, swipes, copywriting and marketing amterial so all you have to do is literally <b>COPY AND PASTE</b> to make money
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/check.png" alt="check mark").check-mark-pic
+                        p Earn <b>HIGH PAYING COMMISSIONS</b> with easy follow training and marketing strategies that WORK, so that you can maximize your promotions and <b>MAKE MORE MONEY</b>
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/check.png" alt="check mark").check-mark-pic
+                        p The <b>BEST</b> Affiliate products and launches <b>FIRST</b> to promote from the WORLD'S BIGGEST marketers and product creators
+                .row
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/check.png" alt="check mark").check-mark-pic
+                        p <b>LIVE WEB TRAINING</b> with Peter Anthony Wynn for how to create $1 million as an affiliate. These marketing secrets are normally sold for $497.
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/check.png" alt="check mark").check-mark-pic
+                        p <b>PRIVATE FACEBOOK GROUP:</b> Access the You Will Change The World Private Facebook group where you can network, share success, and get support
+                    .col-md-4.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/check.png" alt="check mark").check-mark-pic
+                        p Share this ambassador course with your network and friends and earn 2nd tier commisions of 5% on any products they sell.
+            .row.insider-secrets-row.pad-lr
+                .col-xs-12
+                    p <b>It costs you NOTHING to be an Ambassador, which means EVERY SALE YOU MAKE IS PROFT!</b>
+                    p What if you could promote amazing products that convert? Make <b>HIGH COMISSIONS</b> and not have to do any of the work to fullfill for the customer
+                    p This is without a doubt, one of the <b>BEST</b> ways to make money online, by promoting other peoples products.
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/insidersecrets.png" alt="YWCTW").img-responsive.cent-img
+                    p "Every <b>MILLIONAIRE</b> Internet Marketer promotes other peoples products as well as their own as another income stream for their business. If they do you should do it too!"
+                    p So what are you waiting for?
+                    p Put your details above now to get FIRST access to these amazing product launches!
+                    h2(style="color:red;") <b>Earn Residual Income For Life</b>
+                    h2(style="margin-top: -10px;") <b>with our ambassador program powered by <br>You Will Change The World</b>
+                    p We are excited to share with you this experience. There has never been a platform quite so unique; where you are truely rewarded with long term residual income. Your ability to offer hundreds of courses to users in the platform now allows them to have MULTIPLE options in content that has been developed to entertain, motivate, inspire, mentor, and guide. See below the high paying commisions we pay out each month. The courses you can promote from $97 to $4995 in price range. YWCTW rewards Affiliates with LIFETIME residual income its the gift that will keep on giving to all. See the affiliate commisions table below.
+            .row.pad-lr    
+                .col-xs-12
+                    table.table.table-responsive(style="border: 1px solid black;")
+                        thead(style="background: black; color: white;")
+                            tr: th(colspan="3" class="table-big-text") <b>You Will Change The World (YWCTW) Affiliate Commisions</b>
+                        tbody
+                            tr(style="background: #d0d0d0; font-weight: bold;" class="table-big-text")
+                                td Courses/Affiliate Commisions
+                                td Commisions Paid Within The First 30 Days When Leads Register Into A Free Or Paid Course
+                                td Lifetime Commisions Paid After First 30 Days From Initial Registration
+                            tr
+                                td(style="background: #d0d0d0; font-weight: bold;" class="table-big-text") Promoting YWCTW Courses
+                                td <b class="table-percents">40%</b> <br> Affiliates recieve 40% of revenue that their traffic generates for YWCTW courses. This may exclude VIP and Celebrity courses.
+                                td <b class="table-percents">20%</b> <br> Affiliates recieve 20% of revenue that their traffic generates for YWCTW courses excluding VIP and Celebrity courses.
+                            tr
+                                td(style="background: #d0d0d0; font-weight: bold;" class="table-big-text") Promoting YWCTW VIP & Celebrity Courses
+                                td <b class="table-percents">10-40%</b> <br> Affiliates can recieve up to 10-40% of all revenue that their traffic generates for the sale of any YWCTW VIP and 
+                                td <b class="table-percents">*</b> <br> Affiliate commisions on based on the celebrity
+                            tr
+                                td(style="background: #d0d0d0; font-weight: bold;" class="table-big-text") Second Tier Commisions For Signing Up New YWCTW Affiliates
+                                td <b class="table-percents">5%</b> <br> When Affiliate signs new Affiliates, they recieve 5% commision on any sales the new affiliate create.
+                                td <b class="table-percents">5%</b> <br> When an Affiliate signs new Affiliates, they recieve 5% commision on any sales the new Affiliate creates.
+                    p.cent The YWCTW platform has last cookie tracking. This means that the last affiliate who promoted the lead gets credited the commision based on the opt into YWCTW platform. Any sales of courses to that lead gets credited to the affiliate that got the opt in.
+            .row.pad.pad-lr
+                .row
+                    .col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/ywctwLongLogo.png" alt="YWCTW").ywctw-long-logo.img-responsive
+                    .col-xs-12
+                        h1(style="color: red; font-weight: bold;").cent Launches Coming Up
+                .row.pad
+                    .col-md-5.col-md-offset-1.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/Forbes-Riley.jpg" alt="Forbes Riley" style="padding-left: 20px;").jey-pic.img-responsive
+                    .col-md-6.col-xs-12(style="padding-top: 50px;")
+                        p.cent<b>Forbes Riley Launch</b>
+                        p.cent(style="color: red; font-size: 16px;") Instant Cash Flow The "21 Secrets" 
+                        p Forbes Riley has created a trusted brand name for herself and is recognized internationally as an award-winning TV host, spokesperson, celebrity fitness and lifestyle expert, keynote speaker, and author.
+                .row.pad
+                    .col-md-5.col-md-offset-1.col-xs-12
+                        img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/jeyshettyerasemarks.png" alt="Jey").jey-pic.img-responsive
+                    .col-md-6.col-xs-12(style="padding-top: 15px;")
+                        p.cent<b>Jey Shetty Launch</b>
+                        p.cent(style="color: red; font-size: 16px;") Passion to Pay Check Course
+                        p With over 15 MILLION Followers on Facebook, 1 Million Followers on Instagram, 850,000 Followers on Youtube and Over 1 Billion Views of his videos, Jey Shetty is becoming one of the fastest growing THOUGHT LEADERS on the planet.
+                        p Jey Shetty is releasing his new online course in 2018 called FROM PASSION TO PROFIT. This launch will be one of the LARGEST product launches EVER and you will want to be part of this movement.
+                        p In this course, Passion to Paycheck, award winning host, author, former monk, social media sensation, and one of Forbes 30 under 30, Jay Shetty, will share 10 of his proven steps to achieve the life you've always dreamt of and help you turn your passion into paycheck.
+                .col-xs-12
+                    h1.btn-primary.cent(style="padding: 10px;") Make $118 per sale as an Ambassador
+            .row.pad(style="background: #ba1919;").cent
+                .col-xs-10.col-xs-offset-1
+                    h1(style="color: #ffc706;")<b> PARTNER WITH US to make global change and we can start making a difference together!</b>
+                    p(style="color: white;") By Promoting Jey Shetty's PASSION TO PAYCHECK, 10% of the proceeds go to amazing causes which help people much less fortunate than us. This is your way to also make a positive difference.
+            .row.pad.pad-lr
+                .col-md-4.col-md-offset-1.col-xs-12
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/gregfoundation.png" alt="Foundation").greg-pic.img-responsive
+                .col-md-5.col-xs-12(style="margin-top: 30px;")
+                    p The Greg Secker Foundation is committed to positively improving the quality of life for people around the world. Focusing on education, life skills and leadership initiatives the foundation strives to equip people with the essential building blocks of life. The Foundation is changing lives through: The Christmas Basket Brigade, Youth Leadership Summit, Early Childhood Development Program, Fling Trader Project, Starkey Hearing Foundation and Global Tradeathon.
+                    p It has also worked with Sir Richard Branson alongside Virgin Unite and built a new creche in one of the rural villages in South Africa. Most recently Greg travelled to the Phillippines to assist with a Foundation project to rebuild homes for those affected by typhoones and cyclones. In 2016 Greg and his team will be building an entire new village of 100 homes and facilities in Lemery. The 'Build House, Build a Home' ambitous project will provide critical essentials, access to education and life skills training to build a sustainable community.
+                    <br>
+                    p WE is a movement that believes when we come together we can create an even better world. WE makes it easy for you to get involved-whether at home, school or work-by offering resources to help you create positive social change in your community and around the world*. Find out how WE makes doing good, doable.
+            .row
+                .col-xs-12(style="background: #eb881f;").pad
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/pawaffiliateflyer.png" alt="PAW Flyer").paw-flyer-pic.img-responsive
+            .row.pad.pad-lr
+                .col-xs-12
+                    h1(style='color: #ec911f; font-weight: bold;') In this course you will access:
+                .col-xs-12
+                    .row.pad-sm
+                        .col-xs-1
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/orangecheck.png" alt="PAW Flyer").orange-check-pic
+                        .col-xs-11
+                            p <b>Webinar Training</b> with Peter Anthony Wynn about how to generate millions of dollars as an Ambassador or Affiliate of other people's products. You will access 10 Jam packed webinars covering topics like:
+                            ul
+                                li How to go viral
+                                li Understanding Niche targeting to really accellerate results
+                                li Facebook Marketing Training - How to get free leads and paid leads as cheap as possible
+                                li How to use Facebook live, video marketing and Youtube to have greater impact and conversions
+                                li Creating effective email campaigns for higher open and click through rates maximising profits
+                            p ..... And many more!
+                    .row.pad-sm
+                        .col-xs-1
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/orangecheck.png" alt="check").orange-check-pic
+                        .col-xs-11
+                            p <b>Social Media Launch Secrets</b> which have launched global Entrepreneurs like Jey SHetty, Peter Anthony Wynn and Forbes Riley to name a few.
+                    .row.pad-sm
+                        .col-xs-1
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/orangecheck.png" alt="check").orange-check-pic
+                        .col-xs-11
+                            p How To Create An Online Business or another revenue stream from selling other people's products. Which means NO overhead, fulfillment or customer support hassles. Make money by literally copy and pasting!
+                    .row.pad-sm
+                        .col-xs-1
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/orangecheck.png" alt="check").orange-check-pic
+                        .col-xs-11
+                            p Partner With Socially Conscious Charities and Causes during your launch to not only give back and make a contribution, but also triple your profits.
+                    .row
+                        .col-xs-12
+                            h1.cent(style='color: #ec911f; font-weight: bold;') Retail Value $497
+            .row.pad.pad-lr(style="background: #575757")
+                .row
+                    .col-xs-12
+                        h2(style="color: white; font-weight: bold; text-align: center;") What Others Say About 'You Will Change The World'...
+                .row(style="color: white;").pad
+                    .row.testimony-pic-pad
+                        .col-xs-12.col-md-3
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/register-person-1.png" alt="testimony").testimony-pics
+                        .col-xs-12.col-md-9(style="margin-top: 30px;")
+                            p Forbes Riley has created a trusted brand name for herself and is recognized internationally as an award-winning TV host, spokesperson, celebrity fitness instructor, lifestyle expert, keynote speaker, and author.
+                    .row.testimony-pic-pad
+                        .col-xs-12.col-md-3
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/register-person-2.png" alt="testimony").testimony-pics 
+                        .col-xs-12.col-md-9(style="margin-top: 30px;")
+                            p Rob Nelson first became nationally known for being one of the founders of Lead or Leave -a political action group that focused on reducing the deficit and fighting for generational equity.
+                    .row.testimony-pic-pad
+                        .col-xs-12.col-md-3
+                            img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/register/register-person-3.png" alt="testimony").testimony-pics
+                        .col-xs-12.col-md-9(style="margin-top: 30px;")
+                            p Keith J. Cunningham is a seasoned entrepreneur, internationally-known speaker and acclaimed author. Keith is regarded as one of the world's foremost authorities on business mastery.
+
+
+
+

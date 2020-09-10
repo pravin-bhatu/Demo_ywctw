@@ -1,0 +1,6 @@
+if course.get('bookLink')
+  .course-book: a(href=course.get('bookLink'), target='_blank'): .thumbnail
+    if course.get('bookCover')
+      img(src=course.get('bookCover').url()).img-responsive
+    .caption
+      h3.text-center= course.get('bookTitle')

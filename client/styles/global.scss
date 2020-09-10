@@ -1,0 +1,54 @@
+html, body {
+  height: 100%;
+  font-weight: 300;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  flex: none;
+}
+
+#main {
+  flex: 1 0 auto;
+  position: relative;
+  margin-bottom: -22px;
+  min-height: 100%;
+
+  .page {
+    margin-bottom: 31px;
+  }
+}
+
+footer {
+  flex: none;
+}
+
+.expand {
+  width: 100%;
+}
+
+#courses.page {
+  background: #000;
+  margin-bottom: 21px;
+  margin-top: -22px;
+  padding-top: 25px;
+}
+
+.btn.btn-inverse {
+  color: #fff;
+  background-color: #333;
+  border-color: #000;
+
+  &:hover {
+    background-color: #000;
+  }
+}
+
+.nav-login {
+  color: #fff;
+  background-color: $brand-info;
+}

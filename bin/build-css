@@ -1,0 +1,10 @@
+rimraf public/css
+mkdir public/css
+node-sass client/styles/main.scss -o public/css
+node-sass client/styles/admin.scss -o public/css
+node-sass client/styles/dashboard.scss -o public/css
+postcss --use autoprefixer public/css/main.css -d public/css
+cp client/styles/toolkit.min.css public/css
+cp client/styles/flipclock.css public/css
+cp client/styles/toolkit-light.css public/css
+cp -R client/styles/tinymce public/css

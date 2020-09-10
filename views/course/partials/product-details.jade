@@ -1,0 +1,24 @@
+if lessons.length
+  .row
+    .col-xs-4: p Lessons:
+    .col-xs-8: p= lessons.length
+if course.get('lessonLength')
+  .row
+    .col-xs-4: p Length:
+    .col-xs-8: p= course.get('lessonLength')
+if course.get('skill')
+  .row
+    .col-xs-4: p Skill Level:
+    .col-xs-8: p= course.get('skill')
+if course.get('languages')
+  .row
+    .col-xs-4: p Languages:
+    .col-xs-8
+      for language in course.get('languages')
+        p= language
+if course.get('features')
+  .row
+    .col-xs-4: p Features:
+    .col-xs-8
+      for feature in course.get('features')
+        p= feature

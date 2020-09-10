@@ -1,0 +1,383 @@
+extends ../layout
+
+block content
+  if !user
+    .col-xs-10.col-xs-offset-1
+      .row(style="height:80px")
+      .row: .col-xs-12.text-center
+        p: h3: b Congratulations! You made it to the secret link.
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        p: h4: b Once you have logged in or created a free account,
+        p: h4: b post as many of these motivational quotes on all your social media accounts as many times as you want!
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        p: h4: b Enjoy!
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        .row
+          .col-xs-6.col-xs-offset-1.col-sm-5
+            p: a.btn.btn-lg.btn-primary.expand.sign-up(href='#') Create Free Account!
+          .col-xs-6.col-xs-offset-1.col-sm-5.col-sm-offset-0
+            p: a.btn.btn-lg.btn-info.expand.sign-in(href='#') Log In
+  else
+    #profile.page: .container
+      #picModal.modal.fade(tabindex="-1" role="dialog" aria-labelledby="myModalLabel" width="800")
+        .modal-dialog.modal-lg(role="document")
+          .modal-content
+            .modal-header
+              .button.close(type="button" data-dismiss="modal" aria-label="Close")
+                span(aria-hidden="true")&times;
+              h4.modal-title#picModalLabel
+            .modal-body
+              .row: .col-xs-12.text-center
+                img(src="/img/motivational/001.png")
+
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/001.png")
+            img(src="/img/motivational/001.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/002.png")
+            img(src="/img/motivational/002.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/003.png")
+            img(src="/img/motivational/003.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/004.png")
+            img(src="/img/motivational/004.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/005.png")
+            img(src="/img/motivational/005.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/006.png")
+            img(src="/img/motivational/006.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/007.png")
+            img(src="/img/motivational/007.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/008.png")
+            img(src="/img/motivational/008.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/009.png")
+            img(src="/img/motivational/009.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/010.png")
+            img(src="/img/motivational/010.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/011.png")
+            img(src="/img/motivational/011.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/012.png")
+            img(src="/img/motivational/012.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/013.png")
+            img(src="/img/motivational/013.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/014.png")
+            img(src="/img/motivational/014.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/015.png")
+            img(src="/img/motivational/015.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/016.png")
+            img(src="/img/motivational/016.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/017.png")
+            img(src="/img/motivational/017.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/018.png")
+            img(src="/img/motivational/018.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/019.png")
+            img(src="/img/motivational/019.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/020.png")
+            img(src="/img/motivational/020.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/021.png")
+            img(src="/img/motivational/021.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/022.png")
+            img(src="/img/motivational/022.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/023.png")
+            img(src="/img/motivational/023.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/024.png")
+            img(src="/img/motivational/024.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/025.png")
+            img(src="/img/motivational/025.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/026.png")
+            img(src="/img/motivational/026.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/027.png")
+            img(src="/img/motivational/027.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/028.png")
+            img(src="/img/motivational/028.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/029.png")
+            img(src="/img/motivational/029.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/030.png")
+            img(src="/img/motivational/030.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/031.png")
+            img(src="/img/motivational/031.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/032.png")
+            img(src="/img/motivational/032.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/033.png")
+            img(src="/img/motivational/033.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/034.png")
+            img(src="/img/motivational/034.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/035.png")
+            img(src="/img/motivational/035.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/036.png")
+            img(src="/img/motivational/036.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/037.png")
+            img(src="/img/motivational/037.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/038.png")
+            img(src="/img/motivational/038.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/039.png")
+            img(src="/img/motivational/039.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/040.png")
+            img(src="/img/motivational/040.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/041.png")
+            img(src="/img/motivational/041.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/042.png")
+            img(src="/img/motivational/042.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/043.png")
+            img(src="/img/motivational/043.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/044.png")
+            img(src="/img/motivational/044.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/045.png")
+            img(src="/img/motivational/045.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/046.png")
+            img(src="/img/motivational/046.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/047.png")
+            img(src="/img/motivational/047.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/048.png")
+            img(src="/img/motivational/048.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/049.png")
+            img(src="/img/motivational/049.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/050.png")
+            img(src="/img/motivational/050.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/051.png")
+            img(src="/img/motivational/051.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/052.png")
+            img(src="/img/motivational/052.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/053.png")
+            img(src="/img/motivational/053.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/054.png")
+            img(src="/img/motivational/054.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/055.png")
+            img(src="/img/motivational/055.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/056.png")
+            img(src="/img/motivational/056.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/057.png")
+            img(src="/img/motivational/057.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/058.png")
+            img(src="/img/motivational/058.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/059.png")
+            img(src="/img/motivational/059.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/060.png")
+            img(src="/img/motivational/060.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/061.png")
+            img(src="/img/motivational/061.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/062.png")
+            img(src="/img/motivational/062.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/063.png")
+            img(src="/img/motivational/063.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/064.png")
+            img(src="/img/motivational/064.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/065.png")
+            img(src="/img/motivational/065.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/066.png")
+            img(src="/img/motivational/066.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/067.png")
+            img(src="/img/motivational/067.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/068.png")
+            img(src="/img/motivational/068.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/069.png")
+            img(src="/img/motivational/069.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/070.png")
+            img(src="/img/motivational/070.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/071.png")
+            img(src="/img/motivational/071.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/072.png")
+            img(src="/img/motivational/072.png", height="200")
+
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/073.png")
+            img(src="/img/motivational/073.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/074.png")
+            img(src="/img/motivational/074.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/075.png")
+            img(src="/img/motivational/075.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/076.png")
+            img(src="/img/motivational/076.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/077.png")
+            img(src="/img/motivational/077.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/078.png")
+            img(src="/img/motivational/078.png", height="200")
+
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/079.png")
+            img(src="/img/motivational/079.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/080.png")
+            img(src="/img/motivational/080.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/081.png")
+            img(src="/img/motivational/081.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/082.png")
+            img(src="/img/motivational/082.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/083.png")
+            img(src="/img/motivational/083.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/084.png")
+            img(src="/img/motivational/084.png", height="200")
+
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/085.png")
+            img(src="/img/motivational/085.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/086.png")
+            img(src="/img/motivational/086.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/087.png")
+            img(src="/img/motivational/087.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/088.png")
+            img(src="/img/motivational/088.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/089.png")
+            img(src="/img/motivational/089.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/090.png")
+            img(src="/img/motivational/090.png", height="200")
+
+      .row(style="height:15px")
+
+      .row
+        .col-xs-12.text-center
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/091.png")
+            img(src="/img/motivational/091.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/092.png")
+            img(src="/img/motivational/092.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/093.png")
+            img(src="/img/motivational/093.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/094.png")
+            img(src="/img/motivational/094.png", height="200")
+          &nbsp;&nbsp;&nbsp;&nbsp;
+          a(href="#" data-toggle="modal" data-target="#picModal" data-picurl="/img/motivational/095.png")
+            img(src="/img/motivational/095.png", height="200")
+

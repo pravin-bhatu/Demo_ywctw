@@ -1,0 +1,81 @@
+extends layout
+
+block content
+	.row: .col-xs-12
+		.dashhead
+			.dashhead-titles
+				h6.dashhead-subtitle Dashboards
+				h3.dashhead-title Overview
+	.row: .col-xs-12
+		.hr-divider
+			h3.hr-divider-content.hr-divider-heading Welcome 
+		.row: .col-xs-12 
+			.embed-responsive.embed-responsive-16by9
+				video( controls='controls' width='640' height='360')
+					source(src=`data:video/mp4;base64,${encodedData}` type='video/mp4')
+
+
+	.row: .col-xs-12(style="margin-top:50px;")
+		//- p(style="font-size:16px") Thank You for becoming an instructor on the YWCTW Platform. We feel it is the finest representation of online course experience for both the students and the Instructors. We have broken down the Dashboard into some simple areas. We know it is important to see how many people have taken and experienced your courses: 2 types, ONE: students from other instructors or students from the platform, TWO: Your student body (these came directly from your affiliate code and are assigned to you for life) Please refer to your  contract in the “Files Area” to remind yourself of the splits. You want to ad a course, ad an article, create a discount code or ad an affiliate to help you promote your course, perfect all that is completed here in your dashboard.
+		p(style="font-size:16px") Thank You for becoming an instructor on the YWCTW Platform. We feel it is the finest representation of online course experience for both the students and the Instructors. We have broken down the Dashboard into some simple areas. We know it is important to see how many people have taken and experienced your courses: 2 types, ONE: students from other instructors or students from the platform, TWO: Your student body (these came directly from your affiliate code and are assigned to you for life) Please refer to your contract in the “Files Area” to remind yourself of the splits. You want to ad a course, ad an article, create a discount code or ad an affiliate to help you promote your course, perfect all that is completed here in your dashboard.
+		//- p(style="font-size:16px") We encourage you to get familiar with our best feature and return often to see our latest features. Here you will also be able to see quickly how much money you have earned in total (from the date we started this feature) and in the Affiliate Codes section you will easily be able to see how much you are earning per course, by your student body vs secondary payouts. You will also be able to create discount codes and track them by date and amount of dollars  sold. This is an amazing feature as it lets you run your own promotions and offer whatever percentages YOU DESIRE directly to the people helping you grow. Just remember YOU will create the payouts to them directly when you create the codes, so do not forget to LOG IN the payout so you can keep track and stay organized.
+		p(style="font-size:16px") We encourage you to get familiar with our best feature and return often to see our latest features. Here you will also be able to see quickly how much money you have earned in total (from the date we started this feature) and in the Affiliate Codes section you will easily be able to see how much you are earning per course, by your student body vs secondary payouts. You will also be able to create discount codes and track them by date and amount of dollars sold. This is an amazing feature as it lets you run your own promotions and offer whatever percentages YOU DESIRE directly to the people helping you grow. Just remember YOU will create the payouts to them directly when you create the codes, so do not forget to LOG IN the payout so you can keep track and stay organized.
+		//- p(style="font-size:16px") We also made sure that there was an area where you could actually see the TRAFFIC that was hitting each of YOUR PAGES. That’s right it is now very simple to look at the traffic coming to your pages and articles by date. We hope this really helps you get a handle on your marketing to see what is working and what may need some help.
+		p(style="font-size:16px") We also made sure that there was an area where you could actually see the TRAFFIC that was hitting each of YOUR PAGES. That’s right it is now very simple to look at the traffic coming to your pages and articles by date. We hope this really helps you get a handle on your marketing to see what is working and what may need some help.
+		//- p(style="font-size:16px") Now as you browse you will discover even more features and greater display of tools then most sites have available. Our goal is to make sure that we are growing and addressing your needs BEFORE you actually need it. Thank You for trusting us to maintain your legacy.
+		p(style="font-size:16px") Now as you browse you will discover even more features and greater display of tools then most sites have available. Our goal is to make sure that we are growing and addressing your needs BEFORE you actually need it. Thank You for trusting us to maintain your legacy.
+
+
+	.row: .col-xs-12(style="margin-top:50px;")
+		.hr-divider
+			h3.hr-divider-content.hr-divider-heading Quick Stats
+	.row
+		.col-sm-6.col-md-6
+			.statcard.statcard-success.p-a-md.text-center
+				h2.statcard-number
+					| #{countStudentBody}
+				span.statcard-desc Student Body
+
+		.col-sm-6.col-md-6
+			.statcard.statcard-info.p-a-md.text-center
+				h2.statcard-number
+					| #{totalEnrollments}
+				span.statcard-desc Course Enrollment Total
+
+	if (countStudentBody != 0)
+		.row: .col-xs-12(style="margin-top:20px;")
+			.col-sm-6.col-md-6.text-center
+				form(id="getStudentBody" method="post" action="getStudentBody")
+					if instructor.get('affiliate')
+						input(type="hidden" name="affiliateId", value=instructor.get('affiliate').id)
+					input(type="hidden" name="instructorId", value=instructor.id)
+					input(id="downloadList" type="submit" value="Download Student Body List").btn.btn-primary.btn-pill
+			.col-sm-6.col-md-6
+
+	.row: .col-xs-12(style="margin-top:40px;")
+		.hr-divider
+			h3.hr-divider-content.hr-divider-heading Course Information
+
+	.row: .col-xs-12(style="margin-top:20px;")
+		table.table.table-hover
+			thead
+				tr
+					th.header Course Name
+					th.header.text-center Enrollments
+					th.header.text-center Student Body
+			tbody
+				for course in courses
+					tr
+						td= course.get('name')
+						td.text-center= course.enrollments.length
+						td.text-center= course.studentBody.length
+
+//
+	.row: .col-xs-12(style="margin-top:50px;")
+		.hr-divider
+			h3.hr-divider-content.hr-divider-heading News & Events
+
+	.row
+		.col-xs-6
+			h4 Dashboard Coming Soon
+			p We're working hard to provide you with all the powerful tools and analytics you need to empower your online course business. Check back often for updates.

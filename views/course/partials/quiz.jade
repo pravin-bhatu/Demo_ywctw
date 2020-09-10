@@ -1,0 +1,20 @@
+- var index = 0
+
+.alert.alert-danger#questionsError(hidden) Please Answer all the questions.
+.alert.alert-info#questionsProcessing(hidden) Quiz is being processed, please wait for your results
+.alert.alert-success#questionsPassed(hidden=(hidePassedQuestions)) Congratulations! You have passed the quiz.
+.alert.alert-warning#questionsFailed(hidden=(hideWarningQuestions))= warningQuestionsData
+if retakeQuiz
+  button.btn.btn-primary#retakeQuiz Retake Quiz
+#quiz(hidden=(hideQuiz))
+  each question in lesson.get('quiz')
+    p= ++index + ': ' + question.get('text')
+    each value, key in question.get('answers').options
+      .radio
+        label
+          input(type='radio' name=question.id value=key)
+          |  #{value}
+
+  input(type='hidden' name='questionType' value='quiz')
+
+  button.btn.btn-primary#questionsSubmit Submit

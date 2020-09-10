@@ -1,0 +1,40 @@
+extends layout
+block content
+	form(id="addResource" method="post" action="files" enctype="multipart/form-data" onSubmit="document.getElementById('formSubmit').disabled=true;")
+		.row: .col-xs-12
+			.dashhead
+				.dashhead-titles
+					h6.dashhead-subtitle Dashboards
+					h3.dashhead-title Files
+
+		.row: .col-xs-12
+			.hr-divider.m-t
+				h3.hr-divider-content.hr-divider-heading Downloads
+
+		br
+
+		.row
+			.col-xs-4.text-center
+				a(target="_blank" href="../files/action-guide.pdf")
+					img(src="../img/dashboard/action-guide-thumbnail.png" height="300px")
+				h4 Action Guide
+			.col-xs-4.text-center
+				a(target="_blank" href="../files/ywctw-contract.pdf")
+					img(src="../img/dashboard/contract-thumbnail.png" height="300px")
+				h4 Contract
+
+		.row: .col-xs-12
+
+			.dashhead
+				.dashhead-titles
+					h3.dashhead-title Videos
+					label.btn.btn-primary(for='fusk') Upgrade Video
+						|   
+						input#fusk(type='file' name='introVideo' style='display: none;' accept="video/mp4,video/x-m4v,video" onchange="form.submit()")
+					//input(id="formSubmit" type="submit" value="Submit").btn.btn-primary
+		.row: .col-xs-12
+			.hr-divider
+				h3.hr-divider-content.hr-divider-heading Downloads 
+			.embed-responsive.embed-responsive-16by9
+				iframe(src=file, width='500' height='281' frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+				input(type="hidden" id="TxtFileId" name="TxtFileId", value=fileId)

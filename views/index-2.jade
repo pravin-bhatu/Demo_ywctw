@@ -1,0 +1,82 @@
+extends layout
+
+block content
+
+  style.
+    /*Fix for padding when I use three boxes*/
+    #page-home {
+      padding-top: 0px;
+    }
+
+  #page-home
+    .register-choice-old-home
+      .row
+        .col-xs-12.col-sm-4.text-center(style="padding:0")
+          a(href="foundations")
+            .foundation-box
+              // h1.register-choice-text Share Your Mission
+        .col-xs-12.col-sm-4.text-center(style="padding:0")
+          a(href="instructors/become")
+            .legacy-box
+              // h1.register-choice-text Curate Your Legacy
+        .col-xs-12.col-sm-4.text-center(style="padding:0")
+          a(href="courses")
+            .start-learning-box
+              // h1.register-choice-text Become More
+
+    .white-box-container-home-bottom: .container: .white-box-container-home-no-background
+      .row
+        .col-xs-12.col-sm-12.col-md-4.min-col-height-home
+          h2.text-center
+            a(style='color:black', href='/courses').h2-section-title-home Featured Courses
+          for course in courses.featured
+            .row
+              .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3.col-md-12.col-md-offset-0
+                .course-card.course-card-home: a(href='/courses/' + course.get('slug'))
+                  figure.effect-julia
+                    if course.get('cardImage')
+                      img(src=course.get('cardImage').url(), alt= course.get('name') + ' ' + course.get('instructor').get('name')).img-responsive
+                    else
+                      img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×275&w=500&h=275').img-responsive
+                    figcaption
+                      h2(style='text-transform:capitalize;').fittext= course.get('name')
+                      p= course.get('instructor') ? course.get('instructor').get('name') : ''
+                      button.btn.btn-primary
+                        if course.get('stage') === 'prod'
+                          if course.get('price') === 0
+                            span Free Enrollment
+                          else
+                            span Enroll for
+                              include course/partials/price
+                        else
+                          span Coming Soon
+
+          .col-xs-10.col-xs-offset-1.col-sm-10.col-sm-offset-1.col-md-12.col-md-offset-0.btn-bottom-home
+            p: a.btn.btn-lg.btn-inverse.expand.more-courses-home(href="/courses") More Courses
+
+        .col-xs-12.col-sm-12.col-md-8.min-col-height-home
+          h2.text-center
+            a(style='color:black', href="/articles").h2-section-title-home Articles
+          each article in featuredArticles
+            .list-group
+              hr.home
+              .article-row-home
+                a(href="/" + article.get('slug'))
+                  //button(type="button").list-group-item
+                  .row.home-article-title-container
+                    .col-xs-12.col-sm-12.col-md-3.text-center
+                      img(style="opacity:.80;margin-top:20px;" src=article.get('thumbImage').url()).img-responsive
+                      // img(src=(article.get('instructor').get('avatar') ? article.get('instructor').get('avatar').url() : '/img/demo/profile.png'), alt= article.get('instructor').get('name')).articles-profile-img-home
+                      h5(style='color:#333333;')= article.get('instructor').get('name')
+                    .col-xs-12.col-sm-12.col-md-9
+                      h3.each-article-title-home
+                        a(href="/" + article.get('slug')).h3-article-title-text= article.get('title')
+                      .each-article-p-home
+                        p(style='text-align:left;') !{libs.markdown.render(article.get('content').substring(0, 160) + ' . . .')}
+          .col-xs-10.col-xs-offset-1.btn-bottom-home
+            p: a.btn.btn-lg.btn-inverse.expand.more-articles-home(href="/articles") More Articles
+
+      .row.text-center
+        br
+        h3: i: b In Loving Memory of Emma Renee Tavasci
+        h4: i  April 21, 1997 - July 23, 2016

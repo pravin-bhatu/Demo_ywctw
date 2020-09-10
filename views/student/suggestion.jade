@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  #courses.page
+    if user
+      a(href="/account/courses"): .bg-success.text-center(style="padding:10px;margin-top:-25px;color:#000;")
+        | Click For Your Courses
+    .container
+      h2(style='color:#aaa;').text-center Featured Courses
+      hr
+      .row
+        for course in courses.featured
+          if course.get('stage') === 'prod' || course.get('stage') === 'stage'
+            include partials/card
+      h2(style='color:#aaa;').text-center Free Courses
+      hr
+      .row
+        for course in courses.free
+          if course.get('stage') === 'prod' || course.get('stage') === 'stage'
+            include partials/card
+      h2(style='color:#aaa;').text-center Paid Courses
+      hr
+      .row
+        for course in courses.paid
+          if course.get('stage') === 'prod' || course.get('stage') === 'stage'
+            include partials/card
+      h2(style='color:#aaa;').text-center Coming Soon Courses
+      hr
+      .row
+        for course in courses.comingSoon
+          if course.get('stage') === 'prod' || course.get('stage') === 'stage'
+            include partials/card

@@ -1,0 +1,165 @@
+extends layout
+
+block content
+  .col-xs-6.col-xs-offset-3.survey-container
+    if (showForm)
+      h3 Survey Form
+
+      form(id="survey",method="post",action="#")
+        .row
+          .col-xs-12.col-sm-5
+            .form-group
+              label First Name
+              input(type="text", id="firstName", name="firstName" || '', placeholder='First Name', required).form-control
+          .col-xs-12.col-sm-5
+            .form-group
+              label Last Name
+              input(type="text", id="lastName", name="lastName" || '', placeholder='Last Name', required).form-control
+
+        .row
+          .col-xs-12.col-sm-8
+            .form-group
+              label Email Address
+              input(type="text", id="email", name="email" || '', placeholder='Email', required).form-control
+
+        .row
+          .col-xs-12
+            .form-group
+              label Gender
+              br
+              label.radio-inline
+                input(type='radio', name='inlineRadioOptions', value='male', id='male', required)
+                |  Male
+              label.radio-inline
+                input(type='radio', name='inlineRadioOptions', value='female', id='female', required)
+                |  Female
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question1") Do you love people?
+                select.form-control(name="question1", id="question1", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question2") Do you want to help them?
+                select.form-control(name="question2", id="question2", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="inProcess") In Process
+                  option(value="interested") Interested
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question3") Have you ever struggled with something and overcame it?
+                select.form-control(name="question3", id="question3", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question4") Are you willing to do what it takes to become more successful?
+                select.form-control(name="question4", id="question4", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="interested") Interested
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question5") Are you an author?
+                select.form-control(name="question5", id="question5", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="inProcess") In Process
+                  option(value="interested") Interested
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question6") Are you a coach?
+                select.form-control(name="question6", id="question6", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="inProcess") In Process
+                  option(value="interested") Interested
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question7") Do you teach a live event?
+                select.form-control(name="question7", id="question7", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="inProcess") In Process
+                  option(value="interested") Interested
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question8") Do you have an expertise?
+                select.form-control(name="question8", id="question8", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="inProcess") In Process
+                  option(value="interested") Interested
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question9") Would creating additional income help you and your family?
+                select.form-control(name="question9", id="question9", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question10") Do you have a Facebook following?
+                select.form-control(name="question10", id="question10", required)
+                  option(value="") Select
+                  option(value="x<=1000") 1000 or less
+                  option(value="1000<x<2000") Greater than 1000, less than 2000
+                  option(value="2000<x<3500") Greater than 2000, less than 3500
+                  option(value="3500<x<5000") Greater than 3500, less than 5000
+                  option(value="x>=5000") 5000 or greater
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question11") Does creating an online course interest you?
+                select.form-control(name="question11", id="question11", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+
+        .row
+          .col-xs-12
+            .form-group
+              label( for="question12") Would you like to come to a live event and learn how to build and market your course?
+                select.form-control(name="question12", id="question12", required)
+                  option(value="") Select
+                  option(value="yes") Yes
+                  option(value="no") No
+                  option(value="inProcess") In Process
+                  option(value="interested") Interested
+
+        .row.m-t.m-b.text-center
+          .col-xs-12
+            input(id="formSubmit", type="submit", value="Submit").btn.btn-primary.btn-lg
+
+    if (showThankYou)
+      h3 Thank You for taking the survey

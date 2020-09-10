@@ -1,0 +1,12 @@
+image: node:6
+clone:
+  depth: full
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - echo "only on master"
+            - npm install
+            - npm test
+            - git push https://heroku:cc772506-f16d-4d6f-946e-872726e29454@git.heroku.com/ywctw.git HEAD:master

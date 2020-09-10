@@ -1,0 +1,134 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ selector: "textArea", plugins: "lists", browser_spellcheck: true });</script>
+
+block content
+  h1.page-header Admin - Course - !{formType}
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  - var action = "";
+  if(formType == 'Add')
+    - action = "add";
+  else
+    - action = "edit";
+  form(id="course",method="post",action=action)
+
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Course Information
+
+    .row: .col-xs-12
+      .form-group
+        label(for="instructor") Instructor
+          select.form-control(name="instructor", id="instructor")
+            option Select Instructor
+            each instructor in instructors
+              option(value=[instructor.id,instructor.get('name')], selected=((values.instructorName === instructor.get('name')) ? true : false))= instructor.get('name')
+
+    if(formType === 'Edit')
+      .row
+        .col-xs-12
+          label(for="stage") Stage:
+            select.form-control(name="stage", id="stage")
+              option(value='prod', selected=((values.stage === 'prod') ? true : false)) prod
+              option(value='stage', selected=((values.stage === 'stage') ? true : false)) stage
+              option(value='dev', selected=((values.stage === 'dev') ? true : false)) dev
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Course Name
+          input(type="text", id="courseName", name="courseName", value=values.name || '', required).form-control
+
+    if(formType === 'Edit')
+      .row
+        .col-xs-12
+          .form-group
+            label Course Headline
+            input(type="text", id="courseHeadline", name="courseHeadline", value=values.headline || '').form-control
+
+    .row
+      .col-xs-12.col-sm-2
+        .form-group
+          label Course Price
+          .input-group
+            .input-group-addon $
+            input(type="text", id="coursePrice", name="coursePrice", value=values.price || '0', required).form-control
+            .input-group-addon .00
+      .col-xs-12.col-sm-2
+        .form-group
+          label( for="courseLevel") Course Level
+            select.form-control(name="courseLevel", id="courseLevel")
+              each val in ['All Levels','Advanced','Intermediate','Beginner']
+                option= val
+      .col-xs-12.col-sm-2
+        .form-group
+          label( for="courseLanguage") Course Language
+            select.form-control(name="courseLanguage", id="courseLanguage")
+              each val in ['English']
+                option= val
+
+      .col-xs-12.col-sm-3.text-center
+        .form-group
+          .control-lable: label Video Provider
+          .radio-inline
+            label
+              input(type='radio', name='videoProvider', value='youtube', checked=(values.videoProvider === 'youtube') ? true : false)
+              |     Youtube
+          .radio-inline
+            label
+              input(type='radio', name='videoProvider', value='vimeo', checked=(values.videoProvider === 'vimeo') ? true : false)
+              |     Vimeo
+
+      .col-xs-12.col-sm-3
+        .form-group
+          label Video ID
+            input(name="videoId", id="videoId", value=values.videoId || '').form-control
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Course Description
+          textArea(name="courseDescription", id="courseDescription", rows="10").form-control
+            if(values.description)
+              !{libs.markdown.render(values.description) || ''}
+
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Course Perfect For (bullet points)
+          textArea(name="coursePerfectFor", id="coursePerfectFor", rows="5").form-control
+            if(values.coursePerfectFor)
+              !{libs.markdown.render(values.coursePerfectFor || '')}
+
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Course Requirements (bullet points)
+          textArea(name="courseRequirements", id="courseRequirements", rows="5").form-control
+            if(values.courseRequirements)
+              !{libs.markdown.render(values.courseRequirements || '')}
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Course Outcomes (bullet points)
+          textArea(name="courseOutcomes", id="courseOutcomes", rows="5").form-control
+            if(values.courseOutcomes)
+              !{libs.markdown.render(values.courseOutcomes || '')}
+
+
+    .row.m-t.m-b.text-center
+      .col-xs-12
+        if (formType === "Edit")
+          input(type="hidden", id="courseId", name="courseId", value=courseId)
+          input(type="hidden", id="course", name="course", value=course)
+        input(type="hidden", id="formType", name="formType", value=formType)
+        input(id="formSubmit", type="submit", value= formType + " Course").btn.btn-primary.btn-lg

@@ -1,0 +1,128 @@
+extends ./layout
+block content
+    style.
+        *{
+            font-family: 'Helvetica', 'Arial', sans-serif;
+        }
+        .banner-text {
+            font-size: 72px;
+        }      
+        button {
+            margin:5px;
+
+        }
+        .btn-welcome {
+            background-color: transparent; 
+            margin: 5px;
+            font-size: 12px;
+            color: black;
+        }
+        .center{
+            text-align: center;
+        }
+        .center-img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .largeFont {
+            font-size:28px;             
+        }    
+        p {
+            font-size: 16px;
+        }
+        .padding-tp {
+            margin-top:20px;
+        }            
+        .padding-bt {
+            margin-bottom:20px;
+        }
+        .pad-lr {
+            margin-left:20px;
+            margin-right:20px;
+        }
+        .para1 {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin-bottom:20px;
+            padding:10px;
+            margin:10px; 
+        }
+        .para2 {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin-bottom:20px; 
+            padding:10px;
+            margin:10px;              
+        }            
+        .para3 {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin-bottom:20px; 
+            padding:10px;
+            margin:10px;              
+        }   
+        .para4 {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin-bottom:20px;  
+            padding:10px;
+            margin:10px;              
+        }                        
+        .signature {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            margin-bottom:20px; 
+            padding:10px;
+            margin:10px;  
+            font-size:28px;                          
+        } 
+        .text-link: {
+            margin: 5px;
+            border: 1px solid red;
+        }            
+
+        @media only screen and (max-width: 600px) {
+        }
+        @media only screen and (min-width: 600px) {
+        }   
+
+    .div(style="margin-top:-19px;").pad-lr
+        .container-fluid.pad-lr
+            .row.center
+                .col-xs-12
+                      H3.banner-text Welcome To You Will Change The World!      
+            .row
+                .col-sm-6.col-xs-12
+                    div.embed-responsive.embed-responsive-16by9.pwa-vid
+                        <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/284428285?title=0&byline=0&portrait=0"  align="middle" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                .col-sm-6.col-xs-12
+                    .row
+                      H3.largeFont You Will Change the World is an empowering and impactful platform and we are excited that you have decided to take some of our incredible courses! Our instructors view the world through infinite perspectives that inspire compassion, invention, universal truth, purpose and prosperity. We know this will move and excite you as your courses unfold and the lessons become clear. 
+            .row.center.padding-bt.padding-tp.pad-lr
+              a(href="/courses")
+                button.btn.btn-primary.btn(style="font-size: 24px; background-color: #3097d1; margin: 5px;") SEARCH FOR NEW COURSES
+              a(href="/account/courses")
+                button.btn.btn-primary.btn(style="font-size: 24px; background-color: #3097d1; margin: 5px;") MY COURSES
+              a(href="/affiliates")
+                button.btn.btn-primary.btn(style="font-size: 24px; background-color: #3097d1; margin: 5px;") BECOME AN AMBASSADOR
+            .row.para1.largeFont.pad-lr
+              | Our unique and innovative tools will help lead, educate and network you with others that can make a difference in your life. This support system encourages confidence, freedom and happiness in every moment. Within the process of mentorship and access to world-class resources, YWCTW weaves opportunities into the fabric of the lives of individuals, families and communities. YWCTW Ultimately produces a profound difference in societies.
+            .row.para2.largeFont.pad-lr
+                | Please like us on 
+                a(href="https://www.facebook.com/ywchangetheworld/").text-link Facebook
+                |  and share us with your Social Media Community.
+            .row.para3.center.largeFont.pad-lr
+                style.
+                    .social-link-img {
+                        width: 25px;
+                        height: 25px;                    
+                    }
+                    .social-link-img:hover {
+                        padding:5px;               
+                    }               
+                include ambassador/registration/sociallinks
+            .row.para4.largeFont.pad-lr
+              | If you really love some of the courses consider becoming an
+              a(href="/affiliates").text-link 
+                | Ambassador 
+              | today and start building your community by sharing what you love and be financially rewarded for making a real difference in other people’s lives.
+            .row.signature.largeFont.pad-lr
+                | Namaste,<br />
+                | Peter Anthony Wynn<br />
+                | Founder & CEO<br /

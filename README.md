@@ -1,4 +1,10 @@
-# nodejs-hello-world
-Hello World sample
+# You Will Change The World
 
-See [Manage Google Compute Engine with Node.js](https://medium.com/@fhinkel/manage-google-compute-engine-with-node-js-eef8e7a111b4) on Medium.
+## Dependencies
+node 4.1.2
+rimraf
+browserify
+uglify-js
+bower
+postcss-cli
+autoprefixer

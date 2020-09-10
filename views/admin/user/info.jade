@@ -1,0 +1,60 @@
+extends ../layout
+
+block content
+
+  .container-fluid
+    h1 User Information
+    hr
+
+  .row: .col-xs-12
+    h4= 'First Name: ' + user.get('firstName')
+    h4= 'Last Name: ' + user.get('lastName')
+    h4= 'Email: ' + user.get('email')
+    h4= 'AuthID: ' + user.get('username')
+    if user.get('referredBy')
+        if user.get('referredBy').get('instructor')
+          h4= 'Referred By: ' + user.get('referredBy').get('instructor').get('name')
+            a(href='/admin/users/updateReferredBy?type=username&id=' + user.get('username')).btn.btn-xs.btn-success Update Referred By
+        if user.get('referredBy').get('ambassador')
+          h4= 'Referred By: ' + user.get('referredBy').get('ambassador').get('user').get('username')
+            a(href='/admin/users/updateReferredBy?type=username&id=' + user.get('username')).btn.btn-xs.btn-success Update Referred By
+    if !user.get('referredBy')
+      h4 Not Referred By Anyone
+  
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Affiliate
+
+  .row: .col-xs-12
+    if(user.get('affiliate'))
+      h4= 'Affiliate Code: '
+        = user.get('affiliate').id
+        user.get('affiliate').id
+    else
+      a(href='/admin/users/setAffiliateCode?email=' + user.get('email') + '&id=' + user.id).btn.btn-md.btn-primary Make User An Affiliate
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Course Enrollments
+
+
+    // TODO: Get course enrollment count
+    if (enrollments.length > 0)
+      table.table.table-striped
+        thead
+          tr
+            th Course Name
+            th Instructor
+            th Enroll Date
+            th Lessons Completed
+            // th Paid/Free
+
+        tbody
+          each enrollment in enrollments
+            tr
+              td= enrollment.get('course').get('name')
+              td= enrollment.get('course').get('instructorName')
+              td= libs.moment(enrollment.get('createdAt')).format("MMMM Do YYYY")
+              td= enrollment.get('completed').length
+              // td= enrollment.get('course').get('price')

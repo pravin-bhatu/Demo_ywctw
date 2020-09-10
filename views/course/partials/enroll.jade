@@ -1,0 +1,10 @@
+if enrollment
+  a(href=("/courses/" + course.get('slug') + "/enrolled")).btn.btn-lg.btn-success.expand Go To Your Course
+else if user && course.get('price') === 0
+  form(method='post', action='/courses/enroll')
+    input(type='hidden', name='courseId', value=course.id)
+    input(type='submit', value='Take This Course').btn.btn-lg.btn-primary.expand
+else if user && course.get('price') > 0
+  a(href=("/checkout?id=" + course.id + (partnerCode ? "&pc=" + partnerCode.get('code') : '') )).btn.btn-lg.btn-primary.expand Take This Course
+else
+  button.btn.btn-lg.btn-primary.expand.sign-up Take This Course

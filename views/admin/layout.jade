@@ -1,0 +1,40 @@
+doctype html
+html
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
+    title YWCTW Admin
+    link(rel='stylesheet', type='text/css', href='https://fonts.googleapis.com/css?family=Lato:400,300,100,400italic,300italic,100italic')
+    link(href="/dashboard/.css" rel="stylesheet")
+    link(href="/css/toolkit-light.css", rel="stylesheet")
+    link(href="/css/admin.css", rel="stylesheet")
+  body.site
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        a(href='/').navbar-brand: img(src='/img/logo.png', style='height:24px;')
+        button(type='button', data-toggle='collapse', data-target='#navbar-collapse').navbar-toggle.collapsed
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        //form(style='float:right !important; margin-top:7px; margin-right:5px;', action='/admin/search', method="post")
+          input.form-control(type = 'text', name='searchInput', id='searchInput', placeholder = 'Search')
+    .container-fluid(style='padding-left:0;top:51px;')
+      .row(style="height:100%;")
+        include partials/navigation
+        .col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main(style='margin-top:40px;')
+          block content
+
+
+    script(src='https://cdn.auth0.com/js/lock-7.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js')
+    script(src=asset('/dashboard/.js'))
+    script(src=asset('/admin/js/main.js'))
+    block script
+    script.
+      $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+      });
+
+

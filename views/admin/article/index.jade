@@ -1,0 +1,37 @@
+extends ../layout
+
+block content
+  h1.page-header Admin - Article - List
+
+  .row.col-xs-12.text-right
+    a(href='/admin/article').label.label-info ALL
+    &nbsp;
+    a(href='/admin/article?filter=published').label.label-success PUBLISHED
+    &nbsp;
+    a(href='/admin/article?filter=unpublished').label.label-danger UN-PUBLISHED
+    &nbsp;
+
+
+  .row(style="height:10px")
+
+  table.table.table-striped
+    thead
+      tr
+        th
+        th Instructor Name
+        th Article Title
+        th.text-center Date Created
+        th.text-center Published
+    tbody
+      each article in articles
+        tr
+          td: a(href='article/info?id=' + article.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+          if  article.get('instructor')
+            td: a(href='article/info?id=' + article.id, style='color:black;')= article.get('instructor').get('name')
+          td: a(href='article/info?id=' + article.id, style='color:black;')= article.get('title')
+          td.text-center= libs.moment(article.get('createdAt')).format("MMMM Do YYYY")
+          if (article.get('published') == true)
+            td.text-center: i(style='color:green').fa.fa-check
+          else
+            td.text-center: i(style='color:red').fa.fa-remove
+

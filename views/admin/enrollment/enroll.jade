@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h1.page-header Enrollment Tool
+
+  .container-fluid
+
+    form(id="enroll",method="post",action="enroll")
+
+      .row
+        .col-xs-8.col-sm-10.col-xs-offset-2.col-sm-offset-1
+          .form-group
+            label AuthID
+            input(type="text", id="id", name="id" || '', required).form-control
+
+      .row
+        .col-xs-8.col-sm-10.col-xs-offset-2.col-sm-offset-1
+          .form-group
+            label Select Courses
+            select.form-control(multiple, size='12', name="courses", id="courses")
+              each course in courses
+                option(value=course.id)= course.get('instructor').get('name') + '  -  ' + course.get('name')
+
+
+
+      .row.m-t.m-b
+        .col-xs-8.col-sm-10.col-xs-offset-2.col-sm-offset-1
+          input(id="formSubmit", type="submit", value="Enroll").btn.btn-primary.btn-lg

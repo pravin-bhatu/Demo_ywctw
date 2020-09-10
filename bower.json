@@ -1,0 +1,26 @@
+{
+  "name": "ywctw-web",
+  "version": "0.0.0",
+  "authors": [
+    "Cody Spring <codyspring@me.com>"
+  ],
+  "description": "You Will Change The World",
+  "main": "web/index.js",
+  "moduleType": [],
+  "license": "LicenseRef-LICENSE",
+  "homepage": "http://www.youwillchangetheworld.com",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.5",
+    "auth0-lock": "~7.10.3",
+    "font-awesome": "~4.4.0",
+    "FitText.js": "~1.2.0"
+  }
+}

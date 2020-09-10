@@ -1,0 +1,22 @@
+.row
+
+  hr.articles
+
+  .articles-row-top
+    .col-xs-12.col-sm-4.col-md-3.text-center
+      .articles-profile-img-bg
+        if article.get('thumbImage')
+          img(style="opacity:.20;margin-top:20px;" src=article.get('thumbImage').url()).img-responsive.thumbImg-article
+        a(href=('/instructors/' + article.get('instructor').get('username')))
+          img(src=(article.get('instructor').get('avatar') ? article.get('instructor').get('avatar').url() : '/img/demo/profile.png')).articles-profile-img
+        h5= article.get('instructor').get('name')
+
+    .col-xs-12.col-sm-8.col-md-9
+      .h3-article-title-container
+        h3.each-article-title
+          a(href="/" + article.get('slug')).h3-article-title-text= article.get('title')
+      p !{libs.markdown.render(article.get('content').substring(0, 220) + ' . . .')}
+
+      .row
+        .col-xs-3.col-sm-4.col-md-6
+          a(href="/" + article.get('slug')).btn.btn-sm.btn-primary-outline Read More

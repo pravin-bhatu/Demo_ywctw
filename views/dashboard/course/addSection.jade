@@ -1,0 +1,44 @@
+extends ../layout
+
+block content
+  h1.page-header Add Section
+
+  .row: .col-xs-12.text-left
+    a(href='/dashboard/course/addLesson?courseId=' + courseId).btn.btn-primary Back To Lesson
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Add Section
+
+  .row: .col-xs-12
+
+  form(id="addSection",method="post",action="addSection")
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Section Name
+          input(type="text", id="sectionName", name="sectionName", required).form-control
+
+
+      .col-xs-12.col-sm-6.text-left
+        input(type="hidden", id="courseId", name="courseId", value=courseId)
+        input(id="formSubmit", type="submit", value= "Add Section").btn.btn-primary.btn-lg
+
+
+  if (course.get('sections').length > 0)
+    table.table
+      thead
+        tr
+          // th Order
+          th Section
+      tbody
+        // var i = 0;
+        each section in course.get('sections')
+          tr
+            // td=
+            td= section
+
+  else
+    h4 No Section

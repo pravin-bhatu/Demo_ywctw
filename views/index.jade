@@ -1,0 +1,253 @@
+extends layout
+
+block content
+
+  // / background image start /
+  #home.intro.route.bg-image(style='background-image: url(img/background.png)')
+    .overlay-itro
+    |     
+    .overlaytext.col-lg-4.col-sm-8
+      h2.banner-head Inspiration &amp; Education
+      |       
+      i.register-today Register today &amp; enjoy over 50 FREE CLASSESS
+      |  
+      a.sign-up
+        .overlayBanner
+          h2.px-4.mb-0 Register today for a FREE MEMBERSHIP
+          |         
+          p.text-center Become part of the Community!
+          |         
+          p.text-center Enjoy Discounts on upgrades
+  // / background image start /
+  .container-fluid
+    .experts.text-center
+      h4.text-uppercase.d-flex.justify-content-center.pt-3
+        | learn from some of the worlds most passionate
+        | experts
+      |       
+      .expert-img.row.plr-12
+        each instructor in instructors
+          .col-lg-2.col-md-2: a(href=('/instructors/' + instructor.get('username')), style='color:#333;')
+            div.avatar-img 
+              img.img-fluid.avatar.avatarImg(src=(instructor.get('avatar') ? instructor.get('avatar').url() : '/img/instructors/default-instructor-header.png') alt='')
+  |   
+  section#companyNames
+    .companyName
+      ul
+        li
+          img.img-fluid(src='img/companyName1.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName2.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName3.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName4.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName5.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName6.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName7.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName8.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName9.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName10.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName11.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName12.png' alt='')
+        |         
+        li
+          img.img-fluid(src='img/companyName13.png' alt='')
+
+  .container
+    .row
+      .col-lg-4.col-sm-6
+        .card.card-container
+          h4.card-section-title 
+            a(style="text-decoration:none;color:#ad9650;" href='/courses') Courses
+          for course in coursesHome
+            .card.mb-20.b-0: a(href='/courses/' + course.get('slug')) 
+                .course-card.first-card
+                  figure.effect-julia
+                    if course.get('cardImage')
+                      img.first-card-img-top(src=course.get('cardImage').url(), alt= course.get('name') + ' ' + course.get('instructor').get('name'))
+                    else 
+                      img.first-card-img-top(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×275&w=500&h=275' alt='Card image cap')
+                    figcaption
+                      h2(style='text-transform:capitalize;').fittext= course.get('name')
+                      p= course.get('instructor') ? course.get('instructor').get('name') : '' 
+                      button.btn.btn-primary
+                        if course.get('stage') === 'prod'
+                          if course.get('price') === 0
+                            span Free Enrollment
+                          else
+                            span Enroll for
+                              include course/partials/price
+                        else
+                          span Coming Soon
+
+
+      | 
+      .col-lg-4
+        .card.card-container
+          h4.card-section-title 
+            a(href="/events" style="text-decoration:none;color:#ad9650;")  Events
+          .card.mb-20.first-card
+            div
+              img.card-img-top(src='/img/event/HHH8BSLNfV/event-card-lv.jpg' alt='Card image cap')
+            .card-body
+              .card-text.mb-0
+                | Nuclear Marketing Mastermind 
+              p.text-center.card-text  July 14-16, 2017 
+          .card.mb-20.first-card
+            div
+              img.card-img-top(src='/img/event/HHH8BSLNfV/event-card-lv.jpg' alt='Card image cap')
+            .card-body
+              p.card-text.mb-0
+                | Nuclear Marketing Mastermind 
+              p.text-center.card-text  July 14-16, 2017 
+          .card.mb-20.first-card
+            div
+              img.card-img-top(src='/img/event/HHH8BSLNfV/event-card-lv.jpg' alt='Card image cap')
+            .card-body
+              p.card-text.mb-0
+                | Nuclear Marketing Mastermind 
+              p.text-center.card-text  July 14-16, 2017  
+
+
+
+      |      
+      .col-lg-4
+        .card.card-container
+          h4.card-section-title 
+           a(href="/articles" style="text-decoration:none;color:#ad9650;") Articles 
+          each article in featuredArticles
+            .card.mb-20.b-0
+                .first-card
+                  a(href="/" + article.get('slug'))
+                    img.card-img-top(src=article.get('thumbImage').url() alt='...')
+                  .card-body
+                    p.text-center.card-text.mb-0.first-p=article.get('title')
+                    p.card-text.mb-0.second-p=article.get('instructor') ? article.get('instructor').get('name') : '' 
+
+
+
+
+
+
+            //- .row
+            //-   .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3.col-md-12.col-md-offset-0
+            //-     .course-card.course-card-home: a(href="/" + article.get('slug'))
+            //-       figure.effect-julia
+            //-         img.card-img-top(src=article.get('thumbImage').url() alt='...').img-responsive
+            //-       figcaption
+            //-         h2(style='text-transform:capitalize;').fittext= article.get('title')
+            //-         p= article.get('instructor') ? article.get('instructor').get('name') : '' 
+
+
+
+
+//-   .div(style="margin-top:-19px;")
+//-     .container-fluid
+//-       .row
+//-         .col-xs-12(style="margin-bottom:-5px;padding:0;")
+//-           img(src='/img/banner.jpg' class="img-home")
+
+//-           // .text-center.welcome-box
+//-             .container
+//-               .row
+//-                 .col-xs-12.col-sm-6.col-md-4.col-md-offset-8
+//-                   .white-box-container-home(style='margin-left:15px')
+//-                     .row(style='margin-bottom:20px;')
+//-                       .col-xs-12
+//-                         .panel.panel-register-home
+//-                           img(src='/img/logo-icon.png' alt='you will change the world' style="width:75px;")
+//-                           h1 You Will Change The World
+//-                           h4 Change lives by taking powerful online courses.
+//-                           br
+//-                           .row
+//-                             .col-xs-10.col-xs-offset-1
+//-                               p: a.btn.btn-lg.btn-primary.expand.sign-up(href='#') Create Free Account!
+//-                           .row
+//-                             .col-xs-10.col-xs-offset-1
+//-                               p: a.btn.btn-lg.btn-info.expand.sign-in(href='#') Log In
+//-                           .row
+//-                             .col-xs-10.col-xs-offset-1
+//-                               p: a.btn.btn-lg.btn-inverse.expand(href="/courses") Browse Courses
+
+
+//-   hr(style="border-top: 5px solid #f04124; margin-top:0; margin-bottom:0")
+//-   hr(style="border-top: 5px solid #f04124; margin-top:0; margin-bottom:0")
+
+//-   .container-fluid
+//-     .row(style='height: 85px; background-color: black').text-center
+//-       .col-xs-12(style="margin-bottom:-5px;padding:0;")
+//-         h2(style="color:#f04124;font-weight:bold") Build Your Dreams Now become a member today!
+//-           .btn.btn-lrg.btn-info.sign-up(href='#' class="free-account-button") Create Free Account & Take A Class!
+
+//-   .featured-courses-articles-container: .container
+//-     .row
+//-       .col-xs-12.col-sm-12.col-md-4.min-col-height-home
+//-         h2.text-center
+//-           a(style='color:black' href='/courses').h2-section-title-home Featured Courses
+//-         for course in courses.featured
+//-           .row
+//-             .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3.col-md-12.col-md-offset-0
+//-               .course-card.course-card-home: a(href='/courses/' + course.get('slug'))
+//-                 figure.effect-julia
+//-                   if course.get('cardImage')
+//-                     img(src=course.get('cardImage').url(), alt= course.get('name') + ' ' + course.get('instructor').get('name')).img-responsive
+//-                   else
+//-                     img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×275&w=500&h=275').img-responsive
+//-                   figcaption
+//-                     h2(style='text-transform:capitalize;').fittext= course.get('name')
+//-                     p= course.get('instructor') ? course.get('instructor').get('name') : '' 
+//-                     button.btn.btn-primary
+//-                       if course.get('stage') === 'prod'
+//-                         if course.get('price') === 0
+//-                           span Free Enrollment
+//-                         else
+//-                           span Enroll for
+//-                             include course/partials/price
+//-                       else
+//-                         span Coming Soon
+
+
+//-         .col-xs-10.col-xs-offset-1.col-sm-10.col-sm-offset-1.col-md-12.col-md-offset-0.btn-bottom-home
+//-           p: a.btn.btn-lg.btn-inverse.expand.more-courses-home(href="/courses") More Courses
+
+//-       .col-xs-12.col-sm-12.col-md-8.min-col-height-home
+//-         h2.text-center
+//-           a(style='color:black' href="/articles").h2-section-title-home Articles
+//-         each article in featuredArticles
+//-           .list-group
+//-             hr.home
+//-             .article-row-home
+//-               a(href="/" + article.get('slug'))
+//-                 //button(type="button").list-group-item
+//-                 .row.home-article-title-container
+//-                   .col-xs-12.col-sm-12.col-md-3.text-center
+//-                     img(style="opacity:.80;margin-top:20px;margin-left:auto;margin-right:auto" src=article.get('thumbImage').url()).img-responsive
+//-                     // img(src=(article.get('instructor').get('avatar') ? article.get('instructor').get('avatar').url() : '/img/demo/profile.png'), alt= article.get('instructor').get('name')).articles-profile-img-home
+//-                     h5(style='color:#333333;')= article.get('instructor').get('name')
+//-                   .col-xs-12.col-sm-12.col-md-9
+//-                     h3.each-article-title-home
+//-                       a(href="/" + article.get('slug')).h3-article-title-text= article.get('title')
+//-                     .each-article-p-home
+//-                       p(style='text-align:left;') !{libs.markdown.render(article.get('content').substring(0, 160) + ' . . .')}
+//-         .col-xs-10.col-xs-offset-1.btn-bottom-home
+//-           p: a.btn.btn-lg.btn-inverse.expand.more-articles-home(href="/articles") More Articles

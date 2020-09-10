@@ -1,0 +1,182 @@
+//- extends layout
+
+//- block content
+
+
+
+  
+//-     .row
+//-         .col-xs-12
+//-             .dashhead
+//-                 .dashhead-titles
+//-                     h3.dashhead-title Profile  
+//-     .row: .col-xs-12
+//-         .hr-divider
+//-             h3.hr-divider-content.hr-divider-heading Profile
+//-     .row
+//-         .col-xs-12
+//-             h1 Coming Soon
+    //- .row
+    //-     .col-xs-12
+    //-         if ambo.w9
+    //-             p You already have a w9 on file with us.
+    //-         else
+    //-             p  Please upload your w9 tax form.
+    //-             form(method='post', enctype='multipart/form-data', action="/affiliates/program/profile/w9")
+    //-                 input(type='file', name='imageupload')
+    //-                 input(type='submit', name='uploadimage', value='Upload Image')
+    //- .row
+    //-     .col-xs-12
+    //-         p Add any links that your advertising with.
+    //-         <form method="post" enctype="multipart\/form-data" action="/affiliates/program/profile/w9">
+    //-         <input type="file" name="brendan" >
+    //-         <input type="submit" value="Submit">
+    //-         </form>
+
+extends layout
+
+block content
+  .row: .col-xs-12
+    .dashhead
+      .dashhead-titles
+        h6.dashhead-subtitle Ambassador Program
+        h3.dashhead-title Profile - Merchant Confirmation
+        p
+          | If you have questions or need assistance filling out this form, please send an email to:
+          a(href="mailto:support@youwillchangetheworld.com", target="_blank")  support@youwillchangetheworld.com
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  form(id="amboPayoutDataForm")
+  
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Individual Information  
+      
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label First Name
+          input(type="text", id="firstName", value=ambo.get('firstName') || "", required).form-control
+      .col-xs-12.col-sm-6
+        .form-group
+          label Last Name
+          input(type="text", id="lastName", value=ambo.get('lastName') || "", required).form-control
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Email Address
+          input(type="email", id="email", value=ambo.get('email') || "", required).form-control
+      .col-xs-12.col-sm-6
+        .form-group
+          label Phone Number
+          input(type="phone", id="phone", placeholder="xxxxxxxxxx", value=ambo.get('phone') || "", required).form-control
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Date of Birth
+          input(type='text', id="dateOfBirth", placeholder="yyyy-mm-dd", value=ambo.get('dateOfBirth') || "", required).form-control
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label Social Security Number
+    //-       input(type="text", id="ssn", placeholder="xxx-xx-xxxx", value='').form-control
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Street Address
+          input(type="text", id="streetAddress", value=ambo.get('streetAddress') || "", required).form-control
+      .col-xs-12.col-sm-6
+        .form-group
+          label City
+          input(type="text", id="city", value=ambo.get('city') || "", required).form-control
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label State
+          select(id="state", required).form-control
+            include ../../components/forms/state-dropdown
+      .col-xs-12.col-sm-6
+        .form-group
+          label Zip Code
+          input(type="text", id="zip", value=ambo.get('zip') || "", required).form-control
+    .row: .col-xs-12
+      .hr-divider.m-t.m-b
+        h3.hr-divider-content.hr-divider-heading PayPal
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label PayPal Email
+          input(type="text", id="paypal", value=ambo.get('paypal') || "").form-control
+      .col-xs-12.col-sm-6 
+    .row.m-t.m-b.text-center
+        .col-xs-12
+            input(id="formSubmit", type="submit", value="Submit Profile Information").btn.btn-primary.btn-lg           
+    //- .row: .col-xs-12
+    //-   .hr-divider.m-t.m-b
+    //-     h3.hr-divider-content.hr-divider-heading Business Information
+    //- .row
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label Legal Name
+    //-       input(type="text", id="businessLegal").form-control
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label DBA
+    //-       input(type="text", id="businessDBA").form-control
+    //- .row
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label Tax ID
+    //-       input(type="text", id="businessTaxId", placeholder="xx-xxxxxx").form-control
+    //- .row
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label Street Address
+    //-       input(type="text", id="businessStreetAddress").form-control
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label City
+    //-       input(type="text", id="businessCity").form-control
+    //- .row
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label State
+    //-       select(id="businessState").form-control
+    //-         include ../../components/forms/state-dropdown
+    //-   .col-xs-12.col-sm-6
+    //-     .form-group
+    //-       label Zip Code
+    //-       input(type="text", id="businessZip").form-control
+        
+//-     .row: .col-xs-12
+//-       .hr-divider.m-t.m-b
+//-         h3.hr-divider-content.hr-divider-heading Payment Information  
+//-     .row
+//-       .col-xs-12.col-sm-6
+//-         .form-group
+//-           label Account Number
+//-           input(type="text", id="paymentAccount", value='', required).form-control
+//-       .col-xs-12.col-sm-6
+//-         .form-group
+//-           label Routing Number
+//-           input(type="text", id="paymentRouting", value='', required).form-control
+//-     .row
+//-       .col-xs-12
+//-         p
+//-           | You Will Change The World uses Braintree, a division of PayPal, Inc. (Braintree) for payment processing
+//-           |  services. By using the Braintree payment processing services you agree to the Braintree Payment Services
+//-           |  Agreement available at
+//-           a(href="https://www.braintreepayments.com/legal/gateway-agreement")  https://www.braintreepayments.com/legal/gateway-agreement
+//-           | , and the applicable bank agreement available at
+//-           a(href="https://www.braintreepayments.com/legal/cea-wells")  https://www.braintreepayments.com/legal/cea-wells.
+//-     .row
+//-       .col-xs-12
+//-         .checkbox.custom-control.custom-checkbox
+//-           label
+//-             input(type="checkbox", id="tosAccepted").form-control
+//-             span.custom-control-indicator
+//-             | I have read and accept the Braintree Payment Services Agreement and the applicable bank agreement.
+//-     .row.m-t.m-b.text-center
+//-       .col-xs-12
+//-         input(id="formSubmit", type="submit", disabled="disabled", value="Submit Merchant Information").btn.btn-primary.btn-lg

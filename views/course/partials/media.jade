@@ -1,0 +1,12 @@
+for book in books
+  if book.get('onCourse')
+    .course-book: a(href=book.get('link'), target='_blank'): .thumbnail
+      img(src=book.get('cover')).img-responsive
+      .caption.text-center Order Here
+
+for media in course.media
+  .course-book: a(href=media.get('link'), target='_blank'): .thumbnail
+    if media.get('image')
+      img(src=media.get('image').url()).img-responsive
+    .caption
+      h3.text-center= media.get('name')

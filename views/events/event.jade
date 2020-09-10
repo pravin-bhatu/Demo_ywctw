@@ -1,0 +1,75 @@
+extends ../layout-nonav
+
+block scripts
+  script(src=asset('/js/countdown/countdown.min.js'))
+  script.
+    $('#countdown').countdown({
+      date: "#{formatDate}",
+      render: function(data) {
+        $(this.el).html("<div>" + this.leadingZeros(data.days, 2) + " <span>days</span></div><div class='counter-spacer'>:</div><div>" + this.leadingZeros(data.hours, 2) + " <span>hrs</span></div><div class='counter-spacer'>:</div><div>" + this.leadingZeros(data.min, 2) + " <span>min</span></div><div class='counter-spacer'>:</div><div>" + this.leadingZeros(data.sec, 2) + " <span>sec</span></div>");
+      }
+    });
+
+block content
+  #eventInfo.event-info
+    .event-menu
+      .container
+        .row(style="background-color:#000")
+          .col-xs-12
+            ul.nav.nav-tabs.navbar-right
+              li: a(href='#about') About
+              // li: a(href='#schedule') Schedule
+              li: a(href="#location") Location
+              // li: a(href="#testimonials") Testimonials
+              // li: a(href="#bio") Bio
+              // li: a(href="/events") More Events
+              // li: a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=105" target="_blank" style="color:white").btn.btn-sm.btn-primary <b>Buy Your Tickets Now!</b>
+
+
+  .event-header-home.gradient-overlay
+    .video-background
+      video(muted, loop, autoplay)
+        source(src='../public/videos/event.mp4', type='video/mp4')
+    .container-fluid
+      .text-center
+        .row
+          .col-xs-12
+            h1 #{event.get('title')}
+            //h4 The #1 place to learn "The Secrets" of Online Course Creation, How to Launch, and Market Successfully
+            .location-date
+              h3 #{event.get('city')} , #{event.get('state')} | #{formatDate}
+            #countdown
+            a(href="https://nd306.infusionsoft.com/app/manageCart/addProduct?productId=105" target="_blank").btn.btn-lg.btn-primary <b>Buy Your Tickets Now!</b>
+
+  .event-details
+    .container-fluid: .row(style="background-color:#EEE"): .container
+      a#about(style="top:-50px;display:block;position:relative;visibility: hidden;")
+      .row(style="height:20px")
+
+        p !{libs.markdown.render(event.get('description'))}
+
+
+      .row(style="height:20px")
+
+  .event-details
+    .container: .row
+      a#location(style="top:-50px;display:block;position:relative;visibility: hidden;")
+      .row: .col-xs-12
+        .col-xs-12.col-sm-6
+          h3 <b>Location</b>
+            h4
+              p #{event.get('location')}
+              p #{event.get('address')}
+              p #{event.get('city')} , #{event.get('state')} #{event.get('zip')}
+
+        .col-xs-12.col-sm-6
+          h3 <b>Dates</b>
+            p #{formatDate}
+            p <i>9am - 6pm</i>
+
+      .row: .col-xs-12(style="margin-left:10px")
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3224.3652389013496!2d-115.29585148465263!3d36.08458371535219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8b885480cf547%3A0x35c54fe842fbffd6!2sThe+Gramercy!5e0!3m2!1sen!2sus!4v1478846017160" width="500" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+
+
+      .row(style="height:30px")
+

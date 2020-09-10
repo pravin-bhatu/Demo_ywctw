@@ -1,0 +1,63 @@
+extends layout
+
+block content
+  h1.page-header Admin Home
+  .row: .text-center
+    .col-xs-12.col-sm-6.col-md-3
+      .statcard.statcard-primary.p-a-md(style='margin-bottom:10px;')
+        h3.statcard-number= userCount
+        span.statcard-desc Total Users
+    .col-xs-12.col-sm-6.col-md-3
+      .statcard.statcard-success.p-a-md(style='margin-bottom:10px;')
+        h3.statcard-number= todayCount
+        span.statcard-desc Today
+    .col-xs-12.col-sm-6.col-md-3
+      .statcard.statcard-info.p-a-md(style='margin-bottom:10px;')
+        h3.statcard-number= past7Count
+        span.statcard-desc Last 7 Days
+    .col-xs-12.col-sm-6.col-md-3
+      .statcard.statcard-warning.p-a-md(style='margin-bottom:10px;')
+        h3.statcard-number= enrollmentCount
+        span.statcard-desc Course Enrollments
+
+  .row: .col-xs-10.col-xs-offset-1
+    h3.text-center Users
+    br
+    .table-responsive
+      table.table.table-striped
+        tr
+          th Email
+          th First Name
+          th Last Name
+          th Date Created
+          th.text-center Referred By
+          th.text-center Instructor
+          th.text-center Affiliate
+          th.text-center VIP
+          // th.header Referred By
+        tbody
+          for user in users
+            tr
+              td= user.get('email')
+              td= user.get('firstName')
+              td= user.get('lastName')
+              td= libs.moment(user.get('createdAt')).format("MMMM Do YYYY")
+              if (user.get('referredBy') && user.get('referredBy').get('instructor'))
+                td.text-center= user.get('referredBy').get('instructor').get('name')
+              else if (user.get('referredBy') && user.get('referredBy').get('user'))
+                td.text-center= user.get('referredBy').get('user').get('email')
+              else
+                td.text-center: b -
+              if (user.get('instructor'))
+                td.text-center: i(style='color:green').fa.fa-check
+              else
+                td.text-center: b -
+              if (user.get('affiliate'))
+                td.text-center: i(style='color:green').fa.fa-check
+              else
+                td.text-center: b -
+              // td= user.get('referredBy').get(''
+              if (user.get('vip') == true)
+                td.text-center: i(style='color:green').fa.fa-check
+              else
+                td.text-center: b -

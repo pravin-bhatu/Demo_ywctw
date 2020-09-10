@@ -1,0 +1,7 @@
+if sections
+  .curriculum
+    h2 Curriculum
+    for section in sections
+      h3= section.name
+      hr
+      include lessons

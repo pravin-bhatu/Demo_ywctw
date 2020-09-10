@@ -1,0 +1,245 @@
+extends ../layout
+
+block content
+  h1.page-header.text-center YWCTW Press Release Intake Form
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  .col-xs-10.col-xs-offset-1.col-sm-8.col-sm-offset-2
+
+    form(id="instaCred",method="post",action="submitPR")
+
+      .row.text-center
+        .col-xs-12
+          .hr-divider.m-b
+            h2.hr-divider-content.hr-divider-heading: b Submit Press Release Intake Form
+
+      .row
+        .col-xs-10.col-xs-offset-1
+          p
+            | Please fill this in as completely as possible. The more info you supply the better your results
+            | will be. Our writers will do the heavy lifting but they need good direction so supply as much
+            | as you can here.
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Topic for Release:
+            p
+              | What is the topic you would like your release about? Example: Newsworthy
+              | event, new product or service, release of a new website or launch, addition
+              | of a new partner, new technology, contest, etc.
+            textArea(name="topic", id="topic", rows="2").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Headline:
+            p
+              | We recommend your headline to be up to 80 characters. Make sure your headline
+              | contains a subject, an active verb, and clearly states your news announcement.
+              | Should be attention grabbing. Our writers will help but please provide direction.
+            textArea(name="headline", id="headline", rows="2").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Summary:
+            p
+              | We recommend your summary to be 1 - 2 sentences long. Use the summary paragraph
+              | to your advantage; make it enticing enough to make readers read on.
+            textArea(name="summary", id="summary", rows="2").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Quote:
+            p
+              | We recommend your summary to be 1 - 2 sentences long. Use the summary paragraph
+              | to your advantage; make it enticing enough to make readers read on.
+            textArea(name="quote", id="quote", rows="2").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Author of Quote:
+            input(type="text", id="quoteAuthor", name="quoteAuthor").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Body:
+            p
+              | Any information about what you want written up.
+            textArea(name="body", id="body", rows="3").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Video URL:
+            p
+              | If you'd like to add a YouTube video in your press release, please enter
+              | the YouTube video URL here. It can be found by clicking "Share" under
+              | your YouTube video when viewing it at youtube.com. Example:
+              | http://youtu.be/nSt2CdGq3wk
+            input(type="text", id="videoURL", name="videoURL").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Video Script Content:
+            p
+              | Max 2500 characters. Typically we use the "Body" content to create a transcript
+              | for the announcer when producing a video for a press release; however, if you
+              | would like to use a different copy for that transcript, please include it here.
+            textArea(name="videoScript", id="videoScript", rows="10").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Image Files:
+            p
+              | Attach up to 4 images.
+            p: a.btn.btn-lg.btn-inverse.more-articles-home(href="#")(style="margin-left:0px") Upload
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label File Title Captions:
+            p
+              | Corresponding text for the above 4 images.
+            input(type="text", id="caption1", name="caption1").form-control
+            br
+            input(type="text", id="caption2", name="caption2").form-control
+            br
+            input(type="text", id="caption3", name="caption3").form-control
+            br
+            input(type="text", id="caption4", name="caption4").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Attachments
+            p
+              | Attach up to 4 attachments.
+            p: a.btn.btn-lg.btn-inverse.more-articles-home(href="#")(style="margin-left:0px") Upload
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Release Date:
+            p
+              | If you want it released on a specific date
+            input(type="text", id="releaseDate", name="releaseDate").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Keyword Tags:
+            p
+              | Comma separated listed of up to 5
+            input(type="text", id="keywords", name="keywords").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Industry:
+            input(type="text", id="industry", name="industry").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label ZIP Code:
+            input(type="text", id="zip", name="zip").form-control
+
+      .row.text-center
+        .col-xs-12
+          .hr-divider.m-b
+            h2.hr-divider-content.hr-divider-heading: b Contact Info
+
+      .row
+        .col-xs-10.col-xs-offset-1
+          p
+            | This is the contact info to go into the press release to contact for more information.
+            | So it should be to contact for the business or the PR person.
+
+      .row
+        .col-xs-12.col-sm-6
+          .form-group
+            label Full Name:
+            input(type="text", id="fullName", name="fulName").form-control
+        .col-xs-12.col-sm-6
+          .form-group
+            label Phone:
+            input(type="text", id="phone", name="phone").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Email:
+            input(type="text", id="email", name="email").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Full Address:
+            input(type="text", id="address", name="address").form-control
+
+      .row
+        .col-xs-12.col-sm-6
+          .form-group
+            label Brand Name or Company Name:
+            input(type="text", id="brandName", name="brandName").form-control
+        .col-xs-12.col-sm-6
+          .form-group
+            label Brand or Company Website:
+            input(type="text", id="brandWebsite", name="brandWebsite").form-control
+
+      .row.text-center
+        .col-xs-12
+          .hr-divider.m-b
+            h2.hr-divider-content.hr-divider-heading: b Social Media
+
+      .row
+        .col-xs-10.col-xs-offset-1
+          p
+            | Not mandatory but can increase your results dramatically. Add your contact social
+            | media information to attract visitors and subscribers to your social networks.
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Twitter Username:
+            input(type="text", id="twitter", name="twitter").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Facebook Page URL:
+            input(type="text", id="facebook", name="facebook").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label LinkedIn URL:
+            input(type="text", id="linkedin", name="linkedin").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Google+ URL:
+            input(type="text", id="google", name="google").form-control
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label RSS URL:
+            input(type="text", id="rss", name="rss").form-control
+
+      .row.m-t.m-b.text-center
+        .col-xs-12
+          input(id="formSubmit", type="submit", value="Submit PR Intake Form").btn.btn-primary.btn-lg
+
+      br

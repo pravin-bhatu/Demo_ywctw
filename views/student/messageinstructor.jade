@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col-lg-12
+        h4.message-title Message to Instructor
+    .row
+      .col-lg-12.seperator-padding
+        hr
+    form
+      .form-group.row.message-instructor-mb
+        .col-sm-10.col-lg-2
+          label(for='control-label') Select Instructor
+        .col-sm-10.col-lg-6
+          select#exampleFormControlSelect1.form-control.select-instructor
+            each instructor in instructors
+              option(value="#{instructor.id}")=instructor.get('name')            
+      .form-group.row
+        .col-sm-10.col-lg-2
+        .col-sm-10.col-lg-8
+          textarea.form-control.messages-textarea(name="message",rows='10', cols='20', placeholder='Hi, Welcome to you will change the world')
+      .form-group.row
+        .col-lg-10.btns-right
+          button.btn.btn-send(type='button',onclick="sendMessage();") Send
+          button.btn.btn-cancel(type='button') Cancel

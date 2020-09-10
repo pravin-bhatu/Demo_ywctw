@@ -1,0 +1,126 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ selector: "textArea", plugins: "lists", browser_spellcheck: true });</script>
+
+block content
+  h1.page-header Admin - Course - !{formType}
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  if (formType === 'Edit' && course.get('stage') === 'prod')
+    .row
+      div#errorBox(role="alert").alert.alert-danger
+        span Please contact support@youwillchangetheworld.com with changes you would like to your course that's in production.
+
+  else
+
+    - var action = "";
+    if(formType == 'Add')
+      - action = "add";
+    else
+      - action = "edit";
+    form(id="course",method="post",action=action)
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Course Name
+            input(type="text", id="courseName", name="courseName", value=values.name || '', required).form-control
+
+      .row
+        .col-xs-12.col-sm-2
+          .form-group
+            label Course Price
+            .input-group
+              .input-group-addon $
+              input(type="text", id="coursePrice", name="coursePrice", value=values.price || '0', required).form-control
+              .input-group-addon .00
+        .col-xs-12.col-sm-2
+          .form-group
+            label( for="courseLevel") Course Level
+              select.form-control(name="courseLevel", id="courseLevel")
+                each val in ['All Levels','Advanced','Intermediate','Beginner']
+                  option= val
+        .col-xs-12.col-sm-2
+          .form-group
+            label( for="courseLanguage") Course Language
+              select.form-control(name="courseLanguage", id="courseLanguage")
+                each val in ['English']
+                  option= val
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Course Description
+            textArea(name="courseDescription", id="courseDescription", rows="10").form-control
+              if(values.description)
+                !{libs.markdown.render(values.description) || ''}
+
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Course Perfect For (bullet points)
+            textArea(name="coursePerfectFor", id="coursePerfectFor", rows="5").form-control
+              if(values.coursePerfectFor)
+                !{libs.markdown.render(values.coursePerfectFor || '')}
+
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Course Requirements (bullet points)
+            textArea(name="courseRequirements", id="courseRequirements", rows="5").form-control
+              if(values.courseRequirements)
+                !{libs.markdown.render(values.courseRequirements || '')}
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Course Outcomes (bullet points)
+            textArea(name="courseOutcomes", id="courseOutcomes", rows="5").form-control
+              if(values.courseOutcomes)
+                !{libs.markdown.render(values.courseOutcomes || '')}
+
+
+      .row.m-t.m-b.text-right
+        .col-xs-12
+          if (formType === "Edit")
+            input(type="hidden", id="courseId", name="courseId", value=courseId)
+            input(type="hidden", id="course", name="course", value=course)
+          input(type="hidden", id="formType", name="formType", value=formType)
+          input(type="hidden", id="instructorId", name="instructorId", value=instructorId)
+          input(id="formSubmit", type="submit", value= formType + " Course").btn.btn-primary.btn-lg
+
+
+    if(formType === "Edit")
+      .row: .col-xs-12
+        .hr-divider.m-b
+          h3.hr-divider-content.hr-divider-heading Course Lessons
+
+      .row: .col-xs-6.col-sm-6
+        a(href='addLesson?courseId=' + courseId).btn.btn-success Add Lesson
+
+      if (course.get('lessons').length > 0)
+        table.table.table-striped
+          thead
+            tr
+              th Edit
+              th #
+              th Title
+              th Section
+              th.text-center Questions
+          tbody
+            each lesson in lessons
+              tr
+                td: a(href='editLesson?courseId=' + course.id + '&lessonId=' + lesson.id, style='color:white;'): i.fa.fa-pencil-square-o.fa-lg
+                td= lesson.get('order')
+                td= lesson.get('name')
+                td= lesson.get('sectionName')
+                td.text-center= (lesson.get('quiz') ? Object.keys(lesson.get('quiz')).length : '0')
+
+    .row(style="height:50px")

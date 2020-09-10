@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  h1.page-header Enrollment List
+  .row: .text-center
+    .col-xs-12.col-sm-6.col-md-3
+      .statcard.statcard-primary.p-a-md(style='margin-bottom:10px;')
+        h3.statcard-number= enrollmentCount
+        span.statcard-desc Course Enrollments
+
+  table.table.table-striped
+    thead
+      tr
+        th User
+        th Course
+        th Instructor
+        th Enrolled
+    tbody
+      each enrollment in enrollments
+        tr
+          td: a(href='users/info?type=username&id=' + enrollment.get('userId'), style='color:black;')= enrollment.get('userId')
+          td: a(href='course/course-info?courseId=' + enrollment.get('course').id, style='color:black;')= enrollment.get('course').get('name')
+          td= enrollment.get('course').get('instructorName')
+          td= libs.moment(enrollment.get('createdAt')).format("MMMM Do YYYY")

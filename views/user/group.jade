@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+    #instructors.page
+        .container
+            h1.text-center Instructors
+            .row
+                each column in instructors
+                    .col-xs-12.col-sm-6.col-md-4
+                        each instructor in column
+                            a(href=('/instructors/' + instructor.get('username')), style='color:#333;'): .panel.panel-default.panel-profile
+                                .panel-heading(style='background-image:url(' + (instructor.get('profileHeader') ? instructor.get('profileHeader').url() : '/img/instructors/default-instructor-header.png') + ');')
+                                .panel-body.text-center
+                                    img(src=(instructor.get('avatar') ? instructor.get('avatar').url() : '/img/instructors/default-instructor-icon.png')).panel-profile-img
+                                    h5.panel-title= instructor.get('name')
+                                    p= instructor.get('shortBio')

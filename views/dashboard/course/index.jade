@@ -1,0 +1,64 @@
+extends ../layout
+
+block content
+	.row: .col-xs-12
+		.dashhead
+			.dashhead-titles
+				//- h6.dashhead-subtitle Dashboards
+				h3.dashhead-title My Courses	
+
+		.row(style="height:30px")		
+		.row: .col-xs-12
+			.hr-divider.m-b
+				h3.hr-divider-content.hr-divider-heading Dashboards
+		.row
+			.col-xs-4.text-center(style="float: left")
+				a(target="_blank" href="../files/YWCTW Instructor Instructions.pdf")
+					img(src="../img/dashboard/action-guide-thumbnail.png" height="300px")
+				h4 Instructions
+
+			.row(style="height:30px")		
+			.row(style="float: right; margin: 5px"): .col-xs-6.col-sm-6
+				a(href='course/add').btn.btn-success Add Course
+
+	//- .row(style="height:30px")
+
+
+	//- .row(style="float: right"): .col-xs-6.col-sm-6
+	//-   a(href='course/add').btn.btn-success Add Course
+
+	//- .row(style="height:30px")
+
+
+	.row: .col-xs-12
+		.hr-divider.m-b
+			h3.hr-divider-content.hr-divider-heading In Development Courses
+
+	table.table
+		thead
+			tr
+				th
+				th Course Title
+		tbody
+			each course in devCourses
+				tr
+					td.text-center: a(href='course/edit?courseId=' + course.id, style='color:white;'): i.fa.fa-pencil-square-o.fa-lg
+					td: a(href='course/edit?courseId=' + course.id, style='color:white;')= course.get('name')
+
+	.row(style="height:30px")
+
+	.row: .col-xs-12
+		.hr-divider.m-b
+			h3.hr-divider-content.hr-divider-heading Live Production Courses
+
+	table.table
+		thead
+			tr
+				th Course Title
+		tbody
+			each course in prodCourses
+				tr
+					td= course.get('name')
+
+
+	.row(style="height:30px")

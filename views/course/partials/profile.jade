@@ -1,0 +1,7 @@
+if instructor
+  a(href=('/instructors/' + instructor.get('username')), style='color:#333;'): .panel.panel-default.panel-profile
+    .panel-heading(style='background-image:url(' + (instructor.get('profileHeader') ? instructor.get('profileHeader').url() : (course.get('cardImage') ? course.get('cardImage').url() : '/img/demo/background.png')) + ');')
+    .panel-body.text-center
+      img(src=(instructor.get('avatar') ? instructor.get('avatar').url() : '/img/demo/profile.png')).panel-profile-img
+      h5.panel-title= instructor.get('name')
+      p= instructor.get('shortBio')

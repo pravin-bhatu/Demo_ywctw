@@ -1,0 +1,13 @@
+if courseExam
+  if enableCourseExam
+    if userExam
+      if userExamResults.score === userExamResults.questions
+        a(href='/courses/' + course.get('slug') + '/exam').btn.btn-success.btn-block=  "Congratulations! You Have Passed The Exam - Take Exam Again"
+      else
+        a(href='/courses/' + course.get('slug') + '/exam').btn.btn-warning.btn-block=  userExamResults.score + " out of " + userExamResults.questions + " - Take Exam Again"
+    else
+      a(href='/courses/' + course.get('slug') + '/exam').btn.btn-primary.btn-block Take Exam
+  else
+    button.btn.btn-primary.btn-block(disabled)
+      i.fa.fa-lock(style="left:10px")
+      |  Exam Unlocks After All Lessons Are Completed

@@ -1,0 +1,148 @@
+extends ../../layout
+
+block content
+
+    script.
+        function copyToClipboard(elementId) {
+        var aux = document.createElement("input");
+        aux.setAttribute("value", document.getElementById(elementId).innerHTML);
+        document.body.appendChild(aux);
+        aux.select()
+        document.execCommand("copy");
+        document.body.removeChild(aux);
+        alert(" Text Copied : " + document.getElementById(elementId).innerHTML)
+        } 
+
+    style.
+        * {
+            border:0px dotted gray;
+        }
+        .row{
+            margin-right: 0px !important;
+        }
+        @media only screen and (min-width: 600px) {
+            .buttonAmbassadorShareLink {
+                font:28px bold; 
+                color:red;     
+            }
+        }
+        @media only screen and (max-width: 600px) {
+            .buttonAmbassadorShareLink {
+                font:14px bold; 
+                color:red;     
+            }
+        }
+
+        .cent{
+            text-align: center;
+        }
+       
+        .op {
+            opacity: .4;
+        }  
+        p {
+            font-size:28px;
+        }             
+        .sectionBackgroundDiv {
+            background: url("https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/thankyou/cover-bg-1.png") no-repeat center ;
+            //- width: 100%;
+            //- background-size: cover; 
+            margin-top:-19px;          
+        } 
+        .sectionBackgroundDiv p {
+            color:white;
+            font-size: 22px;
+        }
+        .social-link {
+            width:50px;
+            height:50px;
+        }    
+        .cent-img{
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .logo-img{
+            width: 650px;
+            height: 120px;
+            padding: 20px;
+        }
+        .pad{
+            padding: 30px;
+        }
+        .img-banner{
+            width: 100%;
+            height: auto;
+
+            margin-right: 0px !important;            
+        }
+
+    div.sectionBackgroundDiv
+        .row.cent
+            .col-xs-12
+                img(src="/img/logo.png").img-responsive.cent-img.logo-img
+            .col-xs-12
+                p Welcome and Thank You for Registering for
+                p(style="color:red; margin-top: -10px;") <b>You Will Change The World Ambassador Program.</b>
+                p(style="margin-top: -10px;") To access the system for Generating Millions of Dollars
+                p(style="margin-top: -10px;") In Sales Online see below!
+            .col-xs-8.col-xs-offset-2
+                div.embed-responsive.embed-responsive-16by9
+                    <iframe style="max-height:350px !important" id="video" name="video" class="embed-responsive-item" src="https://player.vimeo.com/video/284428285?title=0&byline=0&portrait=0" align="middle" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        .row
+            br
+    .row
+        .col-xs-12.cent(style="margin-bottom: 30px;")
+            br
+            style.
+                .social-link-img {
+                    width: 50px;
+                    height: 50px;                    
+                }
+                .social-link-img:hover {
+                    padding:5px;               
+                }              
+            include sociallinks.jade                      
+
+    div.sectionCongrats.pad(style="padding-bottom: 0px;")
+        row
+            .col-xs-10.col-xs-offset-2.text-left
+                p Hi,
+                p Congratulations, Inside the portal you will access all of the video training, webinars, Ambassador links and promo tools for the next upcoming launches.            
+                //- p, you are a registered to access the Million Dollar Ambassador Course with Peter Anthony Wynn. 
+                p REMEMBER... First to promote WINS online.
+    div
+        .row
+            .col-xs-12.cent
+                h1.cent <b style="font-size: 48px; color=black;">This Month's Launch:</b> 
+                h2.cent(style="font-size: 36px !important; margin-top: -5px !important;") FROM PASSION
+                h2.cent(style="font-size: 42px !important; margin-top: -5px !important;") TO PAYCHECK
+                h3.cent(style="color:red; margin-top: -5px;") with Jey Shetty
+                p Here is your Unique Ambassador Referral Link to promote with:
+
+                div.cent
+                button(onclick="copyToClipboard('sharelink')")
+                    h3(id="sharelink").buttonAmbassadorShareLink #{shareURL}    
+                p See you on the inside..
+                p Peter Anthony Wynn    
+    if user                
+        .row
+            .col-xs-12(style="padding: 0px !important;")
+                a(href='/instructors/peter-anthony-wynn')
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/thankyou/registernow.png" alt="This month's launch" class="img-responsive").img-banner.img-responsive
+            
+        .row
+            .col-xs-10.col-xs-offset-1
+                a(href="https://www.youwillchangetheworld.com/courses/js-passion-to-paycheck")
+                    img(src="https://s3-us-west-2.amazonaws.com/ywctw-production/ambassador/thankyou/productofthemonth.png" alt="This month's launch" class="img-responsive").img-banner.img-responsive                               
+        .row
+            .col-xs-12.cent(style="margin-bottom: 30px;")
+                style.
+                    .social-link-img {
+                        width: 50px;
+                        height: 50px;                    
+                    }
+                    .social-link-img:hover {
+                        padding:5px;               
+                    }              
+                include sociallinks  

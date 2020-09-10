@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  h1.page-header User Information
+  if (user.get('firstName') || user.get('lastName'))
+    h2= user.get('firstName') + ' ' + user.get('lastName')
+  else
+    h2 No Name in Database
+  h4= user.get('email')
+  h4= user.get('username')
+
+  if (user.get('referredBy'))
+    .row: .col-xs-12
+      h3 Referred by
+      h4= user.get('referredBy').get('instructor').get('name')
+
+  .row: .col-xs-12
+    h3 Enrolled in
+
+    table.table.table-striped
+      thead
+        tr
+          th Course Title
+          th Instructor Name
+          th Enrollment Date
+      tbody
+        each enrollment in enrollments
+          if (user.get('username') == enrollment.get('userId'))
+            tr
+              td= enrollment.get('course').get('name')
+              td= enrollment.get('course').get('instructorName')
+              td= libs.moment(enrollment.get('createdAt')).format("MMMM Do YYYY")

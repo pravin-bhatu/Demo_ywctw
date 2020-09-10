@@ -1,0 +1,26 @@
+extends ../layout
+
+block content
+
+  style.
+    .panel-heading {
+      border: none;
+    }
+
+  div(style="background-color:#000;margin-top:-21px"): .container: .profile-header.text-center(style="background-image:url('/img/instructors/become/header.png');background-repeat:no-repeat;background-position:center;max-height:300px")
+  .container-fluid(style="margin-bottom: 20px")
+    .row(style="padding: 10px 0 15px 0;")
+      .col-xs-10.col-xs-offset-1
+        h1(style="margin-top: 10px;").text-center: b Meet the Team
+        hr
+
+    .row
+      .col-xs-8.col-xs-offset-2
+        - for (var x = 0; x < 8; x++)
+          .col-xs-12.col-sm-6.col-md-4
+            a(href=('/team/about'), style='color:#333;'): .panel.panel-default.panel-profile
+              .panel-heading(style="background-image:url('')")
+                .panel-body.text-center
+                  img(src="#").panel-profile-img
+                  p.panel-title Name
+                  p.panel-title Position

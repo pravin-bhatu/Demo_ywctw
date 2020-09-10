@@ -1,0 +1,167 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ selector: "textArea", plugins: "lists", browser_spellcheck: true });</script>
+
+block content
+  h1.page-header Admin - Event - !{formType}
+
+  .row
+    div#errorBox(role="alert", hidden).alert.alert-danger
+      span#errorText
+
+  - var action = "";
+  if(formType == 'Add')
+    - action = "add";
+  else
+    - action = "edit";
+  form(id="course",method="post",action=action)
+
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Add Event
+
+    .row: .col-xs-12
+      .form-group
+        label(for="instructor") Instructor
+          select.form-control(name="instructor", id="instructor")
+            option Select Instructor
+            each instructor in instructors
+              option(value=[instructor.id, instructor.get('name')], selected=((values.instructorName === instructor.get('name')) ? true : false))= instructor.get('name')
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Event Name
+          input(type="text", id="eventName", name="eventName", value=values.name || '', required).form-control
+
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Location Name
+          input(type="text", id="eventLocationName", name="eventLocationName", value=values.eventLocationName || '').form-control
+
+      .col-xs-12.col-sm-6
+        .form-group
+          label Location Address
+          input(type="text", id="eventLocationAddress", name="eventLocationAddress", value=values.eventLocationAddress || '').form-control
+
+
+      .row
+        .col-xs-12.col-sm-3
+          .form-group
+            label Location City
+            input(type="text", id="eventLocationCity", name="eventLocationCity", value=values.eventLocationCity || '').form-control
+
+        .col-xs-12.col-sm-3
+          .form-group
+            label Location State
+            input(type="text", id="eventLocationState", name="eventLocationState", value=values.location || '').form-control
+
+        .col-xs-12.col-sm-3
+          .form-group
+            label Location Country
+            input(type="text", id="eventLocationCountry", name="eventLocationCountry", value=values.eventLocationCountry || '').form-control
+
+        .col-xs-12.col-sm-3
+          .form-group
+            label Location Zip
+            input(type="text", id="eventLocationZip", name="eventLocationZip", value=values.eventLocationZip || '').form-control
+
+
+    .row
+
+      .col-xs-12.col-sm-3
+        .form-group
+          label Start Date
+          input(type="date", id="eventStartDate", name="eventStartDate", value=values.startDate || '', required).form-control
+
+      .col-xs-12.col-sm-3
+        .form-group
+          label(for="startTime") Start Time
+            select.form-control(name="startTime", id="startTime")
+              option 8:00 AM
+              option 8:30 AM
+              option 9:00 AM
+              option 9:30 AM
+              option 10:00 AM
+
+
+
+      .col-xs-12.col-sm-3
+        .form-group
+          label End Date
+          input(type="date", id="eventEndDate", name="eventEndDate", value=values.endDate || '', required).form-control
+
+    // TODO: Add startTime to the date entries
+
+    // .row
+      .col-xs-4
+        h2 Images
+        h3= "Card Image "
+        span(style='font-size: 16px') 1920 x 1080 px
+        img(style="width:100%;", src=(instructor.get('profileHeader') ? instructor.get('profileHeader').url() : '/img/instructors/default-instructor-header.png'))
+        br
+        br
+        form(id="uploadProfileHeader",method="post",action="uploadProfileHeader", enctype="multipart/form-data")
+          input(type="hidden", name="instructorId", value=instructor.id)
+          input(type="file", name="profileHeader", id="profileHeader", required)
+          br
+          input(id="uploadHeader", type="submit", value="Upload Header").btn.btn-success
+
+
+
+    .row
+      .col-xs-12.col-sm-3.text-center
+        .form-group
+          .control-lable: label Background Type
+          .radio-inline
+            label
+              input(type='radio', name='backgroundType', value='image', checked=(values.backgroundType === 'image') ? true : false)
+              |     Image
+          .radio-inline
+            label
+              input(type='radio', name='backgroundType', value='video', checked=(values.backgroundType === 'video') ? true : false)
+              |     Video
+
+    .row
+      .col-xs-12.col-sm-3
+        .form-group
+          label Video
+          input(type="text", id="eventVideoId", name="eventVideoId", value=values.videoId || '').form-control
+
+      .col-xs-12.col-sm-3.text-center
+        .form-group
+          .control-lable: label Video Provider
+          .radio-inline
+            label
+              input(type='radio', name='videoProvider', value='youtube', checked=(values.videoProvider === 'youtube') ? true : false)
+              |     Youtube
+          .radio-inline
+            label
+              input(type='radio', name='videoProvider', value='vimeo', checked=(values.videoProvider === 'vimeo') ? true : false)
+              |     Vimeo
+
+      // .col-xs-12.col-sm-3
+        .form-group
+          label End Date
+          input(type="text", id="eventEndDate", name="eventEndDate", value=values.endDate || '', required).form-control
+
+
+    .row
+      .col-xs-12.col-sm-12
+        .form-group
+          label Event Description
+          textArea(name="eventDescription", id="eventDescription", rows="10").form-control
+            if(values.description)
+              !{libs.markdown.render(values.description) || ''}
+
+
+    .row.m-t.m-b.text-center
+      .col-xs-12
+        if (formType === "Edit")
+          input(type="hidden", id="eventId", name="eventId", value=eventId)
+        input(type="hidden", id="formType", name="formType", value=formType)
+        input(id="formSubmit", type="submit", value= formType + " Event").btn.btn-primary.btn-lg

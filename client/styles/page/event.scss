@@ -1,0 +1,202 @@
+.nonav {
+  padding-top: 0px !important;
+}
+
+.event-menu {
+  position: fixed;
+  z-index: 100;
+}
+
+.event-header-home {
+  width: 100%;
+  height: 60vh;
+  min-height: 660px;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+.event-header-home h1 {
+  padding: 0;
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 68px;
+  font-weight: 100;
+  line-height: 10rem;
+  z-index: 0;
+}
+
+.event-header-home h3 {
+  font-size: 30px;
+}
+
+.event-header-home .container-fluid {
+  display: table;
+  height: 100%;
+  padding-top: 8%;
+}
+
+.event-header-home .row {
+  color: white;
+  vertical-align: middle;
+  z-index: 5;
+  width: 100%;
+  display: table-cell;
+}
+
+.gradient-overlay {
+  /* background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4gPHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PGxpbmVhckdyYWRpZW50IGlkPSJncmFkIiBncmFkaWVudFVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgeDE9IjAuMCIgeTE9IjAuNSIgeDI9IjEuMCIgeTI9IjAuNSI+PHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2Y3MzkxMyIvPjxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzZkMTY2ZCIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZ3JhZCkiIC8+PC9zdmc+IA=="); */
+  /* background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #f73913), color-stop(100%, #6d166d)); */
+  background: -moz-linear-gradient(left, #f73913, #6d166d);
+  background: linear-gradient(to right, #f73913, #6d166d);
+  opacity: 0.9;
+}
+
+.video-background {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1000;
+  //background-color: white;
+  //background-image: url("/public/img/page/home/mountain.jpg");
+  opacity: 0.3;
+  background-blend-mode: multiply;
+  //background-position: center;
+  //background-size: cover;
+}
+
+.video-background video {
+  width: 100%;
+}
+
+.event-menu {
+  width: 100%;
+  height: 60px;
+  background-color: black;
+}
+
+.nav-tabs {
+  border-bottom: none;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.nav-tabs a {
+  color: white;
+  font-weight: bold;
+}
+
+.nav-tabs a:hover, .nav-tabs a:focus {
+  border: 0px;
+  background-color : #819099 !important;
+  color: black;
+  font-weight: bold;
+}
+
+.event-info {
+  // position: absolute;
+  width: 100%;
+  // height: 100%;
+  // top: 700px;
+  background-color: white;
+}
+
+#countdown {
+  margin: 2rem auto 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(255, 255, 255);
+}
+
+#countdown {
+  margin: 2rem auto 3rem;
+  text-align: center;
+  text-transform: uppercase;
+  color: #fff;
+  font-family: "tungsten-medium", "Helvetica", san-serif;
+  width: 28rem;
+}
+
+#countdown div {
+  font-size: 2.6rem;
+  display: inline-block;
+  text-align: center;
+  margin: 0 1rem;
+  min-width: 4rem;
+  vertical-align: middle;
+}
+
+#countdown div span {
+  font-size: 1.8rem;
+  display: block;
+  padding-top: 3px;
+  font-kerning: normal;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+
+#countdown .counter-spacer {
+  padding: 0;
+  margin: 0;
+  min-width: 1rem !important;
+  vertical-align: text-bottom;
+}
+
+@media only screen and (max-width: 1000px) {
+  .video-background video {
+    width: auto;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .event-header-home {
+    min-height: 550px;
+    height: 550px;
+  }
+
+  .event-header-home h1 {
+    font-size: 45px;
+  }
+
+  .event-header-home h3 {
+    font-size: 20px;
+  }
+
+  .video-background {
+    height: 100%;
+  }
+
+  #countdown div {
+    font-size: 1.6rem;
+    display: inline-block;
+    text-align: center;
+    margin: 0 1rem;
+    min-width: 4rem;
+    vertical-align: middle;
+  }
+
+  #countdown div span {
+    font-size: .9rem;
+    display: block;
+    padding-top: 3px;
+    font-kerning: normal;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+
+  #countdown .counter-spacer {
+    padding: 0;
+    margin: 0;
+    min-width: 1rem !important;
+    vertical-align: text-bottom;
+  }
+}
+
+@media only screen and (max-width: 432px) {
+  .event-header-home h1 {
+    font-size: 35px;
+  }
+}

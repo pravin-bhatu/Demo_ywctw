@@ -1,0 +1,102 @@
+extends ../layout
+
+block content
+
+  h1 Course Information
+  hr
+
+  .row: .col-xs-12
+    a(href='/courses/' + course.get('slug'), target='_blank').btn.btn-link View Course
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Course Details
+
+  .row
+    .col-xs-1
+      a(href='/admin/course/edit?courseId=' + course.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+    .col-xs-11(style='margin-top:-30px')
+      h2= course.get('name')
+
+  h4= course.get('instructorName')
+  h4= 'Stage - '
+    if (course.get('stage') == 'prod')
+      .label.label-success PROD
+    else if (course.get('stage') == 'stage')
+      .label.label-warning STAGE
+    else if (course.get('stage') == 'dev')
+      .label.label-danger DEV
+  h4= '$ ' + course.get('price')
+  h4 Enrollments:
+    a(href='/admin/course/enrollment-info?courseId=' + course.id, style='color:black;')= enrollmentCount
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Description
+
+    p !{libs.markdown.render(course.get('description'))}
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Lessons
+
+  .row: .col-xs-12.text-left
+    a(href='/admin/course/addLesson?courseId=' + course.id).btn.btn-primary#articlePublished Add Lessons
+
+  if (course.get('lessons').length > 0)
+    table.table.table-striped
+      thead
+        tr
+          th Edit
+          th #
+          th Title
+          th Section
+          th.text-center Questions
+      tbody
+        each lesson in lessons
+          tr
+            td: a(href='/admin/course/editLesson?courseId=' + course.id + '&lessonId=' + lesson.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+            td= lesson.get('order')
+            td= lesson.get('name')
+            td= lesson.get('sectionName')
+            td.text-center= (lesson.get('quiz') ? Object.keys(lesson.get('quiz')).length : '0')
+
+  else
+    h4 No Lessons
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Course Card Image
+
+  .row
+    .col-xs-6
+      h3= "Course Card "
+        span(style='font-size: 16px') 600 x 340 px
+      if(course.get('cardImage'))
+        img(src=course.get('cardImage').url()).img-responsive
+      else
+        img(src="http://placehold.it/600x340").img-responsive
+      br
+      form(id="uploadCardImage",method="post",action="uploadCardImage", enctype="multipart/form-data")
+        input(type="hidden", name="courseId", value=course.id)
+        input(type="file", name="courseCardImage", id="courseCardImage", required)
+        br
+        input(id="uploadCard", type="submit", value="Upload Course Card").btn.btn-success
+    .col-xs-6
+      h3= "Banner Image "
+        span(style='font-size: 16px') 1980 x 1080 px
+      if(course.get('bannerImage'))
+        img(src=course.get('bannerImage').url()).img-responsive
+      else
+        img(src="http://placehold.it/1980x1080").img-responsive
+      br
+      form(id="uploadNBannerImage",method="post",action="uploadBannerImage", enctype="multipart/form-data")
+        input(type="hidden", name="courseId", value=course.id)
+        input(type="file", name="courseBannerImage", id="courseBannerImage", required)
+        br
+        input(id="uploadBanner", type="submit", value="Upload Banner Image").btn.btn-success
+
+
+  .row(style="height:50px")

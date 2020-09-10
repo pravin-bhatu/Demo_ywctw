@@ -1,0 +1,33 @@
+extends layout
+
+// this page is a example page of some graph ideas and layout in jade
+
+block content
+  .row
+    .col-sm-6.col-md-4
+      .statcard
+        .p-a
+          span.statcard-desc Student Body (SAMPLE)
+          h2.statcard-number
+            | 2,938
+            small.delta-indicator.delta-positive 5%
+          hr.statcard-hr.m-b-0
+        canvas.sparkline(data-chart='spark-line', data-value='[{data:[5,12,26,31,35,45,49]}]', data-labels="['a','b','c','d','e','f','g']", width='378', height='94')
+    .col-sm-6.col-md-4
+      .statcard
+        .p-a
+          span.statcard-desc Course Revenue (SAMPLE)
+          h2.statcard-number
+            | $5,617
+            small.delta-indicator.delta-positive 2.4%
+          hr.statcard-hr.m-b-0
+        canvas.sparkline(data-chart='spark-line', data-value='[{data:[28,68,41,43,96,45,100]}]', data-labels="['a','b','c','d','e','f','g']", width='378', height='94')
+    .col-sm-6.col-md-4
+      .statcard
+        .p-a
+          span.statcard-desc Student Body Revenue (SAMPLE)
+          h2.statcard-number
+            | $9,403
+            small.delta-indicator.delta-negative 0.1%
+          hr.statcard-hr.m-b-0
+        canvas.sparkline(data-chart='spark-line', data-value='[{data:[32,48,41,50,47,52,51]}]', data-labels="['a','b','c','d','e','f','g']", width='378', height='94')

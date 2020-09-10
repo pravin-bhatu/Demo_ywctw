@@ -1,0 +1,41 @@
+if instructor
+  .row: .col-xs-12
+    ul.list-group.m-t.m-b
+      li.list-group-header(style="background-color:#008817") INSTRUCTOR REFFERAL LINK - This link points directly to your instructor page. Specifically for social media and to share via email.
+      li.list-group-item
+          .text-left= 'https://www.youwillchangetheworld.com/instructors/' + instructor.get('username') + '?ref=' + affiliate.id
+            span(style="display:block;float:right")
+              a(href="javascript:copyClipboard('https://www.youwillchangetheworld.com/instructors/" + instructor.get('username') + "?ref=" + affiliate.id + "');") Copy To Clipboard
+.row: .col-xs-12
+  ul.list-group.m-t.m-b
+    li.list-group-header(style="background-color:#3598C7") COURSE REFFAL LINKS - These links points directly to your course page. Specifically for social media and to share via email.
+    each course in courses
+      if (course.get('stage') == 'prod')
+        li.list-group-item
+          h4= course.get('name')
+            span(style="display:block;float:right;font-size:14px")
+              a(href="javascript:copyClipboard('https://www.youwillchangetheworld.com/courses/" + course.get('slug') + "?ref=" + affiliate.id + "');") Copy To Clipboard
+          p= 'https://www.youwillchangetheworld.com/courses/' + course.get('slug') + '?ref=' + affiliate.id
+.row: .col-xs-12
+  ul.list-group.m-t.m-b
+    li.list-group-header(style="background-color:#DC6D1E") CHECKOUT REFERRAL LINKS - THIS IS FOR A SALES PAGE ONLY, if you are using a sales page to drive traffic to the course this link takes you DIRECTLY to the buy it NOW checkout. The USER will still need to create a account and will go through the checkout BUT COMPLETELY BYPASS the course INTRO PAGE! 1st time sale 50% off.
+    each course in courses
+      if (course.get('stage') == 'prod' && course.get('price') != 0)
+        li.list-group-item
+          h4= course.get('name')
+            span(style="display:block;float:right;font-size:14px")
+              a(href="javascript:copyClipboard('https://www.youwillchangetheworld.com/checkout?id=" + course.id + "&ref=" + affiliate.id + "');") Copy To Clipboard
+          p= 'https://www.youwillchangetheworld.com/checkout?id=' + course.id + '&ref=' + affiliate.id
+
+
+block scripts
+  script.
+    // alert('testing');
+    function copyClipboard(copylink) {
+      var textField = document.createElement('textarea');
+      textField.innerText = copylink;
+      document.body.appendChild(textField);
+      textField.select();
+      document.execCommand('copy');
+      textField.remove();
+    }

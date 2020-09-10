@@ -1,0 +1,140 @@
+extends ../layout
+
+block content
+
+
+  #profile.page: .container: .row
+    .col-xs-10
+      form(action="/events/survey" method="post")
+        .row
+          .col-xs-12.col-sm-8
+            h2 Survey
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 1. Main reason for attending The Social Entrepreneur Summit:
+            .checkbox
+              label(for='growthDevelopment')
+                input(type='checkbox', id='growthDevelopment', value='false')
+                | Personal Growth & Development
+            .checkbox
+              label(for='becomeMentor')
+                input(type='checkbox', id='becomeMentor', value='false')
+                | Becoming A Mentor
+            .checkbox
+              label(for='networking')
+                input(type='checkbox', id='networking', value='false')
+                | Networking
+            .checkbox
+              label(for='speakers')
+                input(type='checkbox', id='speakers', value='false')
+                | Speakers
+            .checkbox
+              label(for='other')
+                input(type='checkbox', id='other', value='false')
+                | Other
+              .col-xs-12.col-sm-12
+                .form-group
+                  input(type='text', id='otherInput').form-control
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 2. Did The Social Entrepreneur Summit fulfill your reason for attending?
+            .checkbox(style='paddingLeft:100')
+              label(for='yesReason')
+                input(type='checkbox', id='yesReason', value='false')
+                | Yes
+            .checkbox
+              label(for='noReason')
+                input(type='checkbox', id='noReason', value='false')
+                | No - Why?
+              .col-xs-12.col-sm-12
+                .form-group
+                  input(type='text', id='noReasonText').form-control
+
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 3. What was the most beneficial aspect of The Social Entrepreneur Summit?
+            .row
+              .col-xs-12.col-sm-12
+                .form-group
+                  textArea(name="beneficialAspect", id="beneficialAspect", rows="5").form-control
+
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 4. Would you recommend The Social Entrepreneur Summit to others?
+            .checkbox(style='paddingLeft:100')
+              label(for='yesRecommend')
+                input(type='checkbox', id='yesRecommend', value='false')
+                | Yes
+            .checkbox
+              label(for='noRecommend')
+                input(type='checkbox', id='noRecommend', value='false')
+                | No - Why?
+              .col-xs-12.col-sm-12
+                .form-group
+                  input(type='text', id='whyRecommend').form-control
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 5. Did you purchase the Associate Instructor Package to become a Mentor on You Will Change The World platform?
+            .checkbox(style='paddingLeft:100')
+              label(for='yesPurchased')
+                input(type='checkbox', id='yesPurchased', value='false')
+                | Yes
+            .checkbox
+              label(for='noPurchased')
+                input(type='checkbox', id='noPurchased', value='false')
+                | No
+            .checkbox
+              label(for='interestedPurchased')
+                input(type='checkbox', id='interestedPurchased', value='false')
+                | Interested
+              .col-xs-12.col-sm-12
+                .form-group
+                  label What are the barriers to purchase right now?
+                  textArea(name="barriersPurchase", id="barriersPurchase", rows="5").form-control
+              .col-xs-12.col-sm-12
+                .form-group
+                  label How could we help you become a Mentor?
+                  textArea(name="helpMentor", id="helpMentor", rows="5").form-control
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 6. Please provide us with any additional comments you may have to improve future Social Entrepreneur Summits.
+            .form-group
+              textArea(name="comments", id="comments", rows="5").form-control
+
+        .row
+          .col-xs-12.col-sm-12
+            h3 Optional
+            .row
+              .col-xs-12.col-sm-12
+                .form-group
+                  label First Name
+                  input(type='text', id='firstName').form-control
+
+            .row
+              .col-xs-12.col-sm-12
+                .form-group
+                  label Last Name
+                  input(type='text', id='lastName').form-control
+
+            .row
+              .col-xs-12.col-sm-12
+                .form-group
+                  label Email
+                  input(type='email', id='email').form-control
+
+            .row
+              .col-xs-12.col-sm-12
+                .form-group
+                  label Phone Number
+                  input(type='text', id='phone').form-control
+
+
+        .row
+          .col-xs-12.col-sm-9
+            input(id='eventFormSubmit', type='submit', value='Submit').btn.btn-primary.btn-lg

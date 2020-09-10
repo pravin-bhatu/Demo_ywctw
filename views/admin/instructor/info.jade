@@ -1,0 +1,170 @@
+extends ../layout
+
+block content
+
+  .container-fluid
+    h1 Instructor Information
+    hr
+
+    .row: .col-xs-12
+      a(href='https://youwillchangetheworld.com/instructors/' + instructor.get('username'), target='_blank').btn.btn-link View Instructor Page
+
+    .row: .col-xs-12
+      .hr-divider.m-b
+        h3.hr-divider-content.hr-divider-heading Instructor Details
+
+    .row
+      .col-xs-1
+        a(href='edit?id=' + instructor.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+      .col-xs-11(style='margin-top:-30px; margin-left:-50px')
+        h2= instructor.get('name')
+
+    .row
+      .col-xs-4
+        h2 Images
+        h3= "Header "
+          span(style='font-size: 16px') 1920 x 1080 px
+        img(style="width:100%;", src=(instructor.get('profileHeader') ? instructor.get('profileHeader').url() : '/img/instructors/default-instructor-header.png'))
+        br
+        br
+        form(id="uploadProfileHeader",method="post",action="uploadProfileHeader", enctype="multipart/form-data")
+          input(type="hidden", name="instructorId", value=instructor.id)
+          input(type="file", name="profileHeader", id="profileHeader", required)
+          br
+          input(id="uploadHeader", type="submit", value="Upload Header").btn.btn-success
+        hr
+        h3= "Avatar "
+          span(style='font-size: 16px') 100 x 100 px
+        img(style="max-height:200px", src=(instructor.get('avatar') ? instructor.get('avatar').url() : '/img/instructors/default-instructor-icon.png'))
+        br
+        br
+        form(id="uploadProfileAvatar",method="post",action="uploadProfileAvatar", enctype="multipart/form-data")
+          input(type="hidden", name="instructorId", value=instructor.id)
+          input(type="file", name="profileAvatar", id="profileAvatar", required)
+          br
+          input(id="uploadAvatar", type="submit", value="Upload Avatar").btn.btn-success
+
+      .col-xs-8
+        .row: .col-xs-12.col-xs-offset-0
+          h4= 'Merchant Status: '
+            if (instructor.get('merchantStatus') == 'active')
+              .label.label-success ACTIVE
+            else
+              .label.label-danger NOT SET
+
+          h4= 'AuthID: '
+            if(instructor.get('authId'))
+              = instructor.get('authId')
+            else
+              if(instructor.get('affiliate'))
+                a(href='/admin/instructors/setUserAuth?id=' + instructor.id).btn.btn-xs.btn-success Attach User Account
+              else
+                btn.btn-xs.btn-success(disabled=disabled) Attach User Account
+
+          h4= 'Email: ' + (instructorUser ? instructorUser.get('email') : '')
+
+          if(instructor.get('vanity'))
+            h4= 'Vanity URL: ' + instructor.get('vanity')
+          else
+            h4= 'Vanity URL: NOT SET'
+
+
+          h4= 'Affiliate Code: '
+            if(instructor.get('affiliate'))
+              = instructor.get('affiliate').id
+              br
+              br
+              form(id="getStudentBody", method="post", action="getStudentBody")
+                input(type="hidden", name="affiliateId", value=instructor.get('affiliate').id)
+                input(type="hidden", name="instructorId", value=instructor.id)
+                input(id="downloadList", type="submit", value="Student Body List").btn.btn-info
+            else
+              a(href='/admin/instructors/setAffiliateCode?id=' + instructor.id).btn.btn-xs.btn-success Set Affiliate Code
+
+        .row: .col-xs-12.col-xs-offset-0
+          h3 Social Media
+          .col-xs-12
+
+            if (instructor.get('socialGoogle'))
+              a(href=instructor.get('socialGoogle'), target="_blank", style='color:#dd4b39'): i.fa.fa-google-plus.fa-lg(style="margin-right:10px;")
+            else
+              a(href=instructor.get('socialGoogle'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-google-plus.fa-lg(style="margin-right:10px;")
+
+            if (instructor.get('socialTwitter'))
+              a(href=instructor.get('socialTwitter'), target="_blank", style='color:#55acee'): i.fa.fa-twitter.fa-lg(style="margin-left:10px;margin-right:10px;")
+            else
+              a(href=instructor.get('socialTwitter'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-twitter.fa-lg(style="margin-left:10px;margin-right:10px;")
+
+            if (instructor.get('socialFacebook'))
+              a(href=instructor.get('socialFacebook'), target="_blank", style='color:#3b5998'): i.fa.fa-facebook.fa-lg(style="margin-left:10px;margin-right:10px;")
+            else
+              a(href=instructor.get('socialFacebook'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-facebook.fa-lg(style="margin-left:10px;margin-right:10px;")
+
+            if (instructor.get('socialLinkedIn'))
+              a(href=instructor.get('socialLinkedIn'), target="_blank", style='color:#0077b5'): i.fa.fa-linkedin.fa-lg(style="margin-left:10px;margin-right:10px;")
+            else
+              a(href=instructor.get('socialLinkedIn'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-linkedin.fa-lg(style="margin-left:10px;margin-right:10px;")
+
+            if (instructor.get('socialPinterest'))
+              a(href=instructor.get('socialPinterest'), target="_blank", style='color:#bd081c'): i.fa.fa-pinterest.fa-lg(style="margin-left:10px;margin-right:10px;")
+            else
+              a(href=instructor.get('socialPinterest'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-pinterest.fa-lg(style="margin-left:10px;margin-right:10px;")
+
+            if (instructor.get('socialYouTube'))
+              a(href=instructor.get('socialYouTube'), target="_blank", style='color:#e52d27'): i.fa.fa-youtube.fa-lg(style="margin-left:10px;margin-right:10px;")
+            else
+              a(href=instructor.get('socialYouTube'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-youtube.fa-lg(style="margin-left:10px;margin-right:10px;")
+
+            if (instructor.get('socialInstagram'))
+              a(href=instructor.get('socialInstagram'), target="_blank", style='color:#8a3ab9'): i.fa.fa-instagram.fa-lg(style="margin-left:10px")
+            else
+              a(href=instructor.get('socialInstagram'), target="_blank", style='color:rgba(0,0,0,.1)'): i.fa.fa-instagram.fa-lg(style="margin-left:10px")
+
+        .row(style="margin-bottom: 30px;")
+
+        .row: .col-xs-12.col-xs-offset-0
+          h3 Short Bio
+          if instructor.get('shortBio')
+            p= instructor.get('shortBio')
+          else
+            p No Short Bio
+
+        .row: .col-xs-12.col-xs-offset-0
+          h3 Long Bio
+          if instructor.get('longBio')
+            p !{libs.markdown.render(instructor.get('longBio'))}
+          else
+            p No Long Bio
+
+        .row: .col-xs-12.col-xs-offset-0
+          h3 Books by #{instructor.get('name')}
+          a(href='/admin/instructors/addBook?id=' + instructor.id).btn.btn-success Add Book
+          br
+          br
+          .row
+            for book in books
+              .col-xs-12.col-sm-6.col-md-4.col-lg-3
+                .course-book: a(href=book.get('link'), target='_blank'): .thumbnail
+                  img(src=book.get('cover')).img-responsive
+
+        .row(style="margin-bottom: 30px;")
+
+        table.table.table-striped
+          thead
+            tr
+              th Course Title
+              th.text-center Enrollment Count
+          tbody
+            each course in courses
+              if course.get('instructor')
+                if (course.get('instructor').get('name') == instructor.get('name'))
+                  tr
+                    td= course.get('name')
+                    td.text-center= course.enrollmentCount
+
+
+        .row(style="margin-bottom: 30px;")
+
+        .row: .col-xs-12
+          //a(href='edit?id=' + instructor.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+          a.btn.btn-lg.btn-success(href='edit?id=' + instructor.id, style='color:white;') Edit

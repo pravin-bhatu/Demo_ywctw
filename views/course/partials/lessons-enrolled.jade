@@ -1,0 +1,25 @@
+for lesson in section.lessons
+  if lesson.get('order') == 0
+    a(href='/courses/' + course.get('slug') + '/' + lesson.get('slug')).list-group-item
+      i.fa.fa-play-circle
+      | &nbsp;&nbsp;
+      span(style=lesson.complete ? 'text-decoration:line-through;' : '') Introduction:
+      | &nbsp;&nbsp;
+      | #{lesson.get('name')}
+      if lesson.complete
+        i.fa.fa-check.pull-right(data-toggle="tooltip" title="Lesson Complete" data-placement="top")
+      if lesson.quiz
+        i.icon.icon-open-book.pull-right(data-toggle="tooltip" title=lesson.quizTooltip data-placement="top")
+  else
+    a(href='/courses/' + course.get('slug') + '/' + lesson.get('slug')).list-group-item
+      i.fa.fa-play-circle
+      | &nbsp;&nbsp;
+      span(style=lesson.complete ? 'text-decoration:line-through;' : '') Lesson #{lesson.get('order')}:
+      | &nbsp;&nbsp;
+      | #{lesson.get('name')}
+      if lesson.complete
+        i.fa.fa-check.pull-right(data-toggle="tooltip" title="Lesson Complete" data-placement="top")
+      if lesson.quiz
+        i.icon.icon-open-book.pull-right(data-toggle="tooltip" title=lesson.quizTooltip data-placement="top")
+
+

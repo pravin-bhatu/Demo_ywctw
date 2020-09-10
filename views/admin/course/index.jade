@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+  h1.page-header Admin - Course - List
+
+  .row
+    .col-xs-6.text-left
+      h4= "Course Count: "  + courses.length
+    .col-xs-6.text-right
+      a(href='/admin/course').label.label-info ALL
+      &nbsp;
+      a(href='/admin/course?filter=prod').label.label-success PROD
+      &nbsp;
+      a(href='/admin/course?filter=stage').label.label-warning STAGE
+      &nbsp;
+      a(href='/admin/course?filter=dev').label.label-danger DEV
+      &nbsp;
+
+  .row(style="height:10px")
+
+  table.table.table-striped
+    thead
+      tr
+        th
+        th Course Title
+        th Instructor Name
+        // th.text-center Enrollments
+        th.text-center Price
+        th.text-center Stage
+    tbody
+      each course in courses
+        tr
+          td.text-center: a(href='course/course-info?courseId=' + course.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+          td: a(href='course/course-info?courseId=' + course.id, style='color:black;')= course.get('name')
+          if course.get('instructor')
+            td: a(href='instructors/info?id=' + course.get('instructor').id, style='color:black;')= course.get('instructor').get('name')
+          if !course.get('instructor')
+            td: p Instructor Deleted
+          // td.text-center: a(href='course/enrollment-info?id=' + course.id, style='color:black;')= course.enrollmentCount
+          td.text-center= '$' + course.get('price')
+          td.text-center
+            if (course.get('stage') == 'prod')
+              .label.label-success PROD
+            else if (course.get('stage') == 'stage')
+              .label.label-warning STAGE
+            else if (course.get('stage') == 'dev')
+              .label.label-danger DEV

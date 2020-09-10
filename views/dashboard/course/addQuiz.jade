@@ -1,0 +1,131 @@
+extends ../layout
+
+block script
+  // TODO: Listen for questionType selection, show/hide section
+  script.
+    $('#questionType').change(function() {
+      $('.questions').hide();
+      var selectedValue = $('#questionType').val();
+
+      if(selectedValue === 'tf') {
+        console.log('Yes True/False');
+        $('#trueFalseQuestion').show();
+      } else {
+        console.log('Multiple Choice');
+        $('#multipleChoiceQuestion').show();
+      }
+
+    });
+
+
+
+block content
+  h1.page-header Add Quiz Questions
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Quiz Question
+
+  form(id="addQuizQuestion",method="post",action="addQuizQuestion")
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label( for="questionType" ) Question Type
+            select.form-control(name="questionType", id="questionType")
+              option Select Question Type
+              option(value="tf") True/False
+              option(value="mc") Multiple Choice
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Question
+          input(type="text", id="question", name="question", required).form-control
+
+
+
+
+    #trueFalseQuestion.questions(hidden=true)
+      .row
+        h4 True False Question
+      .row
+        .col-xs-1.text-right(style="top:23px")
+          .form-group
+            input(type="radio", name="trueFalse", value="A")
+
+        .col-xs-11.text-left
+          h3 A: True
+
+      .row
+        .col-xs-1.text-right(style="top:23px")
+          .form-group
+            input(type="radio", name="trueFalse", value="B")
+        .col-xs-11.text-left
+          h3 B: False
+
+
+    #multipleChoiceQuestion.questions(hidden=true)
+      .row
+        h4 Multiple Choice Question
+        .row
+          .col-xs-1.text-right(style="top:23px")
+            .form-group
+              input(type="radio", name="multipleChoice", value="A")
+          .col-xs-1.text-left
+            h3 A:
+
+          .col-xs-8.text-left(style="top:15px;left:-70px;")
+            .form-group
+              input(type="text", id="answerA", name="answerA").form-control
+        .row
+          .col-xs-1.text-right(style="top:23px")
+            .form-group
+              input(type="radio", name="multipleChoice", value="B")
+          .col-xs-1.text-left
+            h3 B:
+
+          .col-xs-8.text-left(style="top:15px;left:-70px;")
+            .form-group
+              input(type="text", id="answerB", name="answerB").form-control
+        .row
+          .col-xs-1.text-right(style="top:23px")
+            .form-group
+              input(type="radio", name="multipleChoice", value="C")
+          .col-xs-1.text-left
+            h3 C:
+
+          .col-xs-8.text-left(style="top:15px;left:-70px;")
+            .form-group
+              input(type="text", id="answerC", name="answerC").form-control
+        .row
+          .col-xs-1.text-right(style="top:23px")
+            .form-group
+              input(type="radio", name="multipleChoice", value="D")
+          .col-xs-1.text-left
+            h3 D:
+
+          .col-xs-8.text-left(style="top:15px;left:-70px;")
+            .form-group
+              input(type="text", id="answerD", name="answerD").form-control
+        .row
+          .col-xs-1.text-right(style="top:23px")
+            .form-group
+              input(type="radio", name="multipleChoice", value="E")
+          .col-xs-1.text-left
+            h3 E:
+
+          .col-xs-8.text-left(style="top:15px;left:-70px;")
+            .form-group
+              input(type="text", id="answerE", name="answerE").form-control
+
+
+    .row.m-t.m-b.text-center
+      .col-xs-12
+        if (formType === "Edit")
+          input(type="hidden", id="questionId", name="questionId", value=questionId)
+        input(type="hidden", id="lessonId", name="lessonId", value=lessonId)
+        input(type="hidden", id="courseId", name="courseId", value=courseId)
+        input(type="hidden", id="formType", name="formType", value=formType)
+        input(id="formSubmit", type="submit", value= formType + " Quiz Question").btn.btn-primary.btn-lg

@@ -1,0 +1,122 @@
+extends layout
+
+block content
+
+  style.
+    .course-card figure img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .panel img {
+      margin-top: -32px;
+      margin-bottom: -16px;
+    }
+
+  .header-home(style="margin-top:-19px;")
+    .container-fluid
+      .row
+        .col-xs-12(style="margin-bottom:-4px;padding:0;")
+          .text-center.welcome-box
+            .container
+              .row
+                .col-xs-12.col-sm-6.col-md-4.col-md-offset-1
+                  .white-box-container-home(style='margin-left:15px')
+                    .row(style='margin-bottom:20px;')
+                      .col-xs-12
+                        .panel.panel-register-home
+                          img(src='/img/logo-icon.png', alt='you will change the world', style="width:75px;")
+                          h1 You Will Change The World
+                          h4 Change lives by taking powerful online courses.
+                          br
+                          .row
+                            .col-xs-10.col-xs-offset-1
+                              p: a.btn.btn-lg.btn-primary.expand.sign-up(href='#') Create Free Account!
+                          .row
+                            .col-xs-10.col-xs-offset-1
+                              p: a.btn.btn-lg.btn-info.expand.sign-in(href='#') Log In
+                          .row
+                            .col-xs-10.col-xs-offset-1
+                              p: a.btn.btn-lg.btn-inverse.expand(href="/courses") Browse Courses
+          video(muted, loop, autoplay).video-home
+            source(src='public/videos/about_1.mp4', type='video/mp4')
+
+  hr(style="border-top: 5px solid #f04124; margin-top:0; margin-bottom:0")
+
+  .register-choice(style="background-color: rgb(0,0,0);")
+    //.row(style="padding-bottom:15px;color:white;background-color:rgba(0,0,0,0.7)")
+      .col-xs-12.text-center
+        h1 What Would You Like To Do?
+
+    .container-fluid: .row
+      .col-xs-12.col-md-4.text-center(style="padding:0")
+        a(href="foundations")
+          .foundation-box
+            //h1.register-choice-text Share Your Mission
+      .col-xs-12.col-md-4.text-center(style="padding:0")
+        a(href="instructors/become")
+          .legacy-box
+            //h1.register-choice-text Curate Your Legacy
+      .col-xs-12.col-md-4.text-center(style="padding:0")
+        a(href="courses")
+          .start-learning-box
+            //h1.register-choice-text Become More
+
+  hr(style="border-top: 5px solid #f04124; margin-top:0; margin-bottom:0")
+
+  .featured-courses-articles-container: .container
+    .row
+      .col-xs-12.col-sm-12.col-md-4.min-col-height-home
+        h2.text-center
+          a(style='color:black', href='/courses').h2-section-title-home Featured Courses
+        for course in courses.featured
+          .row
+            .col-xs-10.col-xs-offset-1.col-sm-6.col-sm-offset-3.col-md-12.col-md-offset-0
+              .course-card.course-card-home: a(href='/courses/' + course.get('slug'))
+                figure.effect-julia
+                  if course.get('cardImage')
+                    img(src=course.get('cardImage').url(), alt= course.get('name') + ' ' + course.get('instructor').get('name')).img-responsive
+                  else
+                    img(src='https://placeholdit.imgix.net/~text?txtsize=36&txt=500×275&w=500&h=275').img-responsive
+                  figcaption
+                    h2(style='text-transform:capitalize;').fittext= course.get('name')
+                    p= course.get('instructor') ? course.get('instructor').get('name') : ''
+                    button.btn.btn-primary
+                      if course.get('stage') === 'prod'
+                        if course.get('price') === 0
+                          span Free Enrollment
+                        else
+                          span Enroll for
+                            include course/partials/price
+                      else
+                        span Coming Soon
+
+        .col-xs-10.col-xs-offset-1.col-sm-10.col-sm-offset-1.col-md-12.col-md-offset-0.btn-bottom-home
+          p: a.btn.btn-lg.btn-inverse.expand.more-courses-home(href="/courses") More Courses
+
+      .col-xs-12.col-sm-12.col-md-8.min-col-height-home
+        h2.text-center
+          a(style='color:black', href="/articles").h2-section-title-home Articles
+        each article in featuredArticles
+          .list-group
+            hr.home
+            .article-row-home
+              a(href="/" + article.get('slug'))
+                //button(type="button").list-group-item
+                .row.home-article-title-container
+                  .col-xs-12.col-sm-12.col-md-3.text-center
+                    img(style="opacity:.80;margin-top:20px;margin-left:auto;margin-right:auto" src=article.get('thumbImage').url()).img-responsive
+                    // img(src=(article.get('instructor').get('avatar') ? article.get('instructor').get('avatar').url() : '/img/demo/profile.png'), alt= article.get('instructor').get('name')).articles-profile-img-home
+                    h5(style='color:#333333;')= article.get('instructor').get('name')
+                  .col-xs-12.col-sm-12.col-md-9
+                    h3.each-article-title-home
+                      a(href="/" + article.get('slug')).h3-article-title-text= article.get('title')
+                    p(style='text-align:left;')= libs.moment(article.get('createdAt')).format("MMMM Do YYYY")
+                    .each-article-p-home
+                      p(style='text-align:left;') !{libs.markdown.render(article.get('content').substring(0, 125) + ' . . .')}
+        .col-xs-10.col-xs-offset-1.btn-bottom-home
+          p: a.btn.btn-lg.btn-inverse.expand.more-articles-home(href="/articles") More Articles
+
+    .row.text-center
+      h2: i: b In Loving Memory of Emma Renee Tavasci
+      h3: i  April 21, 1997 - July 23, 2016

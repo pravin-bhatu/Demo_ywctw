@@ -1,0 +1,6 @@
+if course.get('videoProvider') === 'vimeo'
+  .embed-responsive.embed-responsive-16by9
+    iframe(src=('https://player.vimeo.com/video/' + (course.get('videoId') || '100902001') + '?autoplay=true&quality=720p'), width='500', height='281', frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item
+else if course.get('videoProvider') === 'youtube'
+  .embed-responsive.embed-responsive-16by9
+    iframe(src=('https://www.youtube.com/embed/' + (course.get('videoId') || 'NpEaa2P7qZI') + '?autoplay=true'), width='500', height='281', frameborder='0', webkitallowfullscreen, mozallowfullscreen, allowfullscreen).embed-responsive-item

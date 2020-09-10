@@ -1,0 +1,1 @@
+nodemon -e client/styles/**/*.scss -x bin/build-css

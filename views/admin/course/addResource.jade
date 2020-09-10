@@ -1,0 +1,39 @@
+extends ../layout
+
+block content
+  h1.page-header Add Resource
+
+  if(showError)
+    .row
+      .col-xs-12.col-sm-6
+        h4.alert.alert-danger <b>Error uploading file!</b>
+
+
+  .row: .col-xs-12
+    .hr-divider.m-b
+      h3.hr-divider-content.hr-divider-heading Resource
+
+  form(id="addResource",method="post",action="addResource", enctype="multipart/form-data", onSubmit="document.getElementById('formSubmit').disabled=true;")
+
+    .row
+      .col-xs-12.col-sm-6
+        h4.alert.alert-warning <b>Files over 20mb need to be uploaded to AWS</b>
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Resource Name
+          input(type="text", id="resourceName", name="resourceName", required).form-control
+
+    .row
+      .col-xs-12.col-sm-6
+        .form-group
+          label Resource File
+          input(type="file", name="resourceFile", id="resourceFile", required)
+
+
+    .row.m-t.m-b.text-left
+      .col-xs-12
+        input(type="hidden", id="courseId", name="courseId", value=courseId)
+        input(type="hidden", id="lessonId", name="lessonId", value=lessonId)
+        input(id="formSubmit", type="submit", value="Add Resource").btn.btn-primary.btn-lg

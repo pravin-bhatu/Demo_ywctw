@@ -1,0 +1,110 @@
+extends ../layout
+
+block script
+  script(src="//cdn.tinymce.com/4/tinymce.min.js")
+  <script>tinymce.init({ selector: "textArea", plugins: "lists", browser_spellcheck: true });</script>
+
+block content
+  .col-xs-12
+    h1.page-header Admin - Lesson - !{formType}
+
+    .row: .col-xs-12
+      a(href='/dashboard/course/edit?courseId=' + courseId).btn.btn-link Back To Course
+
+    .row
+      div#errorBox(role="alert", hidden).alert.alert-danger
+        span#errorText
+
+    form(id="lesson",method="post",action="addLesson")
+
+      .row: .col-xs-12
+        .hr-divider.m-b
+          h3.hr-divider-content.hr-divider-heading Lesson Information
+
+      .row
+        .col-xs-6.col-sm-6
+          // TODO: Make selection of current sections
+          .form-group
+            label( for="order" ) Section Name
+              select.form-control(name="sectionName", id="sectionName")
+                each section in course.get('sections')
+                  option(value=section, selected=((values.section === section) ? true : false))= section
+
+        .col-xs-6.col-sm-6
+          a(href='/dashboard/course/addSection?courseId=' + courseId).btn.btn-primary Add Section
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Lesson Name
+            input(type="text", id="name", name="name", value=values.name || '', required).form-control
+
+      .row
+        .col-xs-2.col-sm-2
+          .form-group
+            label( for="order" ) Lesson Number
+              select.form-control(name="order", id="order")
+                option(value=0, selected=((values.order === 0) ? true : false)) Intro
+                - for(var i=1 ; i<100 ; i++)
+                  each val in [i]
+                    option(value=i, selected=((values.order === i) ? true : false))= val
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Description
+            textArea(name="description", id="description", rows="10").form-control
+              if(values.description)
+                !{libs.markdown.render(values.description) || ''}
+
+      .row
+        .col-xs-12.col-sm-12
+          .form-group
+            label Challenges (bullet points)
+            textArea(name="challenge", id="challenge", rows="5").form-control
+              if(values.challenge)
+                !{libs.markdown.render(values.challenge) || ''}
+
+      .row.m-t.m-b.text-right
+        .col-xs-12
+          if (formType === "Edit")
+            input(type="hidden", id="lessonId", name="lessonId", value=lessonId)
+          input(type="hidden", id="courseId", name="courseId", value=courseId)
+          input(type="hidden", id="formType", name="formType", value=formType)
+          input(id="formSubmit", type="submit", value= formType + " Lesson").btn.btn-primary.btn-lg
+
+    // Add Quiz
+    if (formType === "Edit")
+      input(type="hidden", id="lessonId", name="lessonId", value=lessonId)
+
+      .row: .col-xs-12
+        .hr-divider.m-b
+          h3.hr-divider-content.hr-divider-heading Quiz
+
+      .row: .col-xs-12
+        .col-xs-12.text-left
+          a(href='/dashboard/course/addQuizQuestion?lessonId=' + lessonId + '&courseId=' + courseId).btn.btn-primary Add Quiz Question
+
+      // TODO: Loop thru current questions if any
+
+      if (lesson.get('quiz'))
+        .row: .col-xs-12
+          table.table.table-striped
+            thead
+              tr
+                // th
+                th Question
+                th.text-center Correct
+                th Answer
+            tbody
+              each question in lesson.get('quiz')
+                tr
+                  // td.i.fa.fa-pencil-square-o.fa-lg
+                  // td: a(href='/dashboard/course/editLesson?courseId=' + course.id + '&lessonId=' + lesson.id, style='color:black;'): i.fa.fa-pencil-square-o.fa-lg
+                  td= question.get('text')
+                  td.text-center= question.get('answers').correct
+                  td= question.get('answers').options[question.get('answers').correct]
+
+
+    .row(style="height:50px")
+
