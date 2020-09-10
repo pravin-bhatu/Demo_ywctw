@@ -16,7 +16,6 @@ const Beyond = Parse.Object.extend('FreeTickets');
 
 /* GET home page. */
 router.get('/', (req, res) => {
-  res.data.currentUrl='/events';
   res.render('events/index', res.data);
 });
 

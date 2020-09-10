@@ -7,7 +7,6 @@ module.exports = (req, res, next) => {
   }
   const query = new Parse.Query(Parse.User);
   query.equalTo('username', req.user._json.user_id);
-  query.include('instructor');
   query.first().then(user => {
     res.data.currentUser = user;
     return next();

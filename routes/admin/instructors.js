@@ -250,7 +250,6 @@ router.post('/addBook', (req, res) => {
     title: req.body.bookTitle,
     link: req.body.bookLink,
     cover: req.body.bookCover,
-    genre : req.body.genre,
     onCourse: true,
     instructor: {"__type":"Pointer","className":"Instructor","objectId":req.body.instructorId},
   }

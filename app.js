@@ -21,7 +21,6 @@ const routes = require('./routes/index');
 const routesArticles = require('./routes/articles');
 const routesAuth = require('./routes/auth');
 const routesCourses = require('./routes/courses');
-const routesBooks = require('./routes/books');
 const routesCheckout = require('./routes/checkout');
 const routesCruise = require('./routes/cruise');
 const routesEvents = require('./routes/events');
@@ -41,21 +40,6 @@ const routesDashboardArticle = require('./routes/dashboard/article');
 const routesDashboardCourse = require('./routes/dashboard/course');
 const routesDashboardMarketplace = require('./routes/dashboard/marketplace');
 const routesDashboardPartner = require('./routes/dashboard/partner');
-const routesDashboardFilesVideo = require('./routes/dashboard/files');
-const routesDashboardMessage = require('./routes/dashboard/message');
-const routesDashboardVouchers = require('./routes/dashboard/vouchers');
-const routesDashboardVouchersDetails = require('./routes/dashboard/vouchersdetails');
-
-const routesStudent = require('./routes/student/index.js');
-const routesStudentMessage = require('./routes/student/message');
-const routeStudentRecieveMessage=require('./routes/student/message');
-const routeStudentMessageInstructor= require('./routes/student/messageinstructor');
-const routesStudentExplantion = require('./routes/student/explation');
-const routesStudentSuggestion = require('./routes/student/suggestion');
-const routeStudentVoucherinfo = require('./routes/student/index.js');
-const routeStudentAddCourse = require('./routes/student/index');
-const routeStudentEmailPassword = require('./routes/Student/index');
-
 
 // Admin Routes Path
 const routesAdmin = require('./routes/admin/index.js');
@@ -68,7 +52,6 @@ const routesAdminEvent = require('./routes/admin/event');
 const routesAdminUsers = require('./routes/admin/users');
 const routesAdminSearch = require('./routes/admin/search');
 const routesAdminOrders = require('./routes/admin/orders');
-const routesAdminFiles = require('./routes/admin/files');
 
 // Marketplace Routes Path
 const routesApiMarketplace = require('./routes/api/marketplace.js');
@@ -82,7 +65,7 @@ const app = express();
 
 
 // Timeout to prevent crashing
-app.use(timeout('1200s'));
+app.use(timeout('25s'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -120,7 +103,6 @@ app.use(require('./middleware/open_graph.js'));
 app.use('/', routes);
 app.use('/auth', routesAuth);
 app.use('/courses', routesCourses);
-app.use('/books', routesBooks);
 app.use('/checkout', routesCheckout);
 app.use('/cruise', routesCruise);
 app.use('/events', routesEvents);
@@ -134,18 +116,6 @@ app.use('/team', routesTeam);
 app.use('/terms', routesTerms);
 app.use('/affiliates', routesAffiliates)
 app.use('/vanity', routesVanity);
-app.use('/checkout/getcheckoutVoucherinfo',routesCheckout);
-
-app.use('/student', routesStudent);
-app.use('/student/message', routesStudentMessage);
-app.use('/student/message/receivedmessage',routeStudentRecieveMessage);
-app.use('/student/messageinstructor',routeStudentMessageInstructor);
-app.use('/student/explanation', routesStudentExplantion);
-app.use('/student/suggestion', routesStudentSuggestion);
-app.use('/student/getvoucherinfo',routeStudentVoucherinfo);
-app.use('/student/addtocourse',routeStudentAddCourse);
-app.use('/student/update_email_password',routeStudentEmailPassword);
-app.use('/student/savepassword',routeStudentEmailPassword);
 
 // Dashboard Routes
 app.use('/dashboard', routesDashboard);
@@ -153,16 +123,6 @@ app.use('/dashboard/article', routesDashboardArticle);
 app.use('/dashboard/course', routesDashboardCourse);
 app.use('/dashboard/marketplace', routesDashboardMarketplace);
 app.use('/dashboard/partner', routesDashboardPartner);
-app.use('/dashboard/files', routesDashboardFilesVideo);
-app.use('/dashboard/message', routesDashboardMessage);
-app.use('/dashboard/vouchers',routesDashboardVouchers);
-app.use('/dashboard/vouchersdetails',routesDashboardVouchersDetails);
-
-
-
-app.post('/dashboard/vouchers/getpromocode',routesDashboardVouchers);
-app.get('/dashboard/vouchersdetails/:courseid',routesDashboardVouchersDetails);
-app.get('/dashboard/vouchersdetails/:courseid/downloadcsv',routesDashboardVouchersDetails);
 
 // Admin Routes
 app.use('/admin', routesAdmin);
@@ -175,7 +135,6 @@ app.use('/admin/event', routesAdminEvent);
 app.use('/admin/users', routesAdminUsers);
 app.use('/admin/search', routesAdminSearch);
 app.use('/admin/orders', routesAdminOrders);
-app.use('/admin/files', routesAdminFiles);
 
 // Marketplace Routes
 app.use('/api/marketplace', routesApiMarketplace);

@@ -26,12 +26,6 @@ router.use(PartnerService.mwGetPartnerCode);
 
 /* GET home page. */
 router.get('/', [CourseService.mwGetCourses], (req, res) => {
-  res.data.currentUrl='/courses';
-  res.render('course/index', res.data);
-});
-
-router.post('/', [CourseService.mwGetCourses],(req, res) => {
-  res.data.currentUrl='/courses';
   res.render('course/index', res.data);
 });
 

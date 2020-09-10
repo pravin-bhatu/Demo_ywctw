@@ -14,36 +14,15 @@ block content
             |   <img alt="MasterCard" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/mastercard.png" width="48">
             |   <img alt="Visa" class="" src="https://www.braintreegateway.com/images/payment_instrument_images/visa.png" width="48">
             | </div>
-            div.voucher-code
-              h4.reedem-voucher Voucher Code
-              .form-group.row.reedem-voucher-mb
-                label.voucher-card.control-label.col-lg-3.col-md-4(for='email') Enter Voucher Code
-                .col-lg-7.col-md-5.pl-0
-                  input#vouchercode.form-control(type='text', name='vouchercode', width='50',required) 
-                .col-lg-2.col-md-3.txt-center
-                  button.btn.btn-apply(type='button',onclick="CheckoutVoucherinfo()") Apply
-              .row
-                .col-lg-3
-                .col-lg-9.pl-0
-                  p.voucher-card-text Vouchers are when a course is purchased directly from the Instructor or a 3rd party, it will have been sent to you DIRECTLY by the third party ONLY and not through You Will Change the World
-                div#loader(style="text-align:center;")  
-                 img(src='/public/img/checkout-loader.gif',style="width:64px;position: relative;float: right;left: 300px;top: 27px;")
-            .alert.alert-danger#voucherError Invalid Code For This Course 
-            .alert.alert-danger#voucherExpired Voucher Code Expired!
-            .alert.alert-danger#voucherRedeem This Voucher Code is Already Redeem
-            .alert.alert-success#VoucherSuccess Congratulations , You have this course now!
-
-            div.payment-card
-              h4.payment Payment
-              #payment-form.paymentForm
-              a(href="https://www.braintreegateway.com/merchants/kbfchfxycf42dsws/verified", target="_blank")
-                img(src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-light.png", width="280px", height="44px", border="0")
+            #payment-form
+            a(href="https://www.braintreegateway.com/merchants/kbfchfxycf42dsws/verified", target="_blank")
+              img(src="https://s3.amazonaws.com/braintree-badges/braintree-badge-wide-light.png", width="280px", height="44px", border="0")
 
 
-              input(type="hidden", name="courseId",id="courseid", value=course.id)
-              input(type="submit", value="Submit Payment").btn.btn-lg.btn-primary
-              if partnerCode
-                input(type="hidden", name="code", value=partnerCode.get('code'))
+            input(type="hidden", name="courseId", value=course.id)
+            input(type="submit", value="Submit Payment").btn.btn-lg.btn-primary
+            if partnerCode
+              input(type="hidden", name="code", value=partnerCode.get('code'))
         else
           h3 You are almost ready to start your journey. IN ORDER TO PURCHASE this extraordinary Course you must FIRST CREATE AN ACCOUNT or login with your current account now.
           .row(style="margin-top:30px;")
@@ -70,13 +49,13 @@ block content
           .col-xs-12
             form#applyCode(action="checkout/apply?id=" + course.id, method="post")
               .row
-                .col-xs-12.col-sm-12.col-lg-12
+                .col-xs-12.col-sm-6
                   .form-group
-                    label.discount-code Discount Code
+                    label Enter Code
                     input(type="text", name="code", id="code", value="" || '', required).form-control
               .row
-                .col-xs-12.col-sm-12.col-lg-12
-                  input(id="formSubmit", type="submit", value="Apply Code").btn.btn-primary.btn-lg.btn-apply-code
+                .col-xs-12.col-sm-6
+                  input(id="formSubmit", type="submit", value="Apply Code").btn.btn-primary.btn-lg
 
   script.
     window.clientToken = '#{token}';

@@ -29,7 +29,6 @@ router.get('/', (req, res) => {
       res.data.libs.moment = moment;
       res.data.libs.markdown = markdown;
       res.data.instructors = columns;
-      res.data.currentUrl='/instructors';
       res.render('user/group', res.data);
     },
     error => {
@@ -42,7 +41,6 @@ router.get('/', (req, res) => {
 /* GET become page. */
 router.get('/become', (req, res) => {
   res.render('instructors/become', res.data);
-  
 });
 
 /* GET register page. */
@@ -59,7 +57,6 @@ router.get('/:username', [
   res.data.meta.title = res.data.instructor.get('name');
   res.data.libs.moment = moment;
   res.data.libs.markdown = markdown;
-  res.data.currentUrl='/instructors';
   res.render('user/index', res.data);
 });
 

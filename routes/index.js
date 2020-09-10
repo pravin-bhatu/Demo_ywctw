@@ -10,7 +10,6 @@ const Parse = require('../modules/parse');
 const DiscountModel = Parse.Object.extend('Discount');
 const CourseService = require('../services/course.js');
 const ArticleService = require('../services/article.js');
-const DashboardService = require('../services/dashboard/index.js');
 
 const moment = require('moment');
 const MarkdownIt = require('markdown-it');
@@ -22,17 +21,16 @@ router.get('/',
   [
     CourseService.mwGetCourses,
     ArticleService.mwGetArticles,
-    DashboardService.mwGetAllInstructor,
   ],
   (req, res) => {
-    res.data.instructors = _.sample(_.shuffle(res.data.instructors), 6);
+    if (req.isAuthenticated()){
+      return res.redirect('/account/courses');
+    }
     res.data.featuredArticles = _.sample(_.shuffle(res.data.articles), 3);
-    res.data.coursesHome = _.sample(_.shuffle(res.data.courses.free), 3);
     res.data.libs.moment = moment;
     res.data.libs.markdown = markdown;
-    res.data.currentUrl='/';
     res.render('index', res.data);
-  });
+});
 
 router.get('/new-homepage',
   [
@@ -44,8 +42,8 @@ router.get('/new-homepage',
     res.data.featuredArticles = _.sample(_.shuffle(res.data.articles), 3);
     res.data.libs.moment = moment;
     res.data.libs.markdown = markdown;
-    res.render('homepage-mockup', res.data);
-  });
+  res.render('homepage-mockup', res.data);
+});
 
 router.get('/new-homepage-2',
   [
@@ -63,7 +61,6 @@ router.get('/new-homepage-2',
 
 
 router.get('/about', (req, res) => {
-  res.data.currentUrl='/about';
   res.render('about', res.data);
 });
 

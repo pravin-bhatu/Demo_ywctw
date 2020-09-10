@@ -7,10 +7,6 @@ const Course = require('../service/course');
 
 class CourseService {
   static mwGetCourses(req, res, next) {
-    if(req.body.searchText)
-    {
-      var searchText = req.body.searchText.toLowerCase();
-    }
     Course.Crud.read({
       include: ['instructor'],
       select: ['name', 'slug', 'price', 'cardImage', 'stage', 'instructor'],
@@ -18,12 +14,6 @@ class CourseService {
     }, (error, courses = []) => {
       if (error) {
         // TODO: Handle the error...
-      }
-
-      if(searchText)
-      {
-        var result = courses.filter(word => word.get('name').toLowerCase().includes(searchText));
-        courses = [...result];
       }
 
       function isFeatured(course) {
@@ -35,20 +25,19 @@ class CourseService {
         );
       }
       const featuredCourses = courses.filter(course => {
-          return isFeatured(course);
+        return isFeatured(course);
       });
       const freeCourses = courses.filter(course => {
-          return course.get('price') === 0 && !isFeatured(course) && course.get('stage') === 'prod';
+        return course.get('price') === 0 && !isFeatured(course) && course.get('stage') === 'prod';
       });
       const paidCourses = courses.filter(course => {
-          return course.get('price') !== 0 && !isFeatured(course) && course.get('stage') === 'prod';
+        return course.get('price') !== 0 && !isFeatured(course) && course.get('stage') === 'prod';
       });
       const comingSoonCourses = courses.filter(course => {
-          return course.get('stage') === 'stage';
+        return course.get('stage') === 'stage';
       });
 
       res.data.courses = {
-        search: req.body.searchText,
         featured: featuredCourses,
         free: freeCourses,
         paid: paidCourses,

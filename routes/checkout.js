@@ -5,7 +5,6 @@ const Course = require('../service/course');
 const Money = require('../service/money');
 const DiscountService = require('../services/discounts.js');
 const PartnerService = require('../services/partner.js');
-const CheckoutService = require('../services/checkout.js');
 
 router.use(DiscountService.mwGetCourseDiscount);
 router.use(DiscountService.mwGetUserDiscounts);
@@ -54,27 +53,9 @@ router.get('/', (req, res) => {
 });
 
 router.post('/apply', (req, res) => {
-   console.log(req.query);
-   console.log(res.data.user);
-
   console.log('Course :: ' + req.query.id);
   console.log('Code :: ' + req.body.code);
   res.redirect('/checkout?id=' + req.query.id + '&pc=' + req.body.code);
-
-
 });
-
-
-router.post('/getcheckoutVoucherinfo',[CheckoutService.mwgetVoucherValid],(req,res)=>{
-     
-       // userinfomation
-       //var userid=     
-
-      res.send({'errormessage':res.data.errormessage,'successmessage':res.data.successmessage,'voucherstatus':res.data.voucherstatus});
-
-
-
-});
-
 
 module.exports = router;

@@ -3,35 +3,28 @@ extends ../layout
 block content
   #courses.page
     if user
-      a(href="/account/courses"): .bg-success.text-center(style="padding:5px;margin-top:-6px;color:#000;")
+      a(href="/account/courses"): .bg-success.text-center(style="padding:10px;margin-top:-25px;color:#000;")
         | Click For Your Courses
-    form(id="courseSearch",method="post",action="courses")
-      .wrap
-        .search
-          input.searchTerm(type='text', id='searchText', name='searchText',placeholder='Search..',value=courses.search)
-          | 
-          button(id="formSubmit", type="submit", value="Submit").searchButton
-            i.fa.fa-search    
     .container
-      h1(style='color:#aaa;').text-center Featured Courses
+      h2(style='color:#aaa;').text-center Featured Courses
       hr
       .row
         for course in courses.featured
           if course.get('stage') === 'prod' || course.get('stage') === 'stage'
             include partials/card
-      h1(style='color:#aaa;').text-center Free Courses
+      h2(style='color:#aaa;').text-center Free Courses
       hr
       .row
         for course in courses.free
           if course.get('stage') === 'prod' || course.get('stage') === 'stage'
             include partials/card
-      h1(style='color:#aaa;').text-center Paid Courses
+      h2(style='color:#aaa;').text-center Paid Courses
       hr
       .row
         for course in courses.paid
           if course.get('stage') === 'prod' || course.get('stage') === 'stage'
             include partials/card
-      h1(style='color:#aaa;').text-center Coming Soon Courses
+      h2(style='color:#aaa;').text-center Coming Soon Courses
       hr
       .row
         for course in courses.comingSoon

@@ -10,46 +10,30 @@ const DashboardCourseService = require('../../services/dashboard/course.js');
 
 const AdminInstructors = require('../../services/admin/instructors.js');
 
-const AdminService = require('../../services/admin/index.js');
-
-const FileReader = require('filereader');
-
 const json2csv = require('json2csv');
 
 router.get('/',
   [
     DashboardService.mwGetInstructor,
-    AdminService.mwGetVideo,
-    // DashboardService.mwGetVideo,
     DashboardCourseService.mwGetInstuctorCourses,
     DashboardCourseService.mwGetEnrollments,
     DashboardCourseService.mwGetStudentBody,
   ], (req, res) => {
-    if (!res.data.files) {
-      res.data.files = [];
-    }
-    res.data.fileId = res.data.files.id;
-    res.data.file = res.data.files.get('File');
-    let s = res.data.file._url;
-    let encodedData = Buffer.from(s).toString('base64')
-    console.log("RESPONSE BASE64", encodedData);
-    res.data.encodedData = encodedData;
-    console.log("Data", res.data.encodedData);
     res.render('dashboard/index', res.data);
   }
 );
 
-router.get('/analytics', [DashboardService.mwGetInstructor], (req, res) => {
+router.get('/analytics', [ DashboardService.mwGetInstructor ], (req, res) => {
   res.render('dashboard/soon', res.data);
 });
 
-// router.get('/marketplace', [ DashboardService.mwGetInstructor ], (req, res) => {
-//   res.render('dashboard/soon', res.data);
-// });
+router.get('/marketplace', [ DashboardService.mwGetInstructor ], (req, res) => {
+  res.render('dashboard/soon', res.data);
+});
 
-// router.get('/marketing-tools', [ DashboardService.mwGetInstructor ], (req, res) => {
-//   res.render('dashboard/soon', res.data);
-// });
+router.get('/marketing-tools', [ DashboardService.mwGetInstructor ], (req, res) => {
+  res.render('dashboard/soon', res.data);
+});
 
 router.get('/affiliate', (req, res) => {
   if (!req.isAuthenticated()) return res.redirect('/');
@@ -102,17 +86,9 @@ router.get('/affiliate', (req, res) => {
         });
         keenClient.run([visitCount, signupCount, orderCount], (err, response) => {
           res.data.analytics = {};
-          if (response) {
-            res.data.analytics.visits = response[0].result;
-            res.data.analytics.registrations = response[1].result;
-            res.data.analytics.orders = response[2].result;
-
-          }
-          else {
-            res.data.analytics.visits = "";
-            res.data.analytics.registrations = "";
-            res.data.analytics.orders = "";
-          }
+          res.data.analytics.visits = response[0].result;
+          res.data.analytics.registrations = response[1].result;
+          res.data.analytics.orders = response[2].result;
           res.data.courses = courses;
           res.data.instructor = instructor;
           res.data.affiliate = affiliate;
@@ -123,14 +99,14 @@ router.get('/affiliate', (req, res) => {
   });
 });
 
-// router.get('/files', [ DashboardService.mwGetInstructor ], (req, res) => {
-//   res.render('dashboard/files', res.data);
-// });
+router.get('/files', [ DashboardService.mwGetInstructor ], (req, res) => {
+  res.render('dashboard/files', res.data);
+});
 
-// router.get('/settings', [ DashboardService.mwGetInstructor ], (req, res) => {
-//   // res.render('dashboard/settings', res.data);
-//   res.render('dashboard/soon', res.data);
-// });
+router.get('/settings', [ DashboardService.mwGetInstructor ], (req, res) => {
+  // res.render('dashboard/settings', res.data);
+  res.render('dashboard/soon', res.data);
+});
 
 router.post('/getStudentBody',
   [
@@ -142,6 +118,6 @@ router.post('/getStudentBody',
     res.set('Content-Type', 'text/csv');
     res.attachment('StudentBodyList.csv');
     res.status(200).send(csv);
-  });
+});
 
 module.exports = router;

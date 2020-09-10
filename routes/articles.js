@@ -18,7 +18,7 @@ router.get('/articles',
     ArticleService.mwGetArticles,
   ],
   (req, res) => {
-    res.data.currentUrl='/articles';
+
     res.data.libs.markdown = markdown;
     res.data.libs.moment = moment;
     res.render('articles/index', res.data);
@@ -29,7 +29,7 @@ router.get('/rssfeed',
   [
     ArticleService.mwGetArticles,
   ], (req, res) => {
-    res.data.currentUrl='/articles';
+
     res.data.libs.markdown = markdown;
     res.data.libs.moment = moment;
     res.render('articles/rssfeed', res.data);
@@ -63,7 +63,7 @@ router.get('/:slug',
     res.data.shareTEXT = res.data.article.get('instructor').get('name') + ' | ' + res.data.article.get('title');
     res.data.affiliateID = "SET-AFFILIATE-ID-IN-ROUTE"; 
     res.data.shareURL = req.protocol + '://' + req.get('host') + req.originalUrl + "?ref=" + res.data.affiliateID;      
-    res.data.currentUrl='/articles';
+
     res.data.libs.markdown = markdown;
     res.data.libs.moment = moment;
     res.data.meta.title = res.data.article.get('instructor').get('name') + ' | ' + res.data.article.get('title');

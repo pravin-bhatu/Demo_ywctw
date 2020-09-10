@@ -18,27 +18,13 @@ router.get('/callback', [authenticate, currentUser, AffiliateService.mwProcessRe
       if (!req.user) throw new Error('user null');
       const page = req.cookies.pathName || '/';
       console.log('PATH NAME: ' + page);
-      if (req.isAuthenticated()) {
-        if (res.data.currentUser.get('affiliate')){
-          return res.redirect('/affiliates/program')
-        }
-        else if (res.data.currentUser.get('instructor')){
-          return res.redirect('/dashboard')
-        }
-        else if (res.data.currentUser.get('admin')){
-          return res.redirect('/admin')
-        }
-        else {
-          return res.redirect('/student')
-        }
+      if(page == '/affiliates'){
+        AmbassadorService.mwAmbassadorHandler(req.user._json.parse_api_key, function(){
+          return res.redirect('/affiliates/program');
+        });
+      } else {
+        res.redirect(page);
       }
-      // if(page == '/affiliates'){
-      //   AmbassadorService.mwAmbassadorHandler(req.user._json.parse_api_key, function(){
-      //     return res.redirect('/affiliates/program');
-      //   });
-      // } else {
-      //   res.redirect(page);
-      // }
   }
 );
 

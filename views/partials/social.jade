@@ -1,4 +1,4 @@
-.row(style="flex-flow: row-reverse;margin-right: 2px")
+.row
   // Pintrest Share Button
   // script(type="text/javascript" async defer src="//assets.pinterest.com/js/pinit.js")
   // a(href="https://www.pinterest.com/pin/create/button/")
@@ -9,7 +9,7 @@
   script(type="IN/Share" data-url=meta.siteCurrent)
   &nbsp;&nbsp;
   // Facebook Share Button
-  iframe(src="https://www.facebook.com/plugins/share_button.php?href=" + "#{shareURL}" + "&layout=button&size=small&mobile_iframe=true&appId&width=59&height=20" width="65" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true")
+  iframe(src="https://www.facebook.com/plugins/share_button.php?href=" + meta.siteCurrent + "&layout=button&size=small&mobile_iframe=true&appId&width=59&height=20" width="59" height="20" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true")
   &nbsp;&nbsp;
   // Twitter Share Button
   a(href="https://twitter.com/share" data-show-count="false").twitter-share-button Tweet
